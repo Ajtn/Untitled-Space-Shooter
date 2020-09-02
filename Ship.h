@@ -1,5 +1,7 @@
 #pragma once
 #include "GameObject.h"
+#include "Projectile.h"
+
 class Ship :
     public GameObject
 {
@@ -14,14 +16,18 @@ public:
 
     Ship();
 
-    Ship(int defFireDelay, int defGunType, int defHp);
+    Ship(int initialFireDelay, int initialGunType, int initialHp);
 
     int getHp() const;
-    int getGunType() const;
-    int getFireDelay() const;
+    //int getGunType() const;
+    //int getFireDelay() const;
+
+
+    Projectile shoot();
 
     void setHp(int newHp);
     void setGunType(int newGunType);
+    void upgradeGunType();
     void setFireDelay(int newFireDelay);
 
 };

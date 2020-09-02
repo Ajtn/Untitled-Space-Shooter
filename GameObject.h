@@ -34,7 +34,7 @@ public:
 
 	//virtual void updateState();
 
-	void manualPosition(int givenXPos, int givenYPos);
+	//void manualPosition(int givenXPos, int givenYPos);
 
 
 

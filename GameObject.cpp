@@ -59,8 +59,10 @@ void GameObject::setXVel(int newXVel)
 	xVel = newXVel;
 }
 
+/*
 void GameObject::manualPosition(int givenXPos, int givenYPos)
 {
 	xPos = givenXPos;
 	yPos = givenYPos;
 }
+*/

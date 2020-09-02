@@ -4,20 +4,16 @@
 
 PlayerShip::PlayerShip()
 {
+	GameObject(1920 / 2, 1050, 0, 0, true);
+	Ship(0, 1, 5);
 	hpCap = 5;
 	speed = 1;
 	invincibility = 20;
-	manualPosition(1920 / 2, 1050);
 
 }
 
 
 
-//checks gun type then shoots appropriate weapon type
-void PlayerShip::shoot()
-{
-	//cout << "pew pew" << ;
-}
 
 //returns true if ship alive or false if the ship has died
 bool PlayerShip::takeDamage(int damage)
@@ -48,13 +44,8 @@ void PlayerShip::repair(int val)
 }
 
 
-//probably going to be changed to having int input based on upgrade
-void PlayerShip::upgradeGun()
-{
-	this->setGunType(this->getGunType() + 1);
-}
 
-
+//accepts input from 1 - 8 and sets velocity in the x and y direction as appropriate
 void PlayerShip::move(int direction)
 {
 
