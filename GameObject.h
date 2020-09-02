@@ -3,10 +3,10 @@ class GameObject
 {
 private:
 	bool visible;
-	int yPos;
 	int xPos;
-	int yVel;
+	int yPos;
 	int xVel;
+	int yVel;
 	bool friendly;
 
 
@@ -21,20 +21,18 @@ public:
 
 	GameObject();
 
-	GameObject(int yP, int xP, int yV, int xV, bool iFriendly);
+	GameObject(int initialX, int initialY, int initialXVel, int initialYVel, bool initialFriendly);
 
-	int getYPos();
+	int getYPos() const;
 
-	int getXPos();
+	int getXPos() const;
+
+	bool getFriendly() const;
 
 	void setYVel(int newYVel);
 
 	void setXVel(int newXVel);
 
-
-	//virtual void updateState();
-
-	//void manualPosition(int givenXPos, int givenYPos);
 
 
 

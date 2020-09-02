@@ -21,57 +21,49 @@ int Ship::getHp() const
 	return hp;
 }
 
-/*
-int Ship::getGunType() const
-{
-	return gunType;
-}
 
-
-int Ship::getFireDelay() const
-{
-	return fireDelay;
-}
-
-*/
 
 
 //Creates a projectile game object based on current gun type
 //then sets fire delay (also based on gun type)
 Projectile Ship::shoot()
 {
-	Projectile projectile;
-	//projectile to be defined in switch statement
+
+	int damage;
+
+	//damage projectile will deal to be defined in switch statement
 	//fire delay typically going down with higher values
 	//there will be exceptions for particularly powerful projectiles
 
 	switch (gunType)
 	{
 	case 1 :
-		projectile = Projectile();
+		damage = 1;
 		fireDelay = 30;
 		break;
 
 	case 2:
-		projectile = Projectile();
+		damage = 2;
 		fireDelay = 25;
 		break;
 
 	case 3:
-		projectile = Projectile();
+		damage = 4;
 		fireDelay = 20;
 		break;
 	default:
+		damage = 0;
 		break;
 	}
 
-	return projectile;
+	return Projectile(this->getXPos(), this->getYPos(), 0, 2, this->getFriendly(), damage);
 }
 
 
-void Ship::setHp(int newHp)
+
+void Ship::takeDamage(int damage)
 {
-	hp = newHp;
+	hp = hp - damage;
 }
 
 

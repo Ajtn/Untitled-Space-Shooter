@@ -6,26 +6,33 @@ class Ship :
     public GameObject
 {
 private:
-    int fireDelay;
-    int gunType;
-    int hp;
 
+    //defines cool down before ship can fire again
+    int fireDelay;
+
+    //different guns will do different amounts of damage and incur different fire delay
+    int gunType;
+
+    //defines ships current maximum hp value
+    int hpCap;
+
+    //defines ships current hp value, ie how much damage it can sustain before death
+    int hp;
 
 
 public:
 
     Ship();
 
-    Ship(int initialFireDelay, int initialGunType, int initialHp);
+    Ship(int initialFireDelay, int initialGunType, int initialHpCap, int initialHp);
 
     int getHp() const;
-    //int getGunType() const;
-    //int getFireDelay() const;
 
 
     Projectile shoot();
 
-    void setHp(int newHp);
+    void takeDamage(int damage);
+
     void setGunType(int newGunType);
     void upgradeGunType();
     void setFireDelay(int newFireDelay);

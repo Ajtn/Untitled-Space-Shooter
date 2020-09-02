@@ -5,8 +5,7 @@
 PlayerShip::PlayerShip()
 {
 	GameObject(1920 / 2, 1050, 0, 0, true);
-	Ship(0, 1, 5);
-	hpCap = 5;
+	Ship(0, 1, 5, 5);
 	speed = 1;
 	invincibility = 20;
 
@@ -61,27 +60,27 @@ void PlayerShip::move(int direction)
 		break;
 	case 3:
 		setXVel(speed);
-		setYVel(speed);
+		setYVel(-speed);
 		break;
 	case 4:
 		setXVel(-speed);
-		setYVel(speed);
+		setYVel(-speed);
 		break;
 	case 5:
 		setXVel(speed);
-		setYVel(-speed);
+		setYVel(speed);
 		break;
 	case 6:
 		setXVel(-speed);
-		setYVel(-speed);
+		setYVel(speed);
 		break;
 	case 7:
 		setXVel(0);
-		setYVel(speed);
+		setYVel(-speed);
 		break;
 	case 8:
 		setXVel(0);
-		setYVel(-speed);
+		setYVel(speed);
 		break;
 	default:
 		setXVel(0);

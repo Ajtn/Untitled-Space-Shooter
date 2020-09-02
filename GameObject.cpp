@@ -13,16 +13,16 @@ GameObject::GameObject()
 
 
 
-GameObject::GameObject(int yP, int xP, int yV, int xV, bool iFriendly)
+GameObject::GameObject(int initialX, int initialY, int initialXVel, int initialYVel, bool initialFriendly)
 {
-	yPos = yP;
-	xPos = xP;
-	yVel = yV;
-	xVel = xV;
+	xPos = initialX;
+	yPos = initialY;
+	xVel = initialXVel;
+	yVel = initialYVel;
 
-	friendly = iFriendly;
+	friendly = initialFriendly;
 
-	visible = false;
+	visible = true;
 
 }
 
@@ -32,14 +32,19 @@ void GameObject::updatePosition()
 	xPos = xPos + xVel;
 }
 
-int GameObject::getYPos()
+int GameObject::getYPos() const
 {
 	return yPos;
 }
 
-int GameObject::getXPos()
+int GameObject::getXPos() const
 {
 	return xPos;
+}
+
+bool GameObject::getFriendly() const
+{
+	return friendly;
 }
 
 void GameObject::makeVisible()
