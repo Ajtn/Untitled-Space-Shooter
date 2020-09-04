@@ -8,8 +8,9 @@ Ship::Ship()
 
 }
 
-Ship::Ship(int initialFireDelay, int initialGunType, int initialHp)
+Ship::Ship(int initialFireDelay, int initialGunType, int initialHpCap, int initialHp)
 {
+	GameObject();
 	fireDelay = initialFireDelay;
 	gunType = initialGunType;
 	hp = initialHp;

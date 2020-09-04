@@ -1,6 +1,29 @@
 #include "GameObject.h"
 #include <iostream>
 
+
+void GameObject::makeVisible()
+{
+	visible = true;
+}
+
+bool GameObject::collision(int otherObjectX, int otherObjectY, int otherObjRadius)
+{
+	if (abs(xPos - otherObjectX) < (radius + otherObjRadius))
+	{
+		if (abs(yPos - otherObjectY) < (radius + otherObjRadius))
+			return true;
+		else
+		{
+			return false;
+		}
+	}
+	else
+	{
+		return false;
+	}
+}
+
 GameObject::GameObject()
 {
 	visible = true;
@@ -9,11 +32,12 @@ GameObject::GameObject()
 	xVel = 0;
 	yVel = 0;
 	friendly = false;
+	radius = 1;
 }
 
 
 
-GameObject::GameObject(int initialX, int initialY, int initialXVel, int initialYVel, bool initialFriendly)
+GameObject::GameObject(int initialX, int initialY, int initialXVel, int initialYVel, bool initialFriendly, int initialRadius)
 {
 	xPos = initialX;
 	yPos = initialY;
@@ -23,6 +47,8 @@ GameObject::GameObject(int initialX, int initialY, int initialXVel, int initialY
 	friendly = initialFriendly;
 
 	visible = true;
+
+	radius = initialRadius;
 
 }
 
@@ -47,14 +73,9 @@ bool GameObject::getFriendly() const
 	return friendly;
 }
 
-void GameObject::makeVisible()
-{
-	visible = true;
-}
 
 void GameObject::setYVel(int newYVel)
 {
-	std::wcout << newYVel;
 	yVel = newYVel;
 }
 
@@ -62,6 +83,11 @@ void GameObject::setYVel(int newYVel)
 void GameObject::setXVel(int newXVel)
 {
 	xVel = newXVel;
+}
+
+int GameObject::getRadius() const
+{
+	return radius;
 }
 
 /*

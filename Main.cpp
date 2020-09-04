@@ -5,6 +5,8 @@
 #include <SFML/Graphics.hpp>
 
 
+//std::wcout << newYVel;
+
 int checkWasd()
 {
 	int cInput;
@@ -75,10 +77,23 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works");
 	sf::CircleShape shape(50.f);
 	shape.setFillColor(sf::Color::Magenta);
+	sf::Texture texture;
+
+	if (!texture.loadFromFile("Res\scrollBackgroundOne.jpg"))
+	{
+		std::wcout << "can't find resource";
+
+		system("pause");
+	}
 
 
 	int cInput = 0;
 	PlayerShip test =  PlayerShip();
+
+	sf::Sprite background;
+	background.setTexture(texture);
+
+
 
 	while (window.isOpen())
 	{
@@ -90,6 +105,8 @@ int main()
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
+
+
 
 		cInput = checkWasd();
 
@@ -103,6 +120,7 @@ int main()
 
 	
 		window.clear();
+		window.draw(background);
 		window.draw(shape);
 		window.display();
 	}

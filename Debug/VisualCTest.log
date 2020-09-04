@@ -1,2 +1,18 @@
-﻿  Ship.cpp
+﻿  GameObject.cpp
+  Main.cpp
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(82,28): warning C4129: 's': unrecognized character escape sequence
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(117,62): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(117,46): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  PlayerShip.cpp
+  Projectile.cpp
+  Ship.cpp
+  Generating Code...
   VisualCTest.vcxproj -> D:\Projects\CProjects\VisualTest\VisualCTest\Debug\VisualCTest.exe

@@ -4,7 +4,7 @@
 
 PlayerShip::PlayerShip()
 {
-	GameObject(1920 / 2, 1050, 0, 0, true);
+	GameObject(1920 / 2, 1050, 0, 0, true, 50);
 	Ship(0, 1, 5, 5);
 	speed = 1;
 	invincibility = 20;
@@ -12,6 +12,7 @@ PlayerShip::PlayerShip()
 }
 
 
+/*
 
 
 //returns true if ship alive or false if the ship has died
@@ -42,7 +43,7 @@ void PlayerShip::repair(int val)
 	}
 }
 
-
+*/
 
 //accepts input from 1 - 8 and sets velocity in the x and y direction as appropriate
 void PlayerShip::move(int direction)
