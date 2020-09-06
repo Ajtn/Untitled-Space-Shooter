@@ -1,12 +1,12 @@
 #include <iostream>
 #include "GameObject.h"
 #include "PlayerShip.h"
+#include "Structs.h"
 #include <string>
 #include <SFML/Graphics.hpp>
 
 
 //std::wcout << newYVel;
-
 int checkWasd()
 {
 	int cInput;
@@ -71,6 +71,27 @@ int checkWasd()
 
 	return cInput;
 }
+
+//multi dimensional array of movement patterns for AI, velocity to be changed incrementally to make non linear movement
+//stores 8 arrays of 12 movements each
+velocity pathing[7][11] = {
+	//0) accelerates right to left while slowly moving down
+	{(1, 0.5), (2, 0.5), (1, 0.5), (0, 0.5), (-1, 0.5), (-2, 0.5), (-1, 0.5), (0, 0.5), (1, 0.5), (2, 0.5), (1, 0.5), (0, 0.5)},
+	//1)
+	{(1, 1), (1, 2), (1, 0), (-1, -1), (-1, -2), (-1, -1), (1, 0), (1, 1), (1, 2), (1, 0), (1, 1), (1, 2)},
+	//2) moves left to right, comes in from right side of the screen (doesn't move vertically)
+	{(-1, 0), (-1, 0), (-1, 0), (-1, 0), (-1, 0), (-1, 0), (1, 0), (1, 0), (1, 0), (-1, 0), (-1, 0), (-1, 0)},
+	//3) shaped loop (recurrable)
+	{(-2, 1), (-1, 1), (-1, 2), (1, 2), (1, 1), (2, 1), (2, -1), (1, -2), (1, -2), (-1, -1), (-2, -1), (-1, -1)},
+	//4) moves up and down the screen moving to the right after each direction change
+	{(0, 2), (0, 2), (1, -1), (0, -2), (0, -2), (1, 1), (0, 2), (0, 2), (1, -1), (0, -2), (0, -2), (1, 1)},
+	//5)
+	{(1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1)},
+	//6)
+	{(1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1)},
+	//7)
+	{(0, 1), (0, 1), (0, 1), (0, 1), (0, 1), (0, 1), (0, 1), (0, 1), (0, 1), (0, 1), (0, 1), (0, 1)},
+};
 
 int main()
 {

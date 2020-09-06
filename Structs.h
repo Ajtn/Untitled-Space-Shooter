@@ -8,3 +8,9 @@ struct movement
 	int yVel;
 
 };
+
+struct velocity
+{
+	double xVel;
+	double yVel;
+};
