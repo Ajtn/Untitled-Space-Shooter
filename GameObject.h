@@ -1,12 +1,15 @@
 #pragma once
+#include "Structs.h"
+
 class GameObject
 {
 private:
 	bool visible;
-	int xPos;
-	int yPos;
-	int xVel;
-	int yVel;
+	float xPos;
+	float yPos;
+	//float xVel;
+	//float yVel;
+	velocity objectVelocity;
 	bool friendly;
 
 	//initial build will use circle based hit boxes, may swap to sprite based later
@@ -18,7 +21,7 @@ private:
 
 	void makeVisible();
 
-	bool collision(int otherObjectX, int otherObjectY, int otherObjRadius);
+	bool collision(float otherObjectX, float otherObjectY, int otherObjRadius);
 
 public:
 
@@ -27,17 +30,19 @@ public:
 
 	GameObject();
 
-	GameObject(int initialX, int initialY, int initialXVel, int initialYVel, bool initialFriendly, int initialRadius);
+	GameObject(float initialX, float initialY, velocity initialVelocity, bool initialFriendly, int initialRadius);
 
-	int getYPos() const;
+	GameObject(float initialX, float initialY, bool initialFriendly, int initialRadius);
 
-	int getXPos() const;
+	float getYPos() const;
+
+	float getXPos() const;
 
 	bool getFriendly() const;
 
-	void setYVel(int newYVel);
+	void setYVel(float newYVel);
 
-	void setXVel(int newXVel);
+	void setXVel(float newXVel);
 
 	int getRadius() const;
 

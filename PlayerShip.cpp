@@ -3,10 +3,11 @@
 
 
 PlayerShip::PlayerShip()
-	:Ship(0, 1, 5)
+	:Ship(0, 1, 5, 1920 / 2, 1050, true, 50)
 {
-	GameObject(1920 / 2, 1050, 0, 0, true, 50);
-	speed = 1;
+
+	speed = 1.234343f;
+	std::wcout << speed;
 	invincibility = 20;
 
 }
@@ -52,38 +53,47 @@ void PlayerShip::move(int direction)
 	switch (direction)
 	{
 	case 1:
+		//move right
 		setXVel(speed);
 		setYVel(0);
 		break;
 	case 2:
+		//move left
 		setXVel(-speed);
 		setYVel(0);
 		break;
 	case 3:
+		//move up and right
 		setXVel(speed);
 		setYVel(-speed);
 		break;
 	case 4:
+		//move up and left
 		setXVel(-speed);
 		setYVel(-speed);
 		break;
 	case 5:
+		//move down and right
 		setXVel(speed);
 		setYVel(speed);
 		break;
 	case 6:
+		//move down and left
 		setXVel(-speed);
 		setYVel(speed);
 		break;
 	case 7:
+		//move up
 		setXVel(0);
 		setYVel(-speed);
 		break;
 	case 8:
+		//move down
 		setXVel(0);
 		setYVel(speed);
 		break;
 	default:
+		//no movement
 		setXVel(0);
 		setYVel(0);
 		break;

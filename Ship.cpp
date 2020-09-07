@@ -10,14 +10,26 @@ Ship::Ship()
 
 }
 
-Ship::Ship(int initialFireDelay, int initialGunType, int initialHp)
+Ship::Ship(int initialFireDelay, int initialGunType, int initialHp, float initialXPos,
+	float initialYPos, velocity initialVel, bool initialFriendly, int initialRadius)
+	:GameObject(initialXPos, initialYPos, initialVel, initialFriendly, initialRadius)
 {
-	GameObject();
 	fireDelay = initialFireDelay;
 	gunType = initialGunType;
 	hpCap = initialHp;
 	hp = hpCap;
 }
+
+Ship::Ship(int initialFireDelay, int initialGunType, int initialHp, float initialXPos,
+	float initialYPos, bool initialFriendly, int initialRadius)
+	:GameObject(initialXPos, initialYPos, initialFriendly, initialRadius)
+{
+	fireDelay = initialFireDelay;
+	gunType = initialGunType;
+	hpCap = initialHp;
+	hp = hpCap;
+}
+
 
 
 int Ship::getHp() const
@@ -32,8 +44,12 @@ int Ship::getHp() const
 //then sets fire delay (also based on gun type)
 Projectile Ship::shoot()
 {
-	std::wcout << " guntype = ";
-	std::wcout << gunType;
+	velocity initialVel;
+	initialVel.xVel = 0;
+	initialVel.yVel = -0.01f;
+
+	std::cout << initialVel.xVel;
+
 
 	int damage;
 
@@ -45,7 +61,7 @@ Projectile Ship::shoot()
 	{
 	case 1 :
 		damage = 1;
-		fireDelay = 30;
+		fireDelay = 500;
 		break;
 
 	case 2:
@@ -62,7 +78,9 @@ Projectile Ship::shoot()
 		break;
 	}
 
-	return Projectile(this->getXPos(), this->getYPos(), 0, -2, this->getFriendly(), damage, 2);
+	std::cout << initialVel.yVel;
+
+	return Projectile(this->getXPos(), this->getYPos(), initialVel, this->getFriendly(), damage, 2);
 }
 
 

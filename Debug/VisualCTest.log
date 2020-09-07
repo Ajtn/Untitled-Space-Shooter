@@ -1,24 +1,2 @@
-﻿  Main.cpp
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(185,22): warning C4018: '<': signed/unsigned mismatch
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(188,107): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(188,74): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(196,62): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(196,46): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(203,21): warning C4018: '<': signed/unsigned mismatch
+﻿  Ship.cpp
   VisualCTest.vcxproj -> D:\Projects\CProjects\VisualTest\VisualCTest\Debug\VisualCTest.exe

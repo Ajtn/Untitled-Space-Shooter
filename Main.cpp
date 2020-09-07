@@ -162,13 +162,19 @@ int main()
 
 		if (checkFire())
 		{
-			if ((projectileCount < 20) && (test.getFireDelay() < shotClock.getElapsedTime().asMilliseconds()))
+			if (test.getFireDelay() < shotClock.getElapsedTime().asMilliseconds())
 			{
 				currentProjectiles[projectileCount] = test.shoot();
 
 				drawnShapes[projectileCount] = sf::CircleShape::CircleShape(10.f);
 				projectileCount++;
 				shotClock.restart();
+
+				if (projectileCount > 19)
+				{
+					std::wcout << currentProjectiles[projectileCount - 1].getYPos();
+					projectileCount = 0;
+				}
 			}
 		}
 

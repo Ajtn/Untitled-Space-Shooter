@@ -11,6 +11,6 @@ struct movement
 
 struct velocity
 {
-	double xVel;
-	double yVel;
+	float xVel;
+	float yVel;
 };

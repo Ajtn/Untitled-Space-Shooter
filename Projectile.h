@@ -9,7 +9,7 @@ private:
     int damage;
 
 public:
-    Projectile(int initialX, int initialY, int initialXVel, int initialYVel, bool initialFriendly, int initialDamage, int initialRadius);
+    Projectile(float initialX, float initialY, velocity initialVelocity, bool initialFriendly, int initialDamage, int initialRadius);
 
     Projectile();
 };

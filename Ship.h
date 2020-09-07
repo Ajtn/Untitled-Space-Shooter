@@ -24,7 +24,11 @@ public:
 
     Ship();
 
-    Ship(int initialFireDelay, int initialGunType, int initialHp);
+    Ship(int initialFireDelay, int initialGunType, int initialHp, float initialXPos,
+        float initialYPos, velocity initialVel, bool initialFriendly, int initialRadius);
+
+    Ship(int initialFireDelay, int initialGunType, int initialHp, float initialXPos,
+        float initialYPos, bool initialFriendly, int initialRadius);
 
     int getHp() const;
 

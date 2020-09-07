@@ -7,7 +7,7 @@ void GameObject::makeVisible()
 	visible = true;
 }
 
-bool GameObject::collision(int otherObjectX, int otherObjectY, int otherObjRadius)
+bool GameObject::collision(float otherObjectX, float otherObjectY, int otherObjRadius)
 {
 	if (abs(xPos - otherObjectX) < (radius + otherObjRadius))
 	{
@@ -29,23 +29,41 @@ GameObject::GameObject()
 	visible = true;
 	xPos = 0;
 	yPos = 0;
-	xVel = 0;
-	yVel = 0;
+	objectVelocity.xVel = 0;
+	objectVelocity.yVel = 0;
 	friendly = false;
 	radius = 1;
 }
 
 
 
-GameObject::GameObject(int initialX, int initialY, int initialXVel, int initialYVel, bool initialFriendly, int initialRadius)
+GameObject::GameObject(float initialX, float initialY, velocity initialVelocity, bool initialFriendly, int initialRadius)
 {
 	xPos = initialX;
 	yPos = initialY;
-	xVel = initialXVel;
-	yVel = initialYVel;
+	objectVelocity = initialVelocity;
+	//xVel = initialXVel;
+	//yVel = initialYVel;
 
-	std::wcout << "xPos = ";
-	std::wcout << xPos;
+
+	friendly = initialFriendly;
+
+	visible = true;
+
+	radius = initialRadius;
+
+}
+
+GameObject::GameObject(float initialX, float initialY, bool initialFriendly, int initialRadius)
+{
+	xPos = initialX;
+	yPos = initialY;
+
+	velocity initialVelocity;
+	initialVelocity.xVel = 0;
+	initialVelocity.yVel = 0;
+
+	objectVelocity = initialVelocity;
 
 	friendly = initialFriendly;
 
@@ -57,16 +75,16 @@ GameObject::GameObject(int initialX, int initialY, int initialXVel, int initialY
 
 void GameObject::updatePosition()
 {
-	yPos = yPos + yVel;
-	xPos = xPos + xVel;
+	xPos = xPos + objectVelocity.xVel;
+	yPos = yPos + objectVelocity.yVel;
 }
 
-int GameObject::getYPos() const
+float GameObject::getYPos() const
 {
 	return yPos;
 }
 
-int GameObject::getXPos() const
+float GameObject::getXPos() const
 {
 	return xPos;
 }
@@ -77,15 +95,15 @@ bool GameObject::getFriendly() const
 }
 
 
-void GameObject::setYVel(int newYVel)
+void GameObject::setYVel(float newYVel)
 {
-	yVel = newYVel;
+	objectVelocity.yVel = newYVel;
 }
 
 
-void GameObject::setXVel(int newXVel)
+void GameObject::setXVel(float newXVel)
 {
-	xVel = newXVel;
+	objectVelocity.xVel = newXVel;
 }
 
 int GameObject::getRadius() const
