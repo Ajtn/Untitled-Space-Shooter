@@ -1,4 +1,5 @@
 #include <iostream>
+#include <array>
 #include "GameObject.h"
 #include "PlayerShip.h"
 #include "Structs.h"
@@ -72,6 +73,14 @@ int checkWasd()
 	return cInput;
 }
 
+bool checkFire()
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+		return true;
+	else
+		return false;
+}
+
 //multi dimensional array of movement patterns for AI, velocity to be changed incrementally to make non linear movement
 //stores 8 arrays of 12 movements each
 velocity pathing[7][11] = {
@@ -98,7 +107,14 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works");
 	sf::CircleShape shape(50.f);
 	shape.setFillColor(sf::Color::Magenta);
-	sf::Texture texture;
+
+
+
+
+	//sf::Texture texture;
+	 
+	//Currently causes crash as permission not available too access resource
+	/*
 
 	if (!texture.loadFromFile("Res\scrollBackgroundOne.jpg"))
 	{
@@ -106,13 +122,20 @@ int main()
 
 		system("pause");
 	}
-
+	*/
 
 	int cInput = 0;
 	PlayerShip test =  PlayerShip();
 
-	sf::Sprite background;
-	background.setTexture(texture);
+	std::array<Projectile, 50> currentProjectiles;
+	int projectileCount = 0;
+
+
+	std::array<sf::CircleShape, 50> drawnShapes;
+
+
+	//sf::Sprite background;
+	//background.setTexture(texture);
 
 
 
@@ -131,8 +154,27 @@ int main()
 
 		cInput = checkWasd();
 
+		if (checkFire)
+		{
+			currentProjectiles[projectileCount] = test.shoot();
+
+			drawnShapes[projectileCount] = sf::CircleShape::CircleShape(currentProjectiles[projectileCount].getRadius().f);
+			projectileCount++;
+		}
+
 		test.move(cInput);
 		test.updatePosition();
+
+		for (Projectile projectile : currentProjectiles)
+		{
+			projectile.updatePosition();
+			//hit detection for projectiles goes here
+			for (int i = 0; i < currentProjectiles.size(); i++)
+			{
+				drawnShapes[i].setPosition(sf::Vector2f(currentProjectiles[i].getXPos(), currentProjectiles[i].getYPos()));
+			}
+
+		}
 
 
 	
@@ -141,8 +183,14 @@ int main()
 
 	
 		window.clear();
-		window.draw(background);
+		//window.draw(background);
 		window.draw(shape);
+
+		for (sf::CircleShape circle : drawnShapes)
+		{
+			window.draw(circle);
+		}
+
 		window.display();
 	}
 

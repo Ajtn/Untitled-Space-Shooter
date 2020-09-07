@@ -5,15 +5,17 @@ Ship::Ship()
 	fireDelay = 0;
 	gunType = 0;
 	hp = 5;
+	hpCap = 5;
 
 }
 
-Ship::Ship(int initialFireDelay, int initialGunType, int initialHpCap, int initialHp)
+Ship::Ship(int initialFireDelay, int initialGunType, int initialHp)
 {
 	GameObject();
 	fireDelay = initialFireDelay;
 	gunType = initialGunType;
-	hp = initialHp;
+	hpCap = initialHp;
+	hp = hpCap;
 }
 
 
@@ -57,7 +59,7 @@ Projectile Ship::shoot()
 		break;
 	}
 
-	return Projectile(this->getXPos(), this->getYPos(), 0, 2, this->getFriendly(), damage);
+	return Projectile(this->getXPos(), this->getYPos(), 0, 2, this->getFriendly(), damage, 2);
 }
 
 

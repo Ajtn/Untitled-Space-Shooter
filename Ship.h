@@ -24,7 +24,7 @@ public:
 
     Ship();
 
-    Ship(int initialFireDelay, int initialGunType, int initialHpCap, int initialHp);
+    Ship(int initialFireDelay, int initialGunType, int initialHp);
 
     int getHp() const;
 
