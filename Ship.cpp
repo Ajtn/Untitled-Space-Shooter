@@ -1,4 +1,5 @@
 #include "Ship.h"
+#include <iostream>
 
 Ship::Ship()
 {
@@ -31,6 +32,8 @@ int Ship::getHp() const
 //then sets fire delay (also based on gun type)
 Projectile Ship::shoot()
 {
+	std::wcout << " guntype = ";
+	std::wcout << gunType;
 
 	int damage;
 

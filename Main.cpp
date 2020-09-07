@@ -75,15 +75,19 @@ int checkWasd()
 
 bool checkFire()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
+	{
 		return true;
+	}
 	else
+	{
 		return false;
+	}
 }
 
 //multi dimensional array of movement patterns for AI, velocity to be changed incrementally to make non linear movement
 //stores 8 arrays of 12 movements each
-velocity pathing[7][11] = {
+velocity pathing[8][12] = {
 	//0) accelerates right to left while slowly moving down
 	{(1, 0.5), (2, 0.5), (1, 0.5), (0, 0.5), (-1, 0.5), (-2, 0.5), (-1, 0.5), (0, 0.5), (1, 0.5), (2, 0.5), (1, 0.5), (0, 0.5)},
 	//1)
@@ -127,11 +131,11 @@ int main()
 	int cInput = 0;
 	PlayerShip test =  PlayerShip();
 
-	std::array<Projectile, 50> currentProjectiles;
+	std::array<Projectile, 20> currentProjectiles;
 	int projectileCount = 0;
 
 
-	std::array<sf::CircleShape, 50> drawnShapes;
+	std::array<sf::CircleShape, 20> drawnShapes;
 
 
 	//sf::Sprite background;
@@ -154,16 +158,22 @@ int main()
 
 		cInput = checkWasd();
 
-		if (checkFire)
+		if (checkFire())
 		{
-			currentProjectiles[projectileCount] = test.shoot();
+			if (projectileCount < 20)
+			{
+				currentProjectiles[projectileCount] = test.shoot();
 
-			drawnShapes[projectileCount] = sf::CircleShape::CircleShape(currentProjectiles[projectileCount].getRadius().f);
-			projectileCount++;
+				drawnShapes[projectileCount] = sf::CircleShape::CircleShape(10.f);
+				projectileCount++;
+			}
 		}
 
+
 		test.move(cInput);
+
 		test.updatePosition();
+
 
 		for (Projectile projectile : currentProjectiles)
 		{
@@ -171,6 +181,7 @@ int main()
 			//hit detection for projectiles goes here
 			for (int i = 0; i < currentProjectiles.size(); i++)
 			{
+				drawnShapes[i].setFillColor(sf::Color::Green);
 				drawnShapes[i].setPosition(sf::Vector2f(currentProjectiles[i].getXPos(), currentProjectiles[i].getYPos()));
 			}
 

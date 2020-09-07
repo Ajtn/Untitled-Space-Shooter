@@ -44,6 +44,9 @@ GameObject::GameObject(int initialX, int initialY, int initialXVel, int initialY
 	xVel = initialXVel;
 	yVel = initialYVel;
 
+	std::wcout << "xPos = ";
+	std::wcout << xPos;
+
 	friendly = initialFriendly;
 
 	visible = true;

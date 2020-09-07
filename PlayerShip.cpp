@@ -3,9 +3,9 @@
 
 
 PlayerShip::PlayerShip()
+	:Ship(0, 1, 5)
 {
 	GameObject(1920 / 2, 1050, 0, 0, true, 50);
-	Ship(0, 1, 5);
 	speed = 1;
 	invincibility = 20;
 
