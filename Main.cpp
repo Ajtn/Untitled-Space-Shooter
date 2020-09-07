@@ -6,7 +6,6 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 
-
 //std::wcout << newYVel;
 int checkWasd()
 {
@@ -109,6 +108,9 @@ velocity pathing[8][12] = {
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works");
+
+	sf::Clock shotClock;
+
 	sf::CircleShape shape(50.f);
 	shape.setFillColor(sf::Color::Magenta);
 
@@ -160,12 +162,13 @@ int main()
 
 		if (checkFire())
 		{
-			if (projectileCount < 20)
+			if ((projectileCount < 20) && (test.getFireDelay() < shotClock.getElapsedTime().asMilliseconds()))
 			{
 				currentProjectiles[projectileCount] = test.shoot();
 
 				drawnShapes[projectileCount] = sf::CircleShape::CircleShape(10.f);
 				projectileCount++;
+				shotClock.restart();
 			}
 		}
 
@@ -197,9 +200,10 @@ int main()
 		//window.draw(background);
 		window.draw(shape);
 
-		for (sf::CircleShape circle : drawnShapes)
+		for (int i = 0; i < drawnShapes.size(); i++)
 		{
-			window.draw(circle);
+			currentProjectiles[i].updatePosition();
+			window.draw(drawnShapes[i]);
 		}
 
 		window.display();

@@ -35,6 +35,7 @@ public:
 
     void setGunType(int newGunType);
     void upgradeGunType();
+    int getFireDelay() const;
     void setFireDelay(int newFireDelay);
 
 };

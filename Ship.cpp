@@ -62,7 +62,7 @@ Projectile Ship::shoot()
 		break;
 	}
 
-	return Projectile(this->getXPos(), this->getYPos(), 0, 2, this->getFriendly(), damage, 2);
+	return Projectile(this->getXPos(), this->getYPos(), 0, -2, this->getFriendly(), damage, 2);
 }
 
 
@@ -83,6 +83,10 @@ void Ship::upgradeGunType()
 	gunType++;
 }
 
+int Ship::getFireDelay() const
+{
+	return fireDelay;
+}
 
 void Ship::setFireDelay(int newFireDelay)
 {
