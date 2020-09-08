@@ -86,7 +86,8 @@ bool checkFire()
 
 //multi dimensional array of movement patterns for AI, velocity to be changed incrementally to make non linear movement
 //stores 8 arrays of 12 movements each
-velocity pathing[8][12] = {
+velocity pathing[8][12] =
+{
 	//0) accelerates right to left while slowly moving down
 	{(1, 0.5), (2, 0.5), (1, 0.5), (0, 0.5), (-1, 0.5), (-2, 0.5), (-1, 0.5), (0, 0.5), (1, 0.5), (2, 0.5), (1, 0.5), (0, 0.5)},
 	//1)
@@ -105,8 +106,41 @@ velocity pathing[8][12] = {
 	{(0, 1), (0, 1), (0, 1), (0, 1), (0, 1), (0, 1), (0, 1), (0, 1), (0, 1), (0, 1), (0, 1), (0, 1)},
 };
 
+//Array of all enemy guns (damage, fireDelay, (xVelocity, yVelocity), projectileRadius)
+gunType enemyArsenal[5] =
+{
+	//0) basic small, low damage, slow shot
+	{1, 500, {0, 0.5f}, 8},
+	//1) slightly high frequency
+	{1, 350, {0, 0.5f }, 8 },
+	//2) double damage 
+	{2, 500, {0, 0.5f}, 8},
+	//3) big bois
+	{1, 500, {0, 0.5f}, 16},
+	//4) fast and frequent
+	{1, 300, {0, 0.75f}, 8},
+};
+
+
+//Array of all player guns (damage, fireDelay, (xVelocity, yVelocity), projectileRadius)
+gunType playerArsenal[5] =
+{
+	//0) Basic starting gun
+	{1, 185, {0, -0.65}, 8 },
+	//1) low frequency, large, high damage
+	{3, 300, {0, -0.65}, 20 },
+	//2) mini gun
+	{1, 85, {0, -0.65}, 8 },
+	//3) higher damage standard gun
+	{2, 185, {0, -0.65}, 8 },
+	//4) super high dps
+	{5, 100, {0, -0.65}, 8 },
+};
+
 int main()
 {
+
+	std::cout << playerArsenal[1].projectileRadius;
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works");
 
 	sf::Clock shotClock;
@@ -131,7 +165,7 @@ int main()
 	*/
 
 	int cInput = 0;
-	PlayerShip test =  PlayerShip();
+	PlayerShip test =  PlayerShip(playerArsenal[2]);
 
 	std::array<Projectile, 20> currentProjectiles;
 	int projectileCount = 0;
@@ -162,17 +196,22 @@ int main()
 
 		if (checkFire())
 		{
+			//checks the shot clock to see if more time has passed than the current gun types fire delay value
 			if (test.getFireDelay() < shotClock.getElapsedTime().asMilliseconds())
 			{
 				currentProjectiles[projectileCount] = test.shoot();
 
-				drawnShapes[projectileCount] = sf::CircleShape::CircleShape(10.f);
+				//creates shape objects for newly created projectiles
+				drawnShapes[projectileCount] = sf::CircleShape::CircleShape(currentProjectiles[projectileCount].getRadius());
 				projectileCount++;
 				shotClock.restart();
 
-				if (projectileCount > 19)
+
+				//checks if number of currently active projectiles from player ship is at the array limit
+				//resets the counter when it hits the limit so old array values are re written
+				//will need to increase array size if more than 20 projectiles are required on the screen at once
+				if (projectileCount > currentProjectiles.size() - 1)
 				{
-					std::wcout << currentProjectiles[projectileCount - 1].getYPos();
 					projectileCount = 0;
 				}
 			}

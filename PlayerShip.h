@@ -9,7 +9,7 @@ private:
 
  
      //Speed determines velocity when moving
-    int speed;
+    float speed;
 
     //Invincibility will tick down each frame and prevent damage
     //being taken while it is > 0
@@ -17,7 +17,7 @@ private:
 
 public:
 
-    PlayerShip();
+    PlayerShip(gunType initialGunType);
 
 
     void repair(int val);

@@ -2,12 +2,11 @@
 #include <iostream>
 
 
-PlayerShip::PlayerShip()
-	:Ship(0, 1, 5, 1920 / 2, 1050, true, 50)
+PlayerShip::PlayerShip(gunType initialGunType)
+	:Ship(initialGunType, 5, 1920 / 2, 1050, true, 50)
 {
 
-	speed = 1.234343f;
-	std::wcout << speed;
+	speed = 0.375f;
 	invincibility = 20;
 
 }
@@ -47,6 +46,7 @@ void PlayerShip::repair(int val)
 */
 
 //accepts input from 1 - 8 and sets velocity in the x and y direction as appropriate
+//all diagonaal movements slowed
 void PlayerShip::move(int direction)
 {
 
@@ -64,23 +64,23 @@ void PlayerShip::move(int direction)
 		break;
 	case 3:
 		//move up and right
-		setXVel(speed);
-		setYVel(-speed);
+		setXVel(0.7 * speed);
+		setYVel(0.7 * -speed);
 		break;
 	case 4:
 		//move up and left
-		setXVel(-speed);
-		setYVel(-speed);
+		setXVel(0.7 * -speed);
+		setYVel(0.7 * -speed);
 		break;
 	case 5:
 		//move down and right
-		setXVel(speed);
-		setYVel(speed);
+		setXVel(0.7 * speed);
+		setYVel(0.7 * speed);
 		break;
 	case 6:
 		//move down and left
-		setXVel(-speed);
-		setYVel(speed);
+		setXVel(0.7 * -speed);
+		setYVel(0.7 * speed);
 		break;
 	case 7:
 		//move up
