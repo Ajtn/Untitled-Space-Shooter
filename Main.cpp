@@ -128,25 +128,42 @@ gunType playerArsenal[5] =
 	//0) Basic starting gun
 	{1, 185, {0, -0.65}, 8 },
 	//1) low frequency, large, high damage
-	{3, 300, {0, -0.65}, 20 },
+	{3, 300, {0, -0.65}, 25 },
 	//2) mini gun
-	{1, 85, {0, -0.65}, 8 },
+	{1, 85, {0, -0.65}, 5 },
 	//3) higher damage standard gun
 	{2, 185, {0, -0.65}, 8 },
 	//4) super high dps
 	{5, 100, {0, -0.65}, 8 },
 };
 
+//Array of types of enemy ships (gunType, hp, xPos, yPos, friendly, radius)
+Ship enemyTypes[5] =
+{
+	//0)
+	{enemyArsenal[0], 2, 500, 0, false, 40},
+	//1)
+	{enemyArsenal[2], 2, 1000, 0, false, 40},
+	//2)
+	{enemyArsenal[0], 2, 1500, 0, false, 40},
+	//3)
+	{enemyArsenal[0], 2, 250, 0, false, 40},
+	//4)
+	{enemyArsenal[0], 2, 500, 0, false, 40},
+};
+
 int main()
 {
 
-	std::cout << playerArsenal[1].projectileRadius;
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works");
 
-	sf::Clock shotClock;
+	//clock to track time between player shots
+	//sf::Clock shotClock;
 
-	sf::CircleShape shape(50.f);
-	shape.setFillColor(sf::Color::Magenta);
+	sf::Clock gameClock;
+
+	//sf::CircleShape shape(50);
+	//shape.setFillColor(sf::Color::Magenta);
 
 
 
@@ -164,15 +181,24 @@ int main()
 	}
 	*/
 
+	//movement input instantiated and given stationary default
 	int cInput = 0;
-	PlayerShip test =  PlayerShip(playerArsenal[2]);
+	//playership instantiated and given gunType from arsenal
+	PlayerShip test =  PlayerShip(playerArsenal[1]);
 
+	//array of player projectiles created
 	std::array<Projectile, 20> currentProjectiles;
+	//counter to track most recently used value of projectile array
 	int projectileCount = 0;
 
-
+	//array of circles to represent projectiles being shot by player
 	std::array<sf::CircleShape, 20> drawnShapes;
 
+	//array of enemy ships
+	std::array<Ship, 10> currentEnemies;
+
+	//array of circles to represent enemy ships
+	std::array<sf::CircleShape, 10> drawnEnemies;
 
 	//sf::Sprite background;
 	//background.setTexture(texture);
@@ -190,21 +216,20 @@ int main()
 				window.close();
 		}
 
-
+		
 
 		cInput = checkWasd();
 
 		if (checkFire())
 		{
 			//checks the shot clock to see if more time has passed than the current gun types fire delay value
-			if (test.getFireDelay() < shotClock.getElapsedTime().asMilliseconds())
+			if (test.getFireDelay() < test.getTime())
 			{
 				currentProjectiles[projectileCount] = test.shoot();
 
 				//creates shape objects for newly created projectiles
-				drawnShapes[projectileCount] = sf::CircleShape::CircleShape(currentProjectiles[projectileCount].getRadius());
+				//drawnShapes[projectileCount] = sf::CircleShape::CircleShape(currentProjectiles[projectileCount].getRadius());
 				projectileCount++;
-				shotClock.restart();
 
 
 				//checks if number of currently active projectiles from player ship is at the array limit
@@ -220,37 +245,37 @@ int main()
 
 		test.move(cInput);
 
-		test.updatePosition();
 
 
 		for (Projectile projectile : currentProjectiles)
 		{
-			projectile.updatePosition();
+			window.draw(projectile.updateObject());
 			//hit detection for projectiles goes here
+			
+			/*
 			for (int i = 0; i < currentProjectiles.size(); i++)
 			{
-				drawnShapes[i].setFillColor(sf::Color::Green);
-				drawnShapes[i].setPosition(sf::Vector2f(currentProjectiles[i].getXPos(), currentProjectiles[i].getYPos()));
+
+				//drawnShapes[i].setFillColor(sf::Color::Green);
+				//drawnShapes[i].setPosition(sf::Vector2f(currentProjectiles[i].getXPos(), currentProjectiles[i].getYPos()));
 			}
+			*/
 
 		}
 
-
-	
-
-		shape.setPosition(sf::Vector2f(test.getXPos(), test.getYPos()));
 
 	
 		window.clear();
 		//window.draw(background);
-		window.draw(shape);
+		window.draw(test.updateObject());
 
+		/*
 		for (int i = 0; i < drawnShapes.size(); i++)
 		{
-			currentProjectiles[i].updatePosition();
+			currentProjectiles[i].updateObject();
 			window.draw(drawnShapes[i]);
 		}
-
+		*/
 		window.display();
 	}
 

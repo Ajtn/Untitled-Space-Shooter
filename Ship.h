@@ -17,13 +17,19 @@ private:
     //defines ships current hp value, ie how much damage it can sustain before death
     int hp;
 
+    //Clock to count gun cool down
+    sf::Clock shotTimer;
+
 
 public:
 
     Ship();
 
+    /*
     Ship(gunType equipGunType, int initialHp, float initialXPos,
         float initialYPos, velocity initialVel, bool initialFriendly, int initialRadius);
+
+    */
 
     Ship(gunType equipGunType, int initialHp, float initialXPos,
         float initialYPos, bool initialFriendly, int initialRadius);
@@ -36,9 +42,11 @@ public:
     void takeDamage(int damage);
 
     void setGunType(gunType newGunType);
-    void upgradeGunType();
+
     int getFireDelay() const;
-    void setFireDelay(int newFireDelay);
+
+    int getTime() const;
+
 
 };
 

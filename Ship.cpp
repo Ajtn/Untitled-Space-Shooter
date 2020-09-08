@@ -155,6 +155,8 @@ Projectile Ship::shoot()
 
 Projectile Ship::shoot()
 {
+	shotTimer.restart();
+
 	return Projectile(getXPos() + getRadius() - equipGunType.projectileRadius, getYPos(), equipGunType.projectileVel,
 		getFriendly(), equipGunType.damage, equipGunType.projectileRadius);
 }
@@ -175,4 +177,9 @@ void Ship::setGunType(gunType newGunType)
 int Ship::getFireDelay() const
 {
 	return equipGunType.fireDelay;
+}
+
+int Ship::getTime() const
+{
+	return shotTimer.getElapsedTime().asMilliseconds();
 }

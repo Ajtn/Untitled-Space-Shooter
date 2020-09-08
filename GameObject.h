@@ -1,5 +1,6 @@
 #pragma once
 #include "Structs.h"
+#include <SFML/Graphics.hpp>
 
 class GameObject
 {
@@ -7,29 +8,29 @@ private:
 	bool visible;
 	float xPos;
 	float yPos;
-	//float xVel;
-	//float yVel;
 	velocity objectVelocity;
 	bool friendly;
 
 	//initial build will use circle based hit boxes, may swap to sprite based later
 	int radius;
 
+	//initial build will draw everything as circles
+	sf::CircleShape body;
 
 
-	//void updatePosition();
+
+	void updatePosition();
 
 	void makeVisible();
 
-	bool collision(float otherObjectX, float otherObjectY, int otherObjRadius);
 
 public:
 
-	//temporarily public for test
-	void updatePosition();
+
 
 	GameObject();
 
+	//Used foor projectile constructor
 	GameObject(float initialX, float initialY, velocity initialVelocity, bool initialFriendly, int initialRadius);
 
 	GameObject(float initialX, float initialY, bool initialFriendly, int initialRadius);
@@ -45,6 +46,11 @@ public:
 	void setXVel(float newXVel);
 
 	int getRadius() const;
+
+
+	sf::CircleShape updateObject();
+
+	bool collision(float otherObjectX, float otherObjectY, int otherObjRadius);
 
 
 

@@ -2,27 +2,19 @@
 #include <iostream>
 
 
+void GameObject::updatePosition()
+{
+
+	xPos = xPos + objectVelocity.xVel;
+	yPos = yPos + objectVelocity.yVel;
+
+}
+
 void GameObject::makeVisible()
 {
 	visible = true;
 }
 
-bool GameObject::collision(float otherObjectX, float otherObjectY, int otherObjRadius)
-{
-	if (abs(xPos - otherObjectX) < (radius + otherObjRadius))
-	{
-		if (abs(yPos - otherObjectY) < (radius + otherObjRadius))
-			return true;
-		else
-		{
-			return false;
-		}
-	}
-	else
-	{
-		return false;
-	}
-}
 
 GameObject::GameObject()
 {
@@ -37,14 +29,12 @@ GameObject::GameObject()
 
 
 
+//Used foor projectile constructor
 GameObject::GameObject(float initialX, float initialY, velocity initialVelocity, bool initialFriendly, int initialRadius)
 {
 	xPos = initialX;
 	yPos = initialY;
 	objectVelocity = initialVelocity;
-	//xVel = initialXVel;
-	//yVel = initialYVel;
-
 
 	friendly = initialFriendly;
 
@@ -53,17 +43,16 @@ GameObject::GameObject(float initialX, float initialY, velocity initialVelocity,
 	radius = initialRadius;
 
 }
+
+
 
 GameObject::GameObject(float initialX, float initialY, bool initialFriendly, int initialRadius)
 {
 	xPos = initialX;
 	yPos = initialY;
 
-	velocity initialVelocity;
-	initialVelocity.xVel = 0;
-	initialVelocity.yVel = 0;
-
-	objectVelocity = initialVelocity;
+	objectVelocity.xVel = 0;
+	objectVelocity.xVel = 0;
 
 	friendly = initialFriendly;
 
@@ -71,13 +60,15 @@ GameObject::GameObject(float initialX, float initialY, bool initialFriendly, int
 
 	radius = initialRadius;
 
+	sf::CircleShape tempShape(radius);
+
+	body = tempShape;
+
+	body.setFillColor(sf::Color::Cyan);
+	body.setPosition(xPos, yPos);
+
 }
 
-void GameObject::updatePosition()
-{
-	xPos = xPos + objectVelocity.xVel;
-	yPos = yPos + objectVelocity.yVel;
-}
 
 float GameObject::getYPos() const
 {
@@ -111,10 +102,27 @@ int GameObject::getRadius() const
 	return radius;
 }
 
-/*
-void GameObject::manualPosition(int givenXPos, int givenYPos)
+
+sf::CircleShape GameObject::updateObject()
 {
-	xPos = givenXPos;
-	yPos = givenYPos;
+	updatePosition();
+	return body;
+
 }
-*/
+
+bool GameObject::collision(float otherObjectX, float otherObjectY, int otherObjRadius)
+{
+	if (abs(xPos - otherObjectX) < (radius + otherObjRadius))
+	{
+		if (abs(yPos - otherObjectY) < (radius + otherObjRadius))
+			return true;
+		else
+		{
+			return false;
+		}
+	}
+	else
+	{
+		return false;
+	}
+}
