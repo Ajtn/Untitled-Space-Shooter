@@ -106,6 +106,7 @@ int GameObject::getRadius() const
 sf::CircleShape GameObject::updateObject()
 {
 	updatePosition();
+	body.setPosition(xPos, yPos);
 	return body;
 
 }

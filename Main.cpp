@@ -80,6 +80,7 @@ bool checkFire()
 	}
 	else
 	{
+
 		return false;
 	}
 }
@@ -188,6 +189,7 @@ int main()
 
 	//array of player projectiles created
 	std::array<Projectile, 20> currentProjectiles;
+
 	//counter to track most recently used value of projectile array
 	int projectileCount = 0;
 
@@ -202,6 +204,7 @@ int main()
 
 	//sf::Sprite background;
 	//background.setTexture(texture);
+
 
 
 
@@ -225,6 +228,8 @@ int main()
 			//checks the shot clock to see if more time has passed than the current gun types fire delay value
 			if (test.getFireDelay() < test.getTime())
 			{
+				std::cout << projectileCount;
+
 				currentProjectiles[projectileCount] = test.shoot();
 
 				//creates shape objects for newly created projectiles
@@ -247,11 +252,18 @@ int main()
 
 
 
+	
+		window.clear();
+		//window.draw(background);
+		window.draw(test.updateObject());
+
+
 		for (Projectile projectile : currentProjectiles)
 		{
 			window.draw(projectile.updateObject());
+
 			//hit detection for projectiles goes here
-			
+
 			/*
 			for (int i = 0; i < currentProjectiles.size(); i++)
 			{
@@ -262,12 +274,6 @@ int main()
 			*/
 
 		}
-
-
-	
-		window.clear();
-		//window.draw(background);
-		window.draw(test.updateObject());
 
 		/*
 		for (int i = 0; i < drawnShapes.size(); i++)
