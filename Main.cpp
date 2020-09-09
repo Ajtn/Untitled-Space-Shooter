@@ -122,12 +122,13 @@ gunType enemyArsenal[5] =
 	{1, 300, {0, 0.75f}, 8},
 };
 
+velocity defaultBulletVel = { 0, -0.65 };
 
 //Array of all player guns (damage, fireDelay, (xVelocity, yVelocity), projectileRadius)
 gunType playerArsenal[5] =
 {
 	//0) Basic starting gun
-	{1, 185, {0, -0.65}, 8 },
+	{1, 185, defaultBulletVel, 8 },
 	//1) low frequency, large, high damage
 	{3, 300, {0, -0.65}, 25 },
 	//2) mini gun
@@ -155,6 +156,7 @@ Ship enemyTypes[5] =
 
 int main()
 {
+
 
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works");
 
@@ -185,7 +187,7 @@ int main()
 	//movement input instantiated and given stationary default
 	int cInput = 0;
 	//playership instantiated and given gunType from arsenal
-	PlayerShip test =  PlayerShip(playerArsenal[1]);
+	PlayerShip test =  PlayerShip(playerArsenal[0]);
 
 	//array of player projectiles created
 	std::array<Projectile, 20> currentProjectiles;
@@ -193,18 +195,13 @@ int main()
 	//counter to track most recently used value of projectile array
 	int projectileCount = 0;
 
-	//array of circles to represent projectiles being shot by player
-	std::array<sf::CircleShape, 20> drawnShapes;
 
 	//array of enemy ships
 	std::array<Ship, 10> currentEnemies;
 
-	//array of circles to represent enemy ships
-	std::array<sf::CircleShape, 10> drawnEnemies;
 
 	//sf::Sprite background;
 	//background.setTexture(texture);
-
 
 
 
@@ -223,12 +220,12 @@ int main()
 
 		cInput = checkWasd();
 
+
 		if (checkFire())
 		{
 			//checks the shot clock to see if more time has passed than the current gun types fire delay value
 			if (test.getFireDelay() < test.getTime())
 			{
-				std::cout << projectileCount;
 
 				currentProjectiles[projectileCount] = test.shoot();
 
@@ -258,22 +255,32 @@ int main()
 		window.draw(test.updateObject());
 
 
+
+		for (int i = 0; i < currentProjectiles.size(); i++)
+		{
+			window.draw(currentProjectiles[i].updateObject());
+
+		}
+
+		/*
+
 		for (Projectile projectile : currentProjectiles)
 		{
 			window.draw(projectile.updateObject());
 
 			//hit detection for projectiles goes here
 
-			/*
+			
 			for (int i = 0; i < currentProjectiles.size(); i++)
 			{
 
-				//drawnShapes[i].setFillColor(sf::Color::Green);
-				//drawnShapes[i].setPosition(sf::Vector2f(currentProjectiles[i].getXPos(), currentProjectiles[i].getYPos()));
 			}
-			*/
+			
 
 		}
+
+		*/
+
 
 		/*
 		for (int i = 0; i < drawnShapes.size(); i++)

@@ -34,6 +34,7 @@ GameObject::GameObject(float initialX, float initialY, velocity initialVelocity,
 {
 	xPos = initialX;
 	yPos = initialY;
+
 	objectVelocity = initialVelocity;
 
 	friendly = initialFriendly;
@@ -41,6 +42,14 @@ GameObject::GameObject(float initialX, float initialY, velocity initialVelocity,
 	visible = true;
 
 	radius = initialRadius;
+
+	sf::CircleShape tempShape(radius);
+
+	body = tempShape;
+
+	body.setFillColor(sf::Color::Red);
+
+	body.setPosition(xPos, yPos);
 
 }
 
@@ -65,6 +74,7 @@ GameObject::GameObject(float initialX, float initialY, bool initialFriendly, int
 	body = tempShape;
 
 	body.setFillColor(sf::Color::Cyan);
+
 	body.setPosition(xPos, yPos);
 
 }
