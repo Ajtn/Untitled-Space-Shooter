@@ -96,15 +96,9 @@ bool GameObject::getFriendly() const
 }
 
 
-void GameObject::setYVel(float newYVel)
+void GameObject::setVel(velocity newVel)
 {
-	objectVelocity.yVel = newYVel;
-}
-
-
-void GameObject::setXVel(float newXVel)
-{
-	objectVelocity.xVel = newXVel;
+	objectVelocity = newVel;
 }
 
 int GameObject::getRadius() const

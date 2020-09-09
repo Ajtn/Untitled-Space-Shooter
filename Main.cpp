@@ -2,6 +2,7 @@
 #include <array>
 #include "GameObject.h"
 #include "PlayerShip.h"
+#include "EnemyShip.h"
 #include "Structs.h"
 #include <string>
 #include <SFML/Graphics.hpp>
@@ -122,13 +123,12 @@ gunType enemyArsenal[5] =
 	{1, 300, {0, 0.75f}, 8},
 };
 
-velocity defaultBulletVel = { 0, -0.65 };
 
 //Array of all player guns (damage, fireDelay, (xVelocity, yVelocity), projectileRadius)
 gunType playerArsenal[5] =
 {
 	//0) Basic starting gun
-	{1, 185, defaultBulletVel, 8 },
+	{1, 185, {0, -0.65}, 8 },
 	//1) low frequency, large, high damage
 	{3, 300, {0, -0.65}, 25 },
 	//2) mini gun
@@ -140,18 +140,18 @@ gunType playerArsenal[5] =
 };
 
 //Array of types of enemy ships (gunType, hp, xPos, yPos, friendly, radius)
-Ship enemyTypes[5] =
+EnemyShip enemyTypes[5] =
 {
 	//0)
-	{enemyArsenal[0], 2, 500, 0, false, 40},
+	{pathing[3], enemyArsenal[0], 2, 500, 0, false, 40},
 	//1)
-	{enemyArsenal[2], 2, 1000, 0, false, 40},
+	{pathing[1], enemyArsenal[2], 2, 1000, 0, false, 40},
 	//2)
-	{enemyArsenal[0], 2, 1500, 0, false, 40},
+	{pathing[2], enemyArsenal[0], 2, 1500, 0, false, 40},
 	//3)
-	{enemyArsenal[0], 2, 250, 0, false, 40},
+	{pathing[1], enemyArsenal[0], 2, 250, 0, false, 40},
 	//4)
-	{enemyArsenal[0], 2, 500, 0, false, 40},
+	{pathing[0], enemyArsenal[0], 2, 500, 0, false, 40},
 };
 
 int main()
@@ -160,14 +160,8 @@ int main()
 
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works");
 
-	//clock to track time between player shots
-	//sf::Clock shotClock;
 
 	sf::Clock gameClock;
-
-	//sf::CircleShape shape(50);
-	//shape.setFillColor(sf::Color::Magenta);
-
 
 
 
@@ -197,7 +191,9 @@ int main()
 
 
 	//array of enemy ships
-	std::array<Ship, 10> currentEnemies;
+	std::array<EnemyShip, 10> currentEnemies;
+
+	int enemyCount = 0;
 
 
 	//sf::Sprite background;
@@ -220,6 +216,56 @@ int main()
 
 		cInput = checkWasd();
 
+		switch (gameClock.getElapsedTime().asMilliseconds())
+		{
+		case 100:
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			enemyCount++;
+			break;
+		case 500:
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			enemyCount++;
+			break;
+		case 1000:
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			enemyCount++;
+			break;
+		case 1500:
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			enemyCount++;
+			break;
+		case 2000:
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			enemyCount++;
+			break;
+		case 2500:
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			enemyCount++;
+			break;
+		case 3000:
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			enemyCount++;
+			break;
+		case 3500:
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			enemyCount++;
+			break;
+		case 4000:
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			enemyCount++;
+			break;
+		case 4500:
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			enemyCount++;
+
+			gameClock.restart();
+			break;
+		default:
+			break;
+		}
+
+		if (enemyCount > 8)
+			enemyCount = 0;
 
 		if (checkFire())
 		{
@@ -255,40 +301,20 @@ int main()
 		window.draw(test.updateObject());
 
 
-
+		//updates and draws all player projectiles
 		for (int i = 0; i < currentProjectiles.size(); i++)
 		{
 			window.draw(currentProjectiles[i].updateObject());
 
 		}
 
-		/*
-
-		for (Projectile projectile : currentProjectiles)
+		//updates and draws all enemy ships
+		for (int i = 0; i < currentEnemies.size(); i++)
 		{
-			window.draw(projectile.updateObject());
-
-			//hit detection for projectiles goes here
-
-			
-			for (int i = 0; i < currentProjectiles.size(); i++)
-			{
-
-			}
-			
-
+			currentEnemies[i].move();
+			window.draw(currentEnemies[i].updateObject());
 		}
 
-		*/
-
-
-		/*
-		for (int i = 0; i < drawnShapes.size(); i++)
-		{
-			currentProjectiles[i].updateObject();
-			window.draw(drawnShapes[i]);
-		}
-		*/
 		window.display();
 	}
 

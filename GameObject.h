@@ -41,9 +41,7 @@ public:
 
 	bool getFriendly() const;
 
-	void setYVel(float newYVel);
-
-	void setXVel(float newXVel);
+	void setVel(velocity newVel);
 
 	int getRadius() const;
 

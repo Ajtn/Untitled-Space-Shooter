@@ -49,55 +49,57 @@ void PlayerShip::repair(int val)
 //all diagonaal movements slowed
 void PlayerShip::move(int direction)
 {
+	velocity tempVel;
 
 	switch (direction)
 	{
 	case 1:
 		//move right
-		setXVel(speed);
-		setYVel(0);
+		tempVel.xVel = speed;
+		tempVel.yVel = 0;
 		break;
 	case 2:
 		//move left
-		setXVel(-speed);
-		setYVel(0);
+		tempVel.xVel = - speed;
+		tempVel.yVel = 0;
 		break;
 	case 3:
 		//move up and right
-		setXVel(0.7 * speed);
-		setYVel(0.7 * -speed);
+		tempVel.xVel = 0.7 * speed;
+		tempVel.yVel = 0.7 * - speed;
 		break;
 	case 4:
 		//move up and left
-		setXVel(0.7 * -speed);
-		setYVel(0.7 * -speed);
+		tempVel.xVel = 0.7 * - speed;
+		tempVel.yVel = 0.7 * - speed;
 		break;
 	case 5:
 		//move down and right
-		setXVel(0.7 * speed);
-		setYVel(0.7 * speed);
+		tempVel.xVel = 0.7 * speed;
+		tempVel.yVel = 0.7 * speed;
 		break;
 	case 6:
 		//move down and left
-		setXVel(0.7 * -speed);
-		setYVel(0.7 * speed);
+		tempVel.xVel = 0.7 * - speed;
+		tempVel.yVel = 0.7 * speed;
 		break;
 	case 7:
 		//move up
-		setXVel(0);
-		setYVel(-speed);
+		tempVel.xVel = 0;
+		tempVel.yVel = - speed;
 		break;
 	case 8:
 		//move down
-		setXVel(0);
-		setYVel(speed);
+		tempVel.xVel = 0;
+		tempVel.yVel = speed;
 		break;
 	default:
 		//no movement
-		setXVel(0);
-		setYVel(0);
+		tempVel.xVel = 0;
+		tempVel.yVel = 0;
 		break;
 	}
+	setVel(tempVel);
 }
 
 

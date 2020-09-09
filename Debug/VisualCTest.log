@@ -1,4 +1,2 @@
-﻿  GameObject.cpp
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\GameObject.cpp(46,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\GameObject.cpp(72,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  EnemyShip.cpp
   VisualCTest.vcxproj -> D:\Projects\CProjects\VisualTest\VisualCTest\Debug\VisualCTest.exe
