@@ -181,7 +181,7 @@ int main()
 	//movement input instantiated and given stationary default
 	int cInput = 0;
 	//playership instantiated and given gunType from arsenal
-	PlayerShip test =  PlayerShip(playerArsenal[0]);
+	PlayerShip test =  PlayerShip(playerArsenal[1]);
 
 	//array of player projectiles created
 	std::array<Projectile, 20> currentProjectiles;
@@ -194,6 +194,10 @@ int main()
 	std::array<EnemyShip, 10> currentEnemies;
 
 	int enemyCount = 0;
+
+	std::array<Projectile, 50> enemyProjectiles;
+
+	int enemyProjectileCount = 0;
 
 
 	//sf::Sprite background;
@@ -223,15 +227,15 @@ int main()
 			enemyCount++;
 			break;
 		case 500:
-			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[1]);
 			enemyCount++;
 			break;
 		case 1000:
-			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[2]);
 			enemyCount++;
 			break;
 		case 1500:
-			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[3]);
 			enemyCount++;
 			break;
 		case 2000:
@@ -290,6 +294,20 @@ int main()
 			}
 		}
 
+		for (int i = 0; i < currentEnemies.size() - 1; i++)
+		{
+			if (currentEnemies[i].getFireDelay() < currentEnemies[i].getTime())
+			{
+				enemyProjectiles[enemyProjectileCount] = currentEnemies[i].shoot();
+				enemyProjectileCount++;
+
+				if (enemyProjectileCount > enemyProjectiles.size() - 1)
+				{
+					enemyProjectileCount = 0;
+				}
+			}
+		}
+
 
 		test.move(cInput);
 
@@ -313,6 +331,11 @@ int main()
 		{
 			currentEnemies[i].move();
 			window.draw(currentEnemies[i].updateObject());
+		}
+
+		for (int i = 0; i < enemyProjectiles.size(); i++)
+		{
+			window.draw(enemyProjectiles[i].updateObject());
 		}
 
 		window.display();
