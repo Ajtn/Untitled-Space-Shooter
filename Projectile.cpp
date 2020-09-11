@@ -13,3 +13,8 @@ Projectile::Projectile()
 	damage = 1;
 
 }
+
+int Projectile::getDamage() const
+{
+	return damage;
+}

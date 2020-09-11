@@ -54,7 +54,7 @@ public:
 
     int getTime() const;
 
-    bool hostileCollision();
+    bool hostileCollision(Projectile enemyShot);
 
 
 };

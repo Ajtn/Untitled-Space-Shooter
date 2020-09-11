@@ -21,8 +21,6 @@ private:
 
 	void updatePosition();
 
-	void makeVisible();
-
 public:
 
 
@@ -40,10 +38,13 @@ public:
 
 	bool getFriendly() const;
 
+	bool getVisible() const;
+
 	void setVel(velocity newVel);
 
 	int getRadius() const;
 
+	void makeInvisible();
 
 	sf::CircleShape updateObject();
 

@@ -9,11 +9,6 @@ void GameObject::updatePosition()
 
 }
 
-void GameObject::makeVisible()
-{
-	visible = true;
-}
-
 
 GameObject::GameObject()
 {
@@ -94,6 +89,10 @@ bool GameObject::getFriendly() const
 	return friendly;
 }
 
+bool GameObject::getVisible() const
+{
+	return visible;
+}
 
 void GameObject::setVel(velocity newVel)
 {
@@ -105,6 +104,10 @@ int GameObject::getRadius() const
 	return radius;
 }
 
+void GameObject::makeInvisible()
+{
+	visible = false;
+}
 
 sf::CircleShape GameObject::updateObject()
 {

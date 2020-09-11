@@ -322,7 +322,21 @@ int main()
 		//updates and draws all player projectiles
 		for (int i = 0; i < currentProjectiles.size(); i++)
 		{
-			window.draw(currentProjectiles[i].updateObject());
+			for (int j = 0; j < currentEnemies.size(); j++)
+			{
+				if (currentProjectiles[i].getVisible())
+				{
+					if (currentEnemies[j].hostileCollision(currentProjectiles[i]))
+					{
+						currentProjectiles[i].makeInvisible();
+					}
+				}
+		
+			}
+			if (currentProjectiles[i].getVisible())
+			{
+				window.draw(currentProjectiles[i].updateObject());
+			}
 
 		}
 

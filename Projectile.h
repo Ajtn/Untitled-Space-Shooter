@@ -12,5 +12,7 @@ public:
     Projectile(float initialX, float initialY, velocity initialVelocity, bool initialFriendly, int initialDamage, int initialRadius);
 
     Projectile();
+
+    int getDamage() const;
 };
 

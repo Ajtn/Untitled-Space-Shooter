@@ -1,6 +1,7 @@
 #include "Ship.h"
 
-
+//modifies the ship's hp and returns true if the ship survives
+//and false if the damage is lethal
 bool Ship::takeDamage(int damage)
 {
 	hp = hp - damage;
@@ -123,8 +124,26 @@ int Ship::getTime() const
 	return shotTimer.getElapsedTime().asMilliseconds();
 }
 
-bool Ship::hostileCollision()
-{
 
+//This function will destroy the ship if it takes lethal damage
+//and returns a true if the ship was hit at all
+bool Ship::hostileCollision(Projectile enemyShot)
+{
+	if (collision(enemyShot.getXPos(), enemyShot.getYPos(), enemyShot.getRadius()))
+	{
+		if (takeDamage(enemyShot.getDamage()))
+		{
+			//hp reduced by damage value but ship survived
+			return true;
+		}
+		else
+		{
+			//damage was lethal, ship destroyed
+			delete(this);
+			return true;
+		}
+	}
+	//hp unchanged and ship still alive
+	return false;
 }
 
