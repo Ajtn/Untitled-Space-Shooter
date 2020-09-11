@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "Ship.h"
+#include "PowerUp.h"
 
 class PlayerShip :
     public Ship
@@ -20,12 +21,9 @@ public:
     PlayerShip(gunType initialGunType);
 
 
-    void repair(int val);
-
 
     void move(int direction);
 
-   //void updateState() override;
-
+    void getUpgrade(PowerUp upgrade);
 };
 

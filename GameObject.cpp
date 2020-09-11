@@ -1,5 +1,4 @@
 #include "GameObject.h"
-#include <iostream>
 
 
 void GameObject::updatePosition()
@@ -113,21 +112,4 @@ sf::CircleShape GameObject::updateObject()
 	body.setPosition(xPos, yPos);
 	return body;
 
-}
-
-bool GameObject::collision(float otherObjectX, float otherObjectY, int otherObjRadius)
-{
-	if (abs(xPos - otherObjectX) < (radius + otherObjRadius))
-	{
-		if (abs(yPos - otherObjectY) < (radius + otherObjRadius))
-			return true;
-		else
-		{
-			return false;
-		}
-	}
-	else
-	{
-		return false;
-	}
 }

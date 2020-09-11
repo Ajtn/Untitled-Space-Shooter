@@ -23,7 +23,6 @@ private:
 
 	void makeVisible();
 
-
 public:
 
 
@@ -48,7 +47,7 @@ public:
 
 	sf::CircleShape updateObject();
 
-	bool collision(float otherObjectX, float otherObjectY, int otherObjRadius);
+
 
 
 

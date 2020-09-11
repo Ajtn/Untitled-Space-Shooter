@@ -1,5 +1,57 @@
 #include "Ship.h"
-#include <iostream>
+
+
+bool Ship::takeDamage(int damage)
+{
+	hp = hp - damage;
+
+	if (hp < 1)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+
+}
+
+bool Ship::collision(float otherObjectX, float otherObjectY, int otherObjRadius)
+{
+	if (abs(getXPos() - otherObjectX) < (getRadius() + otherObjRadius))
+	{
+		if (abs(getYPos() - otherObjectY) < (getRadius() + otherObjRadius))
+			return true;
+		else
+		{
+			return false;
+		}
+	}
+	else
+	{
+		return false;
+	}
+}
+
+void Ship::heal(int healVal)
+{
+	if (hp + healVal > hpCap)
+	{
+		hp = hpCap;
+	}
+	else
+	{
+		hp = hp + healVal;
+	}
+}
+
+//may want to set upper bound here
+void Ship::changeHpCap()
+{
+	hpCap = hpCap + 2;
+	heal(2);
+}
+
 
 Ship::Ship()
 {
@@ -53,10 +105,6 @@ Projectile Ship::shoot()
 }
 
 
-void Ship::takeDamage(int damage)
-{
-	hp = hp - damage;
-}
 
 
 void Ship::setGunType(gunType newGunType)
@@ -74,3 +122,9 @@ int Ship::getTime() const
 {
 	return shotTimer.getElapsedTime().asMilliseconds();
 }
+
+bool Ship::hostileCollision()
+{
+
+}
+

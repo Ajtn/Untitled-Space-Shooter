@@ -1,5 +1,4 @@
 #include "PlayerShip.h"
-#include <iostream>
 
 
 PlayerShip::PlayerShip(gunType initialGunType)
@@ -12,38 +11,6 @@ PlayerShip::PlayerShip(gunType initialGunType)
 }
 
 
-/*
-
-
-//returns true if ship alive or false if the ship has died
-bool PlayerShip::takeDamage(int damage)
-{
-	if (this->getHp() > 0)
-	{
-		this->setHp(this->getHp() - damage);
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
-
-//adds val to current hp, cannot exceed hp Cap
-void PlayerShip::repair(int val)
-{
-	if (this->getHp() + val > hpCap)
-	{
-		this->setHp(hpCap);
-	}
-	else
-	{
-		this->setHp(this->getHp() + val);
-	}
-}
-
-*/
 
 //accepts input from 1 - 8 and sets velocity in the x and y direction as appropriate
 //all diagonaal movements slowed
@@ -102,10 +69,3 @@ void PlayerShip::move(int direction)
 	setVel(tempVel);
 }
 
-
-/**
-void PlayerShip::updateState()
-{
-	
-}
-**/

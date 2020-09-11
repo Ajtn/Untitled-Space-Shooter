@@ -20,6 +20,14 @@ private:
     //Clock to count gun cool down
     sf::Clock shotTimer;
 
+    bool takeDamage(int damage);
+
+    bool collision(float otherObjectX, float otherObjectY, int otherObjRadius);
+
+protected:
+    void heal(int healVal);
+
+    void changeHpCap();
 
 public:
 
@@ -39,13 +47,14 @@ public:
 
     Projectile shoot();
 
-    void takeDamage(int damage);
 
     void setGunType(gunType newGunType);
 
     int getFireDelay() const;
 
     int getTime() const;
+
+    bool hostileCollision();
 
 
 };
