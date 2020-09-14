@@ -1,9 +1,7 @@
-﻿  GameObject.cpp
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\GameObject.cpp(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\GameObject.cpp(14,13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\GameObject.cpp(18,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\GameObject.cpp(29,13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\GameObject.cpp(34,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\GameObject.cpp(67,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\GameObject.cpp(93,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  Main.cpp
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(145,2): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(343,25): warning C4018: '>': signed/unsigned mismatch
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(357,30): warning C4018: '>': signed/unsigned mismatch
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(376,21): warning C4018: '<': signed/unsigned mismatch
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(407,21): warning C4018: '<': signed/unsigned mismatch
   VisualCTest.vcxproj -> D:\Projects\CProjects\VisualTest\VisualCTest\Debug\VisualCTest.exe

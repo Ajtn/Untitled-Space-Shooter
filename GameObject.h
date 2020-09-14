@@ -27,7 +27,7 @@ public:
 
 	GameObject();
 
-	//Used foor projectile constructor
+	//Used for projectile constructor
 	GameObject(float initialX, float initialY, velocity initialVelocity, bool initialFriendly, int initialRadius);
 
 	GameObject(float initialX, float initialY, bool initialFriendly, int initialRadius);

@@ -185,7 +185,7 @@ int main()
 	int cInput = 0;
 
 	//playership instantiated and given gunType from arsenal
-	PlayerShip test =  PlayerShip(playerArsenal[1]);
+	PlayerShip test =  PlayerShip(playerArsenal[2]);
 
 	//array of player projectiles created
 	std::array<Projectile, 20> currentProjectiles;
@@ -217,7 +217,7 @@ int main()
 	//sf::Sprite background;
 	//background.setTexture(texture);
 
-
+	currentEnemies[0] = EnemyShip(enemyTypes[0]);
 
 	while (window.isOpen())
 	{
@@ -233,6 +233,8 @@ int main()
 		
 
 		cInput = checkWasd();
+
+		
 		if (gameClock.getElapsedTime().asMilliseconds() > 0 && enemyCount < 1)
 		{
 			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
@@ -268,7 +270,7 @@ int main()
 			gameClock.restart();
 			enemyCount = 0;
 		}
-
+		
 		/*
 		switch (gameClock.getElapsedTime().asMilliseconds())
 		{
@@ -347,7 +349,7 @@ int main()
 
 		for (int i = 0; i < maxEnemies - 1; i++)
 		{
-			if (currentEnemies[i].getFireDelay() < currentEnemies[i].getTime())
+			if (currentEnemies[i].getFireDelay() < currentEnemies[i].getTime() && currentEnemies[i].getVisible())
 			{
 				enemyProjectiles[enemyProjectileCount] = currentEnemies[i].shoot();
 				enemyProjectileCount++;

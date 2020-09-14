@@ -16,6 +16,7 @@ EnemyShip::EnemyShip(velocity initialPathing[12], gunType initialGunType, int in
 
 void EnemyShip::move()
 {
+	/*
 	switch (std::llround(moveTimer.getElapsedTime().asSeconds()))
 	{
 	case 00:
@@ -59,15 +60,59 @@ void EnemyShip::move()
 	default:
 		break;
 	}
+	*/
 
 
-
-	//if (moveTimer.getElapsedTime().asMilliseconds() < 500)
-	//{
-	//	setVel(pathing[0]);
-	//}
-	//else if (moveTimer.getElapsedTime().asMilliseconds() < 1000)
-	//{
-	//}
-
+	if (moveTimer.getElapsedTime().asMilliseconds() < 400)
+	{
+		setVel(pathing[0]);
+	}
+	else if (moveTimer.getElapsedTime().asMilliseconds() < 800)
+	{
+		setVel(pathing[1]);
+	}
+	else if (moveTimer.getElapsedTime().asMilliseconds() < 1200)
+	{
+		setVel(pathing[2]);
+	}
+	else if (moveTimer.getElapsedTime().asMilliseconds() < 1600)
+	{
+		setVel(pathing[3]);
+	}
+	else if (moveTimer.getElapsedTime().asMilliseconds() < 2000)
+	{
+		setVel(pathing[4]);
+	}
+	else if (moveTimer.getElapsedTime().asMilliseconds() < 2400)
+	{
+		setVel(pathing[5]);
+	}
+	else if (moveTimer.getElapsedTime().asMilliseconds() < 2800)
+	{
+		setVel(pathing[6]);
+	}
+	else if (moveTimer.getElapsedTime().asMilliseconds() < 3200)
+	{
+		setVel(pathing[7]);
+	}
+	else if (moveTimer.getElapsedTime().asMilliseconds() < 3600)
+	{
+		setVel(pathing[8]);
+	}
+	else if (moveTimer.getElapsedTime().asMilliseconds() < 4000)
+	{
+		setVel(pathing[9]);
+	}
+	else if (moveTimer.getElapsedTime().asMilliseconds() < 4400)
+	{
+		setVel(pathing[10]);
+	}
+	else if (moveTimer.getElapsedTime().asMilliseconds() < 4800)
+	{
+		setVel(pathing[11]);
+	}
+	else
+	{
+		moveTimer.restart();
+	}
 }
