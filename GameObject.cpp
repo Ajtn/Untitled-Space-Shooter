@@ -3,9 +3,36 @@
 
 void GameObject::updatePosition()
 {
+	if (xPos + objectVelocity.xVel < (1920 - radius))
+	{
+		if (xPos + objectVelocity.xVel > (0 - radius))
+		{
+			xPos = xPos + objectVelocity.xVel;
+		}
+		else
+		{
+			xPos = 0 - radius;
+		}
+	} else
+	{
+		xPos = 1920 - radius;
+	}
 
-	xPos = xPos + objectVelocity.xVel;
-	yPos = yPos + objectVelocity.yVel;
+	if (yPos + objectVelocity.yVel < (1080 - radius))
+	{
+		if (yPos + objectVelocity.yVel > (0 - radius))
+		{
+			yPos = yPos + objectVelocity.yVel;
+		}
+		else
+		{
+			yPos = 0 - radius;
+		}
+	}
+	else
+	{
+		yPos = 1080 - radius;
+	}
 
 }
 

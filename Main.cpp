@@ -100,7 +100,7 @@ int main()
 		//2) moves left to right, comes in from right side of the screen (doesn't move vertically)
 		{{-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {1, 0}, {1, 0}, {1, 0}, {-1, 0}, {-1, 0}, {-1, 0}},
 		//3) shaped loop (recurrable)
-		{{-0.5, 0.25}, {-0.25, 0.25}, {-0.25, 0.5}, {0.25, 0.5}, {0.25, 0.25}, {0.5, 0.25}, {0.5, -0.25}, {0.25, -0.5}, {0.25, -0.5}, {-0.25, -0.25}, {-0.5, -0.25}, {-0.25, -0.25}},
+		{{-0.25, 0.125}, {-0.125, 0.125}, {-0.125, 0.25}, {0.125, 0.25}, {0.125, 0.125}, {0.25, 0.125}, {0.25, -0.125}, {0.125, -0.25}, {0.125, -0.25}, {-0.125, -0.125}, {-0.25, -0.125}, {-0.125, -0.125}},
 		//4) moves up and down the screen moving to the right after each direction change
 		{{0, 2}, {0, 2}, {1, -1}, {0, -2}, {0, -2}, {1, 1}, {0, 2}, {0, 2}, {1, -1}, {0, -2}, {0, -2}, {1, 1}},
 		//5)
@@ -112,7 +112,7 @@ int main()
 	};
 
 	//Array of all enemy guns (damage, fireDelay, (xVelocity, yVelocity), projectileRadius)
-	gunType enemyArsenal[5] =
+	gunType enemyArsenal[6] =
 	{
 		//0) basic small, low damage, slow shot
 		{1, 500, {0, 0.38f}, 8},
@@ -124,6 +124,8 @@ int main()
 		{1, 500, {0, 0.38f}, 16},
 		//4) fast and frequent
 		{1, 300, {0, 0.38f}, 8},
+		//5 nothing
+		{0, 10000, {0, 0}, 0}
 	};
 
 
@@ -146,7 +148,7 @@ int main()
 	EnemyShip enemyTypes[6] =
 	{
 		//0)
-		{pathing[3], enemyArsenal[0], 2, 1000, 500, false, 40},
+		{pathing[3], enemyArsenal[0], 2, 400, 0, false, 40},
 		//1)
 		{pathing[3], enemyArsenal[2], 2, 1000, 0, false, 40},
 		//2)
@@ -156,7 +158,7 @@ int main()
 		//4)
 		{pathing[3], enemyArsenal[0], 2, 500, 0, false, 40},
 		//5
-		{pathing[0], enemyArsenal[0], 2, 500, 500, false, 0}
+		{pathing[0], enemyArsenal[5], 2, 500, 500, false, 0}
 	};
 
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works");
@@ -231,7 +233,43 @@ int main()
 		
 
 		cInput = checkWasd();
+		if (gameClock.getElapsedTime().asMilliseconds() > 0 && enemyCount < 1)
+		{
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			enemyCount++;
+		}
+		else if (gameClock.getElapsedTime().asMilliseconds() > 2000 && enemyCount < 2)
+		{
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			enemyCount++;
+		}
+		else if (gameClock.getElapsedTime().asMilliseconds() > 4000 && enemyCount < 3)
+		{
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			enemyCount++;
+		}
+		else if (gameClock.getElapsedTime().asMilliseconds() > 6000 && enemyCount < 4)
+		{
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			enemyCount++;
+		}
+		else if (gameClock.getElapsedTime().asMilliseconds() > 8000 && enemyCount < 5)
+		{
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			enemyCount++;
+		}
+		else if (gameClock.getElapsedTime().asMilliseconds() > 10000 && enemyCount < 6)
+		{
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			enemyCount++;
+		}
+		else if (gameClock.getElapsedTime().asMilliseconds() > 20000)
+		{
+			gameClock.restart();
+			enemyCount = 0;
+		}
 
+		/*
 		switch (gameClock.getElapsedTime().asMilliseconds())
 		{
 		case 100:
@@ -279,6 +317,7 @@ int main()
 		default:
 			break;
 		}
+		*/
 
 		if (enemyCount > 9)
 			enemyCount = 0;
