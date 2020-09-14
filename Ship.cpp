@@ -65,6 +65,7 @@ Ship::Ship()
 	hpCap = 5;
 
 }
+
 /*
 //one of these contructors is probably redundent *** requires assessment
 Ship::Ship(gunType initialGunType, int initialHp, float initialXPos,
@@ -138,8 +139,8 @@ bool Ship::hostileCollision(Projectile enemyShot)
 		}
 		else
 		{
-			//damage was lethal, ship destroyed
-			delete(this);
+			//damage was lethal, ship disappears
+			makeInvisible();
 			return true;
 		}
 	}

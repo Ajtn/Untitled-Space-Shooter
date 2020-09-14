@@ -1,4 +1,3 @@
-#include <iostream>
 #include <array>
 #include "GameObject.h"
 #include "PlayerShip.h"
@@ -86,77 +85,79 @@ bool checkFire()
 	}
 }
 
-//multi dimensional array of movement patterns for AI, velocity to be changed incrementally to make non linear movement
-//stores 8 arrays of 12 movements each
-velocity pathing[8][12] =
-{
-	//0) accelerates right to left while slowly moving down
-	{{1, 0.5}, {2, 0.5}, {1, 0.5}, {0, 0.5}, {-1, 0.5}, {-2, 0.5}, {-1, 0.5}, {0, 0.5}, {1, 0.5}, {2, 0.5}, {1, 0.5}, {0, 0.5}},
-	//1)
-	{{1, 1}, {1, 2 }, {1, 0}, {-1, -1}, {-1, -2}, {-1, -1}, {1, 0}, {1, 1}, {1, 2}, {1, 0}, {1, 1}, {1, 2}},
-	//2) moves left to right, comes in from right side of the screen (doesn't move vertically)
-	{{-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {1, 0}, {1, 0}, {1, 0}, {-1, 0}, {-1, 0}, {-1, 0}},
-	//3) shaped loop (recurrable)
-	{{-0.5, 0.25}, {-0.25, 0.25}, {-0.25, 0.5}, {0.25, 0.5}, {0.25, 0.25}, {0.5, 0.25}, {0.5, -0.25}, {0.25, -0.5}, {0.25, -0.5}, {-0.25, -0.25}, {-0.5, -0.25}, {-0.25, -0.25}},
-	//4) moves up and down the screen moving to the right after each direction change
-	{{0, 2}, {0, 2}, {1, -1}, {0, -2}, {0, -2}, {1, 1}, {0, 2}, {0, 2}, {1, -1}, {0, -2}, {0, -2}, {1, 1}},
-	//5)
-	{{1, 1 }, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1 }, {1, 1 }, {1, 1}, {1, 1}},
-	//6)
-	{{1, 1 }, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}},
-	//7)
-	{{0, 1 }, {0, 1 }, {0, 1 }, {0, 1 }, {0, 1}, {0, 1}, {0, 1}, {0, 1}, {0, 1}, {0, 1}, {0, 1}, {0, 1}},
-};
 
-//Array of all enemy guns (damage, fireDelay, (xVelocity, yVelocity), projectileRadius)
-gunType enemyArsenal[5] =
-{
-	//0) basic small, low damage, slow shot
-	{1, 500, {0, 0.38f}, 8},
-	//1) slightly high frequency
-	{1, 350, {0, 0.38f }, 8 },
-	//2) double damage 
-	{2, 500, {0, 0.38f}, 8},
-	//3) big bois
-	{1, 500, {0, 0.38f}, 16},
-	//4) fast and frequent
-	{1, 300, {0, 0.38f}, 8},
-};
-
-
-//Array of all player guns (damage, fireDelay, (xVelocity, yVelocity), projectileRadius)
-gunType playerArsenal[5] =
-{
-	//0) Basic starting gun
-	{1, 185, {0, -0.65}, 8 },
-	//1) low frequency, large, high damage
-	{3, 300, {0, -0.65}, 25 },
-	//2) mini gun
-	{1, 85, {0, -0.65}, 5 },
-	//3) higher damage standard gun
-	{2, 185, {0, -0.65}, 8 },
-	//4) super high dps
-	{5, 100, {0, -0.65}, 8 },
-};
-
-//Array of types of enemy ships (pathing, gunType, hp, xPos, yPos, friendly, radius)
-EnemyShip enemyTypes[5] =
-{
-	//0)
-	{pathing[3], enemyArsenal[0], 2, 1000, 500, false, 40},
-	//1)
-	{pathing[3], enemyArsenal[2], 2, 1000, 0, false, 40},
-	//2)
-	{pathing[3], enemyArsenal[0], 2, 1500, 0, false, 40},
-	//3)
-	{pathing[3], enemyArsenal[0], 2, 250, 0, false, 40 },
-	//4)
-	{pathing[3], enemyArsenal[0], 2, 500, 0, false, 40},
-};
 
 int main()
 {
+	//multi dimensional array of movement patterns for AI, velocity to be changed incrementally to make non linear movement
+//stores 8 arrays of 12 movements each
+	velocity pathing[8][12] =
+	{
+		//0) accelerates right to left while slowly moving down
+		{{1, 0.5}, {2, 0.5}, {1, 0.5}, {0, 0.5}, {-1, 0.5}, {-2, 0.5}, {-1, 0.5}, {0, 0.5}, {1, 0.5}, {2, 0.5}, {1, 0.5}, {0, 0.5}},
+		//1)
+		{{1, 1}, {1, 2 }, {1, 0}, {-1, -1}, {-1, -2}, {-1, -1}, {1, 0}, {1, 1}, {1, 2}, {1, 0}, {1, 1}, {1, 2}},
+		//2) moves left to right, comes in from right side of the screen (doesn't move vertically)
+		{{-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {1, 0}, {1, 0}, {1, 0}, {-1, 0}, {-1, 0}, {-1, 0}},
+		//3) shaped loop (recurrable)
+		{{-0.5, 0.25}, {-0.25, 0.25}, {-0.25, 0.5}, {0.25, 0.5}, {0.25, 0.25}, {0.5, 0.25}, {0.5, -0.25}, {0.25, -0.5}, {0.25, -0.5}, {-0.25, -0.25}, {-0.5, -0.25}, {-0.25, -0.25}},
+		//4) moves up and down the screen moving to the right after each direction change
+		{{0, 2}, {0, 2}, {1, -1}, {0, -2}, {0, -2}, {1, 1}, {0, 2}, {0, 2}, {1, -1}, {0, -2}, {0, -2}, {1, 1}},
+		//5)
+		{{1, 1 }, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1 }, {1, 1 }, {1, 1}, {1, 1}},
+		//6)
+		{{1, 1 }, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}},
+		//7)
+		{{0, 1 }, {0, 1 }, {0, 1 }, {0, 1 }, {0, 1}, {0, 1}, {0, 1}, {0, 1}, {0, 1}, {0, 1}, {0, 1}, {0, 1}},
+	};
 
+	//Array of all enemy guns (damage, fireDelay, (xVelocity, yVelocity), projectileRadius)
+	gunType enemyArsenal[5] =
+	{
+		//0) basic small, low damage, slow shot
+		{1, 500, {0, 0.38f}, 8},
+		//1) slightly high frequency
+		{1, 350, {0, 0.38f }, 8 },
+		//2) double damage 
+		{2, 500, {0, 0.38f}, 8},
+		//3) big bois
+		{1, 500, {0, 0.38f}, 16},
+		//4) fast and frequent
+		{1, 300, {0, 0.38f}, 8},
+	};
+
+
+	//Array of all player guns (damage, fireDelay, (xVelocity, yVelocity), projectileRadius)
+	gunType playerArsenal[5] =
+	{
+		//0) Basic starting gun
+		{1, 185, {0, -0.65}, 8 },
+		//1) low frequency, large, high damage
+		{3, 300, {0, -0.65}, 25 },
+		//2) mini gun
+		{1, 85, {0, -0.65}, 5 },
+		//3) higher damage standard gun
+		{2, 185, {0, -0.65}, 8 },
+		//4) super high dps
+		{5, 100, {0, -0.65}, 8 },
+	};
+
+	//Array of types of enemy ships (pathing, gunType, hp, xPos, yPos, friendly, radius)
+	EnemyShip enemyTypes[6] =
+	{
+		//0)
+		{pathing[3], enemyArsenal[0], 2, 1000, 500, false, 40},
+		//1)
+		{pathing[3], enemyArsenal[2], 2, 1000, 0, false, 40},
+		//2)
+		{pathing[3], enemyArsenal[0], 2, 1500, 0, false, 40},
+		//3)
+		{pathing[3], enemyArsenal[0], 2, 250, 0, false, 40 },
+		//4)
+		{pathing[3], enemyArsenal[0], 2, 500, 0, false, 40},
+		//5
+		{pathing[0], enemyArsenal[0], 2, 500, 500, false, 0}
+	};
 
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works");
 
@@ -180,6 +181,7 @@ int main()
 
 	//movement input instantiated and given stationary default
 	int cInput = 0;
+
 	//playership instantiated and given gunType from arsenal
 	PlayerShip test =  PlayerShip(playerArsenal[1]);
 
@@ -190,8 +192,18 @@ int main()
 	int projectileCount = 0;
 
 
+	//************ crash here due to default constructor of ship class ************
+
 	//array of enemy ships
-	std::array<EnemyShip, 10> currentEnemies;
+	//std::array<EnemyShip, 10> currentEnemies;
+	EnemyShip currentEnemies[20] = 
+	{
+		EnemyShip(enemyTypes[5]), EnemyShip(enemyTypes[5]), EnemyShip(enemyTypes[5]), EnemyShip(enemyTypes[5]), EnemyShip(enemyTypes[5]),
+		EnemyShip(enemyTypes[5]), EnemyShip(enemyTypes[5]), EnemyShip(enemyTypes[5]), EnemyShip(enemyTypes[5]), EnemyShip(enemyTypes[5]),
+		EnemyShip(enemyTypes[5]), EnemyShip(enemyTypes[5]), EnemyShip(enemyTypes[5]), EnemyShip(enemyTypes[5]), EnemyShip(enemyTypes[5]),
+		EnemyShip(enemyTypes[5]), EnemyShip(enemyTypes[5]), EnemyShip(enemyTypes[5]), EnemyShip(enemyTypes[5]), EnemyShip(enemyTypes[5]),
+	};
+	int maxEnemies = 20;
 
 	int enemyCount = 0;
 
@@ -268,7 +280,7 @@ int main()
 			break;
 		}
 
-		if (enemyCount > 8)
+		if (enemyCount > 9)
 			enemyCount = 0;
 
 		if (checkFire())
@@ -294,7 +306,7 @@ int main()
 			}
 		}
 
-		for (int i = 0; i < currentEnemies.size() - 1; i++)
+		for (int i = 0; i < maxEnemies - 1; i++)
 		{
 			if (currentEnemies[i].getFireDelay() < currentEnemies[i].getTime())
 			{
@@ -322,7 +334,7 @@ int main()
 		//updates and draws all player projectiles
 		for (int i = 0; i < currentProjectiles.size(); i++)
 		{
-			for (int j = 0; j < currentEnemies.size(); j++)
+			for (int j = 0; j < maxEnemies; j++)
 			{
 				if (currentProjectiles[i].getVisible())
 				{
@@ -340,16 +352,23 @@ int main()
 
 		}
 
-		//updates and draws all enemy ships
-		for (int i = 0; i < currentEnemies.size(); i++)
+		//updates and draws all visible enemy ships
+		for (int i = 0; i < maxEnemies; i++)
 		{
-			currentEnemies[i].move();
-			window.draw(currentEnemies[i].updateObject());
+			if (currentEnemies[i].getVisible())
+			{
+				currentEnemies[i].move();
+				window.draw(currentEnemies[i].updateObject());
+			}
+
 		}
 
 		for (int i = 0; i < enemyProjectiles.size(); i++)
 		{
-			window.draw(enemyProjectiles[i].updateObject());
+			if (enemyProjectiles[i].getVisible())
+			{
+				window.draw(enemyProjectiles[i].updateObject());
+			}
 		}
 
 		window.display();
