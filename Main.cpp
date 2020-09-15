@@ -94,15 +94,15 @@ int main()
 	velocity pathing[8][12] =
 	{
 		//0) accelerates right to left while slowly moving down
-		{{1, 0.5}, {2, 0.5}, {1, 0.5}, {0, 0.5}, {-1, 0.5}, {-2, 0.5}, {-1, 0.5}, {0, 0.5}, {1, 0.5}, {2, 0.5}, {1, 0.5}, {0, 0.5}},
+		{{0.25, 0.125}, {0.5, 0.125}, {0.25, 0.125}, {0, 0.125}, {-0.25, 0.125}, {-0.5, 0.125}, {-0.25, 0.125}, {0, 0.125}, {0.25, 0.125}, {0.5, 0.125}, {0.25, 0.125}, {0, 0.125}},
 		//1)
-		{{1, 1}, {1, 2 }, {1, 0}, {-1, -1}, {-1, -2}, {-1, -1}, {1, 0}, {1, 1}, {1, 2}, {1, 0}, {1, 1}, {1, 2}},
+		{{0.25, 0.25}, {0.25, 0.5}, {0.25, 0}, {-0.25, -0.25}, {-0.25, -0.5}, {-0.25, -0.25}, {0.25, 0}, {0.25, 0.25}, {0.25, 0.5}, {0.25, 0}, {0.25, 0.25}, {0.25, 0.5}},
 		//2) moves left to right, comes in from right side of the screen (doesn't move vertically)
-		{{-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {1, 0}, {1, 0}, {1, 0}, {-1, 0}, {-1, 0}, {-1, 0}},
+		{{-0.25, 0}, {-0.25, 0}, {-0.25, 0}, {-0.25, 0}, {-0.25, 0}, {-0.25, 0}, {0.25, 0}, {0.25, 0}, {0.25, 0}, {-0.25, 0}, {-0.25, 0}, {-0.25, 0}},
 		//3) shaped loop (recurrable)
 		{{-0.25, 0.125}, {-0.125, 0.125}, {-0.125, 0.25}, {0.125, 0.25}, {0.125, 0.125}, {0.25, 0.125}, {0.25, -0.125}, {0.125, -0.25}, {0.125, -0.25}, {-0.125, -0.125}, {-0.25, -0.125}, {-0.125, -0.125}},
 		//4) moves up and down the screen moving to the right after each direction change
-		{{0, 2}, {0, 2}, {1, -1}, {0, -2}, {0, -2}, {1, 1}, {0, 2}, {0, 2}, {1, -1}, {0, -2}, {0, -2}, {1, 1}},
+		{{0, 0.5}, {0, 0.5}, {0.25, -0.25}, {0, -0.5}, {0, -0.5}, {0.25, 0.25}, {0, 0.5}, {0, 0.5}, {0.25, -0.25}, {0, -0.5}, {0, -0.5}, {0.25, 0.25}},
 		//5)
 		{{1, 1 }, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1 }, {1, 1 }, {1, 1}, {1, 1}},
 		//6)
@@ -150,23 +150,24 @@ int main()
 		//0)
 		{pathing[3], enemyArsenal[0], 2, 400, 0, false, 40},
 		//1)
-		{pathing[3], enemyArsenal[2], 2, 1000, 0, false, 40},
+		{pathing[1], enemyArsenal[2], 2, 1000, 0, false, 40},
 		//2)
-		{pathing[3], enemyArsenal[0], 2, 1500, 0, false, 40},
+		{pathing[0], enemyArsenal[0], 2, 1500, 0, false, 40},
 		//3)
-		{pathing[3], enemyArsenal[0], 2, 250, 0, false, 40 },
+		{pathing[2], enemyArsenal[0], 2, 1920, 0, false, 40 },
 		//4)
 		{pathing[3], enemyArsenal[0], 2, 500, 0, false, 40},
 		//5
-		{pathing[0], enemyArsenal[5], 2, 500, 500, false, 0}
+		{pathing[4], enemyArsenal[1], 2, 500, 0, false, 30}
 	};
 
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works");
+	//window.setFramerateLimit(60);
 
 
 	sf::Clock gameClock;
 
-
+	int currentPlayerGun = 0;
 
 	//sf::Texture texture;
 	 
@@ -235,94 +236,44 @@ int main()
 		cInput = checkWasd();
 
 		
-		if (gameClock.getElapsedTime().asMilliseconds() > 0 && enemyCount < 1)
+		if ((gameClock.getElapsedTime().asMilliseconds() < 2000) && enemyCount < 1)
 		{
-			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[1]);
 			enemyCount++;
 		}
-		else if (gameClock.getElapsedTime().asMilliseconds() > 2000 && enemyCount < 2)
+		else if ((gameClock.getElapsedTime().asMilliseconds() < 4000) && enemyCount < 2)
 		{
-			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[1]);
 			enemyCount++;
 		}
-		else if (gameClock.getElapsedTime().asMilliseconds() > 4000 && enemyCount < 3)
+		else if (gameClock.getElapsedTime().asMilliseconds() < 6000 && enemyCount < 3)
 		{
-			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[1]);
 			enemyCount++;
 		}
-		else if (gameClock.getElapsedTime().asMilliseconds() > 6000 && enemyCount < 4)
+		else if (gameClock.getElapsedTime().asMilliseconds() < 8000 && enemyCount < 5)
 		{
-			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[1]);
 			enemyCount++;
 		}
-		else if (gameClock.getElapsedTime().asMilliseconds() > 8000 && enemyCount < 5)
+		else if (gameClock.getElapsedTime().asMilliseconds() < 10000 && enemyCount < 6)
 		{
-			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[1]);
 			enemyCount++;
 		}
-		else if (gameClock.getElapsedTime().asMilliseconds() > 10000 && enemyCount < 6)
+		else if (gameClock.getElapsedTime().asMilliseconds() < 12000 && enemyCount < 4)
 		{
-			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
+			currentEnemies[enemyCount] = EnemyShip(enemyTypes[1]);
 			enemyCount++;
 		}
-		else if (gameClock.getElapsedTime().asMilliseconds() > 20000)
+		
+		if (gameClock.getElapsedTime().asMilliseconds() > 20000)
 		{
 			gameClock.restart();
 			enemyCount = 0;
 		}
 		
-		/*
-		switch (gameClock.getElapsedTime().asMilliseconds())
-		{
-		case 100:
-			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
-			enemyCount++;
-			break;
-		case 500:
-			currentEnemies[enemyCount] = EnemyShip(enemyTypes[1]);
-			enemyCount++;
-			break;
-		case 1000:
-			currentEnemies[enemyCount] = EnemyShip(enemyTypes[2]);
-			enemyCount++;
-			break;
-		case 1500:
-			currentEnemies[enemyCount] = EnemyShip(enemyTypes[3]);
-			enemyCount++;
-			break;
-		case 2000:
-			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
-			enemyCount++;
-			break;
-		case 2500:
-			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
-			enemyCount++;
-			break;
-		case 3000:
-			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
-			enemyCount++;
-			break;
-		case 3500:
-			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
-			enemyCount++;
-			break;
-		case 4000:
-			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
-			enemyCount++;
-			break;
-		case 4500:
-			currentEnemies[enemyCount] = EnemyShip(enemyTypes[0]);
-			enemyCount++;
 
-			gameClock.restart();
-			break;
-		default:
-			break;
-		}
-		*/
-
-		if (enemyCount > 9)
-			enemyCount = 0;
 
 		if (checkFire())
 		{
@@ -363,6 +314,17 @@ int main()
 
 
 		test.move(cInput);
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift))
+		{
+			currentPlayerGun++;
+			test.setGunType(playerArsenal[currentPlayerGun]);
+
+			if (currentPlayerGun > 5)
+			{
+				currentPlayerGun = 0;
+			}
+		}
 
 
 

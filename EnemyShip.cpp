@@ -16,6 +16,7 @@ EnemyShip::EnemyShip(velocity initialPathing[12], gunType initialGunType, int in
 
 void EnemyShip::move()
 {
+	const int timeInterval = 250;
 	/*
 	switch (std::llround(moveTimer.getElapsedTime().asSeconds()))
 	{
@@ -63,51 +64,51 @@ void EnemyShip::move()
 	*/
 
 
-	if (moveTimer.getElapsedTime().asMilliseconds() < 300)
+	if (moveTimer.getElapsedTime().asMilliseconds() < timeInterval)
 	{
 		setVel(pathing[0]);
 	}
-	else if (moveTimer.getElapsedTime().asMilliseconds() < 600)
+	else if (moveTimer.getElapsedTime().asMilliseconds() < timeInterval * 2)
 	{
 		setVel(pathing[1]);
 	}
-	else if (moveTimer.getElapsedTime().asMilliseconds() < 900)
+	else if (moveTimer.getElapsedTime().asMilliseconds() < timeInterval * 3)
 	{
 		setVel(pathing[2]);
 	}
-	else if (moveTimer.getElapsedTime().asMilliseconds() < 1200)
+	else if (moveTimer.getElapsedTime().asMilliseconds() < timeInterval * 4)
 	{
 		setVel(pathing[3]);
 	}
-	else if (moveTimer.getElapsedTime().asMilliseconds() < 1500)
+	else if (moveTimer.getElapsedTime().asMilliseconds() < timeInterval * 5)
 	{
 		setVel(pathing[4]);
 	}
-	else if (moveTimer.getElapsedTime().asMilliseconds() < 1800)
+	else if (moveTimer.getElapsedTime().asMilliseconds() < timeInterval * 6)
 	{
 		setVel(pathing[5]);
 	}
-	else if (moveTimer.getElapsedTime().asMilliseconds() < 2100)
+	else if (moveTimer.getElapsedTime().asMilliseconds() < timeInterval * 7)
 	{
 		setVel(pathing[6]);
 	}
-	else if (moveTimer.getElapsedTime().asMilliseconds() < 2400)
+	else if (moveTimer.getElapsedTime().asMilliseconds() < timeInterval * 8)
 	{
 		setVel(pathing[7]);
 	}
-	else if (moveTimer.getElapsedTime().asMilliseconds() < 2700)
+	else if (moveTimer.getElapsedTime().asMilliseconds() < timeInterval * 9)
 	{
 		setVel(pathing[8]);
 	}
-	else if (moveTimer.getElapsedTime().asMilliseconds() < 3000)
+	else if (moveTimer.getElapsedTime().asMilliseconds() < timeInterval * 10)
 	{
 		setVel(pathing[9]);
 	}
-	else if (moveTimer.getElapsedTime().asMilliseconds() < 3300)
+	else if (moveTimer.getElapsedTime().asMilliseconds() < timeInterval * 11)
 	{
 		setVel(pathing[10]);
 	}
-	else if (moveTimer.getElapsedTime().asMilliseconds() < 3600)
+	else if (moveTimer.getElapsedTime().asMilliseconds() < timeInterval * 12)
 	{
 		setVel(pathing[11]);
 	}

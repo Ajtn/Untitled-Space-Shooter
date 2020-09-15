@@ -66,6 +66,24 @@ void PlayerShip::move(int direction)
 		tempVel.yVel = 0;
 		break;
 	}
+	if (getXPos() > 1920 - getRadius() && tempVel.xVel > 0)
+	{
+		tempVel.xVel = 0;
+	}
+	else if (getXPos() < 0 - getRadius() && tempVel.xVel < 0)
+	{
+		tempVel.xVel = 0;
+	}
+
+	if (getYPos() > 1080 - getRadius() && tempVel.yVel > 0)
+	{
+		tempVel.yVel = 0;
+	}
+	else if (getYPos() < 0 - getRadius() && tempVel.yVel < 0)
+	{
+		tempVel.yVel = 0;
+	}
+
 	setVel(tempVel);
 }
 
