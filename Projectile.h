@@ -14,5 +14,7 @@ public:
     Projectile();
 
     int getDamage() const;
+
+    sf::CircleShape updateProjectile();
 };
 

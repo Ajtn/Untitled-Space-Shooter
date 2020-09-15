@@ -18,3 +18,24 @@ int Projectile::getDamage() const
 {
 	return damage;
 }
+
+
+sf::CircleShape Projectile::updateProjectile()
+{
+	if (getFriendly())
+	{
+		if (getYPos() <= 0 + getRadius())
+		{
+			makeInvisible();
+		}
+	}
+	else
+	{
+		if (getYPos() >= 1080 - getRadius())
+		{
+			makeInvisible();
+		}
+	}
+
+	return updateObject();
+}

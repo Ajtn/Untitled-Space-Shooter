@@ -1,7 +1,2 @@
-﻿  Main.cpp
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(145,2): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(343,25): warning C4018: '>': signed/unsigned mismatch
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(357,30): warning C4018: '>': signed/unsigned mismatch
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(376,21): warning C4018: '<': signed/unsigned mismatch
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(407,21): warning C4018: '<': signed/unsigned mismatch
+﻿  EnemyShip.cpp
   VisualCTest.vcxproj -> D:\Projects\CProjects\VisualTest\VisualCTest\Debug\VisualCTest.exe

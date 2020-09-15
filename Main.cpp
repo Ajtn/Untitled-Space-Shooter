@@ -388,7 +388,7 @@ int main()
 			}
 			if (currentProjectiles[i].getVisible())
 			{
-				window.draw(currentProjectiles[i].updateObject());
+				window.draw(currentProjectiles[i].updateProjectile());
 			}
 
 		}
@@ -408,7 +408,7 @@ int main()
 		{
 			if (enemyProjectiles[i].getVisible())
 			{
-				window.draw(enemyProjectiles[i].updateObject());
+				window.draw(enemyProjectiles[i].updateProjectile());
 			}
 		}
 
