@@ -1,7 +1,25 @@
-﻿  Main.cpp
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(145,2): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(294,25): warning C4018: '>': signed/unsigned mismatch
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(308,30): warning C4018: '>': signed/unsigned mismatch
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(338,21): warning C4018: '<': signed/unsigned mismatch
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(369,21): warning C4018: '<': signed/unsigned mismatch
-  VisualCTest.vcxproj -> D:\Projects\CProjects\VisualTest\VisualCTest\Debug\VisualCTest.exe
+﻿  Game.cpp
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(91,31): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(154,45): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(156,46): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(158,44): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(160,45): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(162,45): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Main.cpp
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(149,55): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(149,1): error C2280: 'Game::Game(const Game &)': attempting to reference a deleted function
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.h(73): message : compiler has generated 'Game::Game' here
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.h(73,1): message : 'Game::Game(const Game &)': function was implicitly deleted because a data member invokes a deleted or inaccessible function 'sf::RenderWindow::RenderWindow(const sf::RenderWindow &)'
+D:\Projects\CProjects\VisualTest\SFML\SFML-2.5.1\include\SFML\Graphics\RenderWindow.hpp(180,1): message : 'sf::RenderWindow::RenderWindow(const sf::RenderWindow &)': function was implicitly deleted because a base class invokes a deleted or inaccessible function 'sf::Window::Window(const sf::Window &)'
+D:\Projects\CProjects\VisualTest\SFML\SFML-2.5.1\include\SFML\Window\Window.hpp(550,1): message : 'sf::Window::Window(const sf::Window &)': function was implicitly deleted because a base class invokes a deleted or inaccessible function 'sf::NonCopyable::NonCopyable(const sf::NonCopyable &)'
+  PlayerShip.cpp
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(23,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(24,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(28,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(29,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(33,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(34,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(38,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(39,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Ship.cpp
+  Generating Code...

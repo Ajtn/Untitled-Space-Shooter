@@ -182,7 +182,7 @@ Game::Game(PlayerShip currentPlayer, EnemyShip thisWorldsEnemies[], velocity pre
 			pathing[i][j] = premadePathing[i][j];
 		}
 	}
-
+	//set enemy templates from parameter
 	for (int i = 0; i < 10; i++)
 	{
 		enemyTemplates[i] = thisWorldsEnemies[i];
@@ -193,7 +193,7 @@ Game::Game(PlayerShip currentPlayer, EnemyShip thisWorldsEnemies[], velocity pre
 	player = currentPlayer;
 }
 
-bool Game::run()
+void Game::run()
 {
 	sf::RenderWindow screen(sf::VideoMode(1920, 1080), "Untitled_SpaceShooter");
 	//Current frame rate ~ 1000 and timers based on this, times need to be modified to fit 60fps before this can be added

@@ -5,6 +5,7 @@
 #include "Structs.h"
 #include <string>
 #include <SFML/Graphics.hpp>
+#include "Game.h"
 
 /*
 int checkWasd()
@@ -90,7 +91,7 @@ bool checkFire()
 int main()
 {
 	//multi dimensional array of movement patterns for AI, velocity to be changed incrementally to make non linear movement
-//stores 8 arrays of 12 movements each
+	//stores 8 arrays of 12 movements each
 	velocity pathing[8][12] =
 	{
 		//0) accelerates right to left while slowly moving down
@@ -110,6 +111,46 @@ int main()
 		//7)
 		{{0, 1 }, {0, 1 }, {0, 1 }, {0, 1 }, {0, 1}, {0, 1}, {0, 1}, {0, 1}, {0, 1}, {0, 1}, {0, 1}, {0, 1}},
 	};
+
+	//Array of all enemy guns (damage, fireDelay, (xVelocity, yVelocity), projectileRadius)
+	gunType enemyArsenal[6] =
+	{
+		//0) basic small, low damage, slow shot
+		{1, 500, {0, 0.38f}, 8},
+		//1) slightly high frequency
+		{1, 350, {0, 0.38f }, 8 },
+		//2) double damage 
+		{2, 500, {0, 0.38f}, 8},
+		//3) big bois
+		{1, 500, {0, 0.38f}, 16},
+		//4) fast and frequent
+		{1, 300, {0, 0.38f}, 8},
+		//5 nothing
+		{0, 10000, {0, 0}, 0}
+	};
+
+	//Array of types of enemy ships (pathing, gunType, hp, xPos, yPos, friendly, radius)
+	EnemyShip enemyTypes[6] =
+	{
+		//0)
+		{pathing[3], enemyArsenal[0], 2, 400, 0, false, 40},
+		//1)
+		{pathing[1], enemyArsenal[2], 2, 1000, 0, false, 40},
+		//2)
+		{pathing[0], enemyArsenal[0], 2, 1500, 0, false, 40},
+		//3)
+		{pathing[2], enemyArsenal[0], 2, 1920, 0, false, 40 },
+		//4)
+		{pathing[3], enemyArsenal[0], 2, 500, 0, false, 40},
+		//5
+		{pathing[4], enemyArsenal[1], 2, 500, 0, false, 30}
+	};
+
+	Game game = Game(PlayerShip({ 1, 185, {0, -0.65}, 8 }), enemyTypes, pathing);
+	game.run();
+
+
+	/*
 
 	//Array of all enemy guns (damage, fireDelay, (xVelocity, yVelocity), projectileRadius)
 	gunType enemyArsenal[6] =
@@ -180,7 +221,7 @@ int main()
 
 		system("pause");
 	}
-	*/
+	
 
 	//movement input instantiated and given stationary default
 	int cInput = 0;
@@ -376,6 +417,6 @@ int main()
 
 		window.display();
 	}
-
+	*/
 	return 0;
 }

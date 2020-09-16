@@ -69,6 +69,6 @@ public:
 	//texture will also need to be addded
 	Game(PlayerShip currentPlayer, EnemyShip thisWorldsEnemies[], velocity premadePathing[8][12]);
 
-	bool run();
+	void run();
 };
 
