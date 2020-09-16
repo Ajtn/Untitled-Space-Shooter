@@ -12,9 +12,10 @@ private:
      //Speed determines velocity when moving
     float speed;
 
-    //Invincibility will tick down each frame and prevent damage
-    //being taken while it is > 0
-    int invincibility;
+
+    //have set time of invincibility at the start of the clock
+    //invibility powerup will reset clock
+    sf::Clock invincibility;
 
 public:
 
@@ -25,5 +26,7 @@ public:
     void move(int direction);
 
     void getUpgrade(PowerUp upgrade);
+
+    bool checkInvincible();
 };
 

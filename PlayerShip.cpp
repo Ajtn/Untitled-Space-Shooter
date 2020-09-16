@@ -6,7 +6,6 @@ PlayerShip::PlayerShip(gunType initialGunType)
 {
 
 	speed = 0.375f;
-	invincibility = 20;
 
 }
 
@@ -87,3 +86,15 @@ void PlayerShip::move(int direction)
 	setVel(tempVel);
 }
 
+
+bool PlayerShip::checkInvincible()
+{
+	if (invincibility.getElapsedTime().asMilliseconds() > 2000)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
