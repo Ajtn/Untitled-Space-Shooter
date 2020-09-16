@@ -6,7 +6,7 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 
-
+/*
 int checkWasd()
 {
 	int cInput;
@@ -85,7 +85,7 @@ bool checkFire()
 	}
 }
 
-
+*/
 
 int main()
 {

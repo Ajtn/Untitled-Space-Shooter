@@ -75,6 +75,7 @@ void PlayerShip::move(int direction)
 	setVel(tempVel);
 }
 
+
 void PlayerShip::directionalInput()
 {
 	int cInput;
@@ -147,6 +148,10 @@ PlayerShip::PlayerShip(gunType initialGunType)
 
 }
 
+PlayerShip::PlayerShip()
+{
+
+}
 
 
 bool PlayerShip::checkInvincible()

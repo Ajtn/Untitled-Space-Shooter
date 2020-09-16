@@ -100,10 +100,16 @@ int Ship::getHp() const
 //Creates a projectile game object based on current gun type
 Projectile Ship::shoot()
 {
-	shotTimer.restart();
-
-	return Projectile(getXPos() + getRadius() - equipGunType.projectileRadius, getYPos(), equipGunType.projectileVel,
-		getFriendly(), equipGunType.damage, equipGunType.projectileRadius);
+	if (shotTimer.getElapsedTime().asMilliseconds() > equipGunType.fireDelay)
+	{
+		shotTimer.restart();
+		return Projectile(getXPos() + getRadius() - equipGunType.projectileRadius, getYPos(), equipGunType.projectileVel,
+			getFriendly(), equipGunType.damage, equipGunType.projectileRadius);
+	}
+	else
+	{
+		return Projectile();
+	}
 }
 
 

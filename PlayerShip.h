@@ -25,6 +25,7 @@ public:
 
     PlayerShip(gunType initialGunType);
 
+    PlayerShip();
 
     void getUpgrade(PowerUp upgrade);
 

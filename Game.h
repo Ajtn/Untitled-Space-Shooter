@@ -15,7 +15,7 @@ private:
 	sf::Clock spawnTimer;
 
 	//window the game is visible in
-	sf::Window screen;
+	sf::RenderWindow screen;
 
 	//array of currently loaded enemies
 	EnemyShip enemies[10];
@@ -59,16 +59,15 @@ private:
 	void spawnEnemies();
 	void enemiesShoot();
 	void playerInput();
-	void updateObjects();
 	void checkCollisions();
-	void drawObjects();
+	void updateObjects();
 
 public:
 	Game();
 
 	//constructor for game with multiple worlds, may want to add enemyArsenal, and pathing so they can be different between worlds
 	//texture will also need to be addded
-	Game(PlayerShip currentPlayer, EnemyShip thisWorldsEnemies[]);
+	Game(PlayerShip currentPlayer, EnemyShip thisWorldsEnemies[], velocity premadePathing[8][12]);
 
 	bool run();
 };
