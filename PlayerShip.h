@@ -17,16 +17,19 @@ private:
     //invibility powerup will reset clock
     sf::Clock invincibility;
 
+    void move(int direction);
+
+    void directionalInput();
+
 public:
 
     PlayerShip(gunType initialGunType);
 
 
-
-    void move(int direction);
-
     void getUpgrade(PowerUp upgrade);
 
     bool checkInvincible();
+
+    Projectile checkInput();
 };
 

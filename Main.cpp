@@ -6,7 +6,7 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 
-//std::wcout << newYVel;
+
 int checkWasd()
 {
 	int cInput;

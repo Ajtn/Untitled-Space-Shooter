@@ -56,7 +56,9 @@ private:
 	//image for the background of current level
 	//sf::Texture background;
 
-	void spawnObjects();
+	void spawnEnemies();
+	void enemiesShoot();
+	void playerInput();
 	void updateObjects();
 	void checkCollisions();
 	void drawObjects();

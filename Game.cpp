@@ -1,5 +1,42 @@
 #include "Game.h"
 
+void Game::enemiesShoot()
+{
+	//loop iterates 10 times because that is currently max length of array
+	//should define as constant to declare in both spaces with one value
+	for (int i = 0; i < 10; i++)
+	{
+		enemyShots[currentEnemy] = enemies[i].shoot();
+		if (currentEnemyShot > 18)
+		{
+			currentEnemyShot = 0;
+		}
+		else
+		{
+			currentEnemyShot++;
+		}
+	}
+}
+
+void Game::playerInput()
+{
+	Projectile temp = player.checkInput();
+
+	if (temp.getDamage() > 0)
+	{
+		playerShots[currentShot] = temp;
+
+		if (currentShot > 18)
+		{
+			currentShot = 0;
+		}
+		else
+		{
+			currentShot++;
+		}
+	}
+}
+
 Game::Game(PlayerShip currentPlayer, EnemyShip thisWorldsEnemies[])
 {
 	//Array of all player guns (damage, fireDelay, (xVelocity, yVelocity), projectileRadius)
@@ -17,3 +54,4 @@ Game::Game(PlayerShip currentPlayer, EnemyShip thisWorldsEnemies[])
 
 	player = currentPlayer;
 }
+

@@ -10,7 +10,7 @@ Projectile::Projectile(float initialX, float initialY, velocity initialVelocity,
 
 Projectile::Projectile()
 {
-	damage = 1;
+	damage = 0;
 
 }
 
