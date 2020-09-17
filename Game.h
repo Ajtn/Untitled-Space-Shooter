@@ -3,6 +3,7 @@
 #include "PlayerShip.h"
 #include "Projectile.h"
 #include "PowerUp.h"
+#include <SFML/Graphics.hpp>
 
 class Game
 {
@@ -44,14 +45,9 @@ private:
 	//array of all available player guns, harded coded values
 	gunType playerArsenal[8];
 
-	//Array of all available enemy guns, hard coded values
-	gunType enemyArsenal[5];
-
 	//Array of all combinations of enemy values for movement, weapons, hp, and spawns. Hard coded values
 	EnemyShip enemyTemplates[10];
 
-	//array of sets of velocities to be used as enemy pathing across 12 increments of time. Hard coded values
-	velocity pathing[8][12];
 
 	//image for the background of current level
 	//sf::Texture background;
@@ -63,11 +59,10 @@ private:
 	void updateObjects();
 
 public:
-	Game();
 
 	//constructor for game with multiple worlds, may want to add enemyArsenal, and pathing so they can be different between worlds
 	//texture will also need to be addded
-	Game(PlayerShip currentPlayer, EnemyShip thisWorldsEnemies[], velocity premadePathing[8][12]);
+	Game(EnemyShip thisWorldsEnemies[10]);
 
 	void run();
 };

@@ -88,7 +88,7 @@ void Game::updateObjects()
 {
 	for (int i = 0; i < 10; i++)
 	{
-		if (enemies[i].getVisible());
+		if (enemies[i].getVisible())
 		{
 			screen.draw(enemies[i].updateObject());
 		}
@@ -147,7 +147,9 @@ void Game::checkCollisions()
 	//new collision function needed for enemy ships directly crashing into player
 }
 
-Game::Game(PlayerShip currentPlayer, EnemyShip thisWorldsEnemies[], velocity premadePathing[8][12])
+
+
+Game::Game(EnemyShip thisWorldsEnemies[10])
 {
 	//Array of all player guns (damage, fireDelay, (xVelocity, yVelocity), projectileRadius)
 	//0)Basic starting gun
@@ -162,26 +164,6 @@ Game::Game(PlayerShip currentPlayer, EnemyShip thisWorldsEnemies[], velocity pre
 	playerArsenal[4] = { 5, 100, {0, -0.65}, 8 };
 
 
-	//Array of all enemy guns (damage, fireDelay, (xVel, yVel), radius)
-	//0) basic small, low damage, slow shot
-	enemyArsenal[0] = { 1, 500, { 0, 0.38f }, 8 };
-	//1) slightly high frequency
-	enemyArsenal[1] = { 1, 350, { 0, 0.38f }, 8 };
-	//2) double damage 
-	enemyArsenal[2] = { 2, 500, {0, 0.38f}, 8 };
-	//3) big bois
-	enemyArsenal[3] = { 1, 500, {0, 0.38f}, 16 };
-	//4) fast and frequent
-	enemyArsenal[4] = { 1, 300, {0, 0.38f}, 8 };
-
-	//set pathing values from parameter
-	for (int i = 0; i < 8; i++)
-	{
-		for (int j = 0; j < 12; j++)
-		{
-			pathing[i][j] = premadePathing[i][j];
-		}
-	}
 	//set enemy templates from parameter
 	for (int i = 0; i < 10; i++)
 	{
@@ -190,12 +172,13 @@ Game::Game(PlayerShip currentPlayer, EnemyShip thisWorldsEnemies[], velocity pre
 
 
 
-	player = currentPlayer;
+	player = PlayerShip(playerArsenal[0]);
 }
 
 void Game::run()
 {
-	sf::RenderWindow screen(sf::VideoMode(1920, 1080), "Untitled_SpaceShooter");
+	screen.create(sf::VideoMode(1920, 1080), "Untitled_SpaceShooter");
+	//sf::RenderWindow screen(sf::VideoMode(1920, 1080), "Untitled_SpaceShooter");
 	//Current frame rate ~ 1000 and timers based on this, times need to be modified to fit 60fps before this can be added
 	//screen.setFramerateLimit(60);
 	while (screen.isOpen())

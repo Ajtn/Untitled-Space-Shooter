@@ -145,8 +145,8 @@ int main()
 		//5
 		{pathing[4], enemyArsenal[1], 2, 500, 0, false, 30}
 	};
-
-	Game game = Game(PlayerShip({ 1, 185, {0, -0.65}, 8 }), enemyTypes, pathing);
+	
+	Game game = Game(enemyTypes);
 	game.run();
 
 
