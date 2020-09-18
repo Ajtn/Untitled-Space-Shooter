@@ -6,6 +6,7 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 #include "Game.h"
+#include <iostream>
 
 /*
 int checkWasd()
@@ -130,7 +131,7 @@ int main()
 	};
 
 	//Array of types of enemy ships (pathing, gunType, hp, xPos, yPos, friendly, radius)
-	EnemyShip enemyTypes[6] =
+	EnemyShip enemyTypes[10] =
 	{
 		//0)
 		{pathing[3], enemyArsenal[0], 2, 400, 0, false, 40},
@@ -143,8 +144,18 @@ int main()
 		//4)
 		{pathing[3], enemyArsenal[0], 2, 500, 0, false, 40},
 		//5
+		{pathing[4], enemyArsenal[1], 2, 500, 0, false, 30},
+		{pathing[4], enemyArsenal[1], 2, 500, 0, false, 30},
+		{pathing[4], enemyArsenal[1], 2, 500, 0, false, 30},
+		{pathing[4], enemyArsenal[1], 2, 500, 0, false, 30},
 		{pathing[4], enemyArsenal[1], 2, 500, 0, false, 30}
 	};
+	std::cout << "x pos" << std::endl;
+	std::cout << enemyTypes[0].getXPos() << std::endl;
+	std::cout << "y pos" << std::endl;
+	std::cout << enemyTypes[0].getYPos() << std::endl;
+	std::cout << "radius" << std::endl;
+	std::cout << enemyTypes[0].getRadius() << std::endl;
 	
 	Game game = Game(enemyTypes);
 	game.run();

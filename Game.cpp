@@ -1,15 +1,21 @@
 #include "Game.h"
+#include <iostream>
 
 void Game::spawnEnemies()
 {
 	if ((spawnTimer.getElapsedTime().asMilliseconds() < 2000) && currentEnemy < 1)
 	{
-		enemies[currentEnemy] = EnemyShip(enemyTemplates[1]);
+		std::cout << "first enemy template radius" << std::endl;
+		std::cout << enemyTemplates[1].getRadius() << std::endl;
+		enemies[currentEnemy] = enemyTemplates[1];
 		currentEnemy++;
+		std::cout << "current enemies" << std::endl;
+		std::cout << currentEnemy << std::endl;
+		std::cout << enemies[0].getYPos() << std::endl;
 	}
 	else if ((spawnTimer.getElapsedTime().asMilliseconds() < 4000) && currentEnemy < 2)
 	{
-		enemies[currentEnemy] = EnemyShip(enemyTemplates[1]);
+		enemies[currentEnemy] = enemyTemplates[1];
 		currentEnemy++;
 	}
 	else if (spawnTimer.getElapsedTime().asMilliseconds() < 6000 && currentEnemy < 3)
@@ -47,7 +53,7 @@ void Game::enemiesShoot()
 	//should define as constant to declare in both spaces with one value
 	for (int i = 0; i < 10; i++)
 	{
-		temp = enemyShots[currentEnemy] = enemies[i].shoot();
+		temp = enemyShots[currentEnemyShot] = enemies[i].shoot();
 
 		if (temp.getDamage() > 0)
 		{
@@ -90,6 +96,7 @@ void Game::updateObjects(sf::RenderWindow& screen)
 	{
 		if (enemies[i].getVisible())
 		{
+			//std::cout << enemies[i].getRadius() << std::endl;
 			screen.draw(enemies[i].updateObject());
 		}
 	}
@@ -163,6 +170,10 @@ Game::Game(EnemyShip thisWorldsEnemies[10])
 	//4) super high dps
 	playerArsenal[4] = { 5, 100, {0, -0.65}, 8 };
 
+	currentEnemy = 0;
+	currentEnemyShot = 0;
+	currentShot = 0;
+
 	//screen.create(sf::VideoMode(1920, 1080, 32), "Untitled_SpaceShooter", sf::Style::Fullscreen);
 
 	//set enemy templates from parameter
@@ -184,6 +195,8 @@ void Game::run()
 	//sf::RenderWindow screen(sf::VideoMode(1920, 1080), "Untitled_SpaceShooter");
 	//Current frame rate ~ 1000 and timers based on this, times need to be modified to fit 60fps before this can be added
 	//screen.setFramerateLimit(60);
+
+	spawnTimer.restart();
 	while (screen.isOpen())
 	{
 		sf::Event event;
@@ -195,12 +208,14 @@ void Game::run()
 				screen.close();
 			}
 		}
-
+		screen.clear();
 		enemiesShoot();
 		spawnEnemies();
 		playerInput();
 		checkCollisions();
 		updateObjects(screen);
+
+		screen.display();
 
 	}
 
