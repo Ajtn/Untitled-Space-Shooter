@@ -84,7 +84,7 @@ void Game::playerInput()
 	}
 }
 
-void Game::updateObjects()
+void Game::updateObjects(sf::RenderWindow& screen)
 {
 	for (int i = 0; i < 10; i++)
 	{
@@ -163,8 +163,10 @@ Game::Game(EnemyShip thisWorldsEnemies[10])
 	//4) super high dps
 	playerArsenal[4] = { 5, 100, {0, -0.65}, 8 };
 
+	//screen.create(sf::VideoMode(1920, 1080, 32), "Untitled_SpaceShooter", sf::Style::Fullscreen);
 
 	//set enemy templates from parameter
+
 	for (int i = 0; i < 10; i++)
 	{
 		enemyTemplates[i] = thisWorldsEnemies[i];
@@ -177,7 +179,8 @@ Game::Game(EnemyShip thisWorldsEnemies[10])
 
 void Game::run()
 {
-	screen.create(sf::VideoMode(1920, 1080), "Untitled_SpaceShooter");
+	sf::RenderWindow screen(sf::VideoMode(1920, 1080), "Untitled_SpaceShooter");
+	//screen.create(sf::VideoMode(1920, 1080), "Untitled_SpaceShooter");
 	//sf::RenderWindow screen(sf::VideoMode(1920, 1080), "Untitled_SpaceShooter");
 	//Current frame rate ~ 1000 and timers based on this, times need to be modified to fit 60fps before this can be added
 	//screen.setFramerateLimit(60);
@@ -197,7 +200,7 @@ void Game::run()
 		spawnEnemies();
 		playerInput();
 		checkCollisions();
-		updateObjects();
+		updateObjects(screen);
 
 	}
 

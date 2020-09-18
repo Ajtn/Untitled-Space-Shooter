@@ -5,9 +5,5 @@ D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(160,44): warni
 D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(162,45): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(164,45): warning C4305: 'initializing': truncation from 'double' to 'float'
   Main.cpp
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(149,1): error C2280: 'Game::Game(const Game &)': attempting to reference a deleted function
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.h(68): message : compiler has generated 'Game::Game' here
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.h(68,1): message : 'Game::Game(const Game &)': function was implicitly deleted because a data member invokes a deleted or inaccessible function 'sf::RenderWindow::RenderWindow(const sf::RenderWindow &)'
-D:\Projects\CProjects\VisualTest\SFML\SFML-2.5.1\include\SFML\Graphics\RenderWindow.hpp(180,1): message : 'sf::RenderWindow::RenderWindow(const sf::RenderWindow &)': function was implicitly deleted because a base class invokes a deleted or inaccessible function 'sf::Window::Window(const sf::Window &)'
-D:\Projects\CProjects\VisualTest\SFML\SFML-2.5.1\include\SFML\Window\Window.hpp(550,1): message : 'sf::Window::Window(const sf::Window &)': function was implicitly deleted because a base class invokes a deleted or inaccessible function 'sf::NonCopyable::NonCopyable(const sf::NonCopyable &)'
   Generating Code...
+  VisualCTest.vcxproj -> D:\Projects\CProjects\VisualTest\VisualCTest\Debug\VisualCTest.exe

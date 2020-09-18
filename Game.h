@@ -15,8 +15,6 @@ private:
 	//used to control how often enemies spawn
 	sf::Clock spawnTimer;
 
-	//window the game is visible in
-	sf::RenderWindow screen;
 
 	//array of currently loaded enemies
 	EnemyShip enemies[10];
@@ -56,9 +54,11 @@ private:
 	void enemiesShoot();
 	void playerInput();
 	void checkCollisions();
-	void updateObjects();
+	void updateObjects(sf::RenderWindow& screen);
 
 public:
+	//window the game is visible in
+	//sf::RenderWindow screen;
 
 	//constructor for game with multiple worlds, may want to add enemyArsenal, and pathing so they can be different between worlds
 	//texture will also need to be addded
