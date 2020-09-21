@@ -121,7 +121,7 @@ void GameObject::makeInvisible()
 sf::CircleShape GameObject::updateObject()
 {
 	updatePosition();
-	//body.setPosition(xPos, yPos);
+	body.setPosition(xPos, yPos);
 	return body;
 
 }

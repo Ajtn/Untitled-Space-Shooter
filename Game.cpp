@@ -1,4 +1,5 @@
 #include "Game.h"
+#include <iostream>
 
 
 void Game::spawnEnemies()
@@ -30,6 +31,7 @@ void Game::spawnEnemies()
 	}
 	else if (spawnTimer.getElapsedTime().asMilliseconds() < 12000 && currentEnemy < 6)
 	{
+		std::cout << "ship 6" << std::endl;
 		enemies[currentEnemy] = EnemyShip(enemyTemplates[1]);
 		currentEnemy++;
 	}
@@ -60,14 +62,6 @@ void Game::spawnEnemies()
 		currentEnemy = 0;
 	}
 
-	if (currentEnemy > 0)
-	{
-		enemies[currentEnemy - 1].resizeObject();
-	}
-	else
-	{
-		enemies[9].resizeObject();
-	}
 }
 
 void Game::enemiesShoot()
@@ -77,19 +71,22 @@ void Game::enemiesShoot()
 	//should define as constant to declare in both spaces with one value
 	for (int i = 0; i < 10; i++)
 	{
-		temp = enemyShots[currentEnemyShot] = enemies[i].shoot();
-
-		if (temp.getDamage() > 0)
+		if (enemies[i].getVisible())
 		{
-			enemyShots[currentEnemyShot] = temp;
+			temp = enemyShots[currentEnemyShot] = enemies[i].shoot();
 
-			if (currentEnemyShot > 48)
+			if (temp.getDamage() > 0)
 			{
-				currentEnemyShot = 0;
-			}
-			else
-			{
-				currentEnemyShot++;
+				enemyShots[currentEnemyShot] = temp;
+
+				if (currentEnemyShot > 48)
+				{
+					currentEnemyShot = 0;
+				}
+				else
+				{
+					currentEnemyShot++;
+				}
 			}
 		}
 	}
@@ -120,6 +117,7 @@ void Game::updateObjects(sf::RenderWindow& screen)
 	{
 		if (enemies[i].getVisible())
 		{
+			
 			enemies[i].move();
 			screen.draw(enemies[i].updateObject());
 		}
