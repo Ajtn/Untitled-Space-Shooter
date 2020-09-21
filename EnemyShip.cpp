@@ -117,3 +117,9 @@ void EnemyShip::move()
 		moveTimer.restart();
 	}
 }
+
+
+void EnemyShip::resetMoveClock()
+{
+	moveTimer.restart();
+}

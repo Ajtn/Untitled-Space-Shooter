@@ -21,7 +21,7 @@ void GameObject::updatePosition()
 
 GameObject::GameObject()
 {
-	visible = true;
+	visible = false;
 	xPos = 0;
 	yPos = 0;
 	objectVelocity.xVel = 0;

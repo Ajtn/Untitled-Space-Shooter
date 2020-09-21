@@ -16,5 +16,7 @@ public:
         float initialYPos, bool initialFriendly, int initialRadius);
 
     void move();
+
+    void resetMoveClock();
 };
 
