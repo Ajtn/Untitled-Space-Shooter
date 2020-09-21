@@ -48,6 +48,8 @@ public:
 
 	sf::CircleShape updateObject();
 
+	void resizeObject();
+
 
 
 

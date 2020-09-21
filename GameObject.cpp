@@ -1,4 +1,4 @@
-#include "GameObject.h"]
+#include "GameObject.h"
 
 
 void GameObject::updatePosition()
@@ -121,7 +121,14 @@ void GameObject::makeInvisible()
 sf::CircleShape GameObject::updateObject()
 {
 	updatePosition();
-	body.setPosition(xPos, yPos);
+	//body.setPosition(xPos, yPos);
 	return body;
 
+}
+
+void GameObject::resizeObject()
+{
+	body.setRadius(radius);
+	body.setFillColor(sf::Color::Cyan);
+	visible = true;
 }

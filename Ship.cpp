@@ -1,4 +1,5 @@
 #include "Ship.h"
+#include <iostream>
 
 //modifies the ship's hp and returns true if the ship survives
 //and false if the damage is lethal

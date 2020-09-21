@@ -1,7 +1,11 @@
-﻿  Game.cpp
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(163,45): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(165,46): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(167,44): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(169,45): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(171,45): warning C4305: 'initializing': truncation from 'double' to 'float'
+﻿  EnemyShip.cpp
+  Game.cpp
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(187,45): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(189,46): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(191,44): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(193,45): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(195,45): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Main.cpp
+  Ship.cpp
+  Generating Code...
   VisualCTest.vcxproj -> D:\Projects\CProjects\VisualTest\VisualCTest\Debug\VisualCTest.exe

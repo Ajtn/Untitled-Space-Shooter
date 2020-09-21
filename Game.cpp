@@ -1,17 +1,12 @@
 #include "Game.h"
-#include <iostream>
+
 
 void Game::spawnEnemies()
 {
 	if ((spawnTimer.getElapsedTime().asMilliseconds() < 2000) && currentEnemy < 1)
 	{
-		std::cout << "first enemy template radius" << std::endl;
-		std::cout << enemyTemplates[1].getRadius() << std::endl;
 		enemies[currentEnemy] = enemyTemplates[1];
 		currentEnemy++;
-		std::cout << "current enemies" << std::endl;
-		std::cout << currentEnemy << std::endl;
-		std::cout << enemies[0].getYPos() << std::endl;
 	}
 	else if ((spawnTimer.getElapsedTime().asMilliseconds() < 4000) && currentEnemy < 2)
 	{
@@ -23,26 +18,55 @@ void Game::spawnEnemies()
 		enemies[currentEnemy] = EnemyShip(enemyTemplates[1]);
 		currentEnemy++;
 	}
-	else if (spawnTimer.getElapsedTime().asMilliseconds() < 8000 && currentEnemy < 5)
+	else if (spawnTimer.getElapsedTime().asMilliseconds() < 8000 && currentEnemy < 4)
 	{
 		enemies[currentEnemy] = EnemyShip(enemyTemplates[1]);
 		currentEnemy++;
 	}
-	else if (spawnTimer.getElapsedTime().asMilliseconds() < 10000 && currentEnemy < 6)
+	else if (spawnTimer.getElapsedTime().asMilliseconds() < 10000 && currentEnemy < 5)
 	{
 		enemies[currentEnemy] = EnemyShip(enemyTemplates[1]);
 		currentEnemy++;
 	}
-	else if (spawnTimer.getElapsedTime().asMilliseconds() < 12000 && currentEnemy < 4)
+	else if (spawnTimer.getElapsedTime().asMilliseconds() < 12000 && currentEnemy < 6)
+	{
+		enemies[currentEnemy] = EnemyShip(enemyTemplates[1]);
+		currentEnemy++;
+	}
+	else if (spawnTimer.getElapsedTime().asMilliseconds() < 14000 && currentEnemy < 7)
+	{
+		enemies[currentEnemy] = EnemyShip(enemyTemplates[1]);
+		currentEnemy++;
+	}
+	else if (spawnTimer.getElapsedTime().asMilliseconds() < 16000 && currentEnemy < 8)
+	{
+		enemies[currentEnemy] = EnemyShip(enemyTemplates[1]);
+		currentEnemy++;
+	}
+	else if (spawnTimer.getElapsedTime().asMilliseconds() < 20000 && currentEnemy < 9)
+	{
+		enemies[currentEnemy] = EnemyShip(enemyTemplates[1]);
+		currentEnemy++;
+	}
+	else if (spawnTimer.getElapsedTime().asMilliseconds() < 22000 && currentEnemy < 10)
 	{
 		enemies[currentEnemy] = EnemyShip(enemyTemplates[1]);
 		currentEnemy++;
 	}
 
-	if (spawnTimer.getElapsedTime().asMilliseconds() > 20000)
+	if (spawnTimer.getElapsedTime().asMilliseconds() > 30000)
 	{
 		spawnTimer.restart();
 		currentEnemy = 0;
+	}
+
+	if (currentEnemy > 0)
+	{
+		enemies[currentEnemy - 1].resizeObject();
+	}
+	else
+	{
+		enemies[9].resizeObject();
 	}
 }
 
@@ -96,7 +120,7 @@ void Game::updateObjects(sf::RenderWindow& screen)
 	{
 		if (enemies[i].getVisible())
 		{
-			//std::cout << enemies[i].getRadius() << std::endl;
+			enemies[i].move();
 			screen.draw(enemies[i].updateObject());
 		}
 	}

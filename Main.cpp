@@ -6,7 +6,7 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 #include "Game.h"
-#include <iostream>
+
 
 /*
 int checkWasd()
@@ -150,12 +150,6 @@ int main()
 		{pathing[4], enemyArsenal[1], 2, 500, 0, false, 30},
 		{pathing[4], enemyArsenal[1], 2, 500, 0, false, 30}
 	};
-	std::cout << "x pos" << std::endl;
-	std::cout << enemyTypes[0].getXPos() << std::endl;
-	std::cout << "y pos" << std::endl;
-	std::cout << enemyTypes[0].getYPos() << std::endl;
-	std::cout << "radius" << std::endl;
-	std::cout << enemyTypes[0].getRadius() << std::endl;
 	
 	Game game = Game(enemyTypes);
 	game.run();
