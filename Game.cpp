@@ -10,64 +10,66 @@ void Game::spawnEnemies()
 	if (currentEnemy < 1)
 	{
 		enemies[currentEnemy] = enemyTemplates[2];
+		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
 	else if ((spawnTimer.getElapsedTime().asMilliseconds() > 2000) && currentEnemy < 2)
 	{
 		enemies[currentEnemy] = enemyTemplates[2];
+		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
 	else if (spawnTimer.getElapsedTime().asMilliseconds() > 4000 && currentEnemy < 3)
 	{
 		enemies[currentEnemy] = EnemyShip(enemyTemplates[2]);
+		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
 	else if (spawnTimer.getElapsedTime().asMilliseconds() > 6000 && currentEnemy < 4)
 	{
 		enemies[currentEnemy] = EnemyShip(enemyTemplates[2]);
+		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
 	else if (spawnTimer.getElapsedTime().asMilliseconds() > 8000 && currentEnemy < 5)
 	{
-		enemies[currentEnemy] = EnemyShip(enemyTemplates[1]);
+		enemies[currentEnemy] = EnemyShip(enemyTemplates[2]);
+		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
 	else if (spawnTimer.getElapsedTime().asMilliseconds() > 12000 && currentEnemy < 6)
 	{
-		enemies[currentEnemy] = EnemyShip(enemyTemplates[1]);
+		enemies[currentEnemy] = EnemyShip(enemyTemplates[2]);
+		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
 	else if (spawnTimer.getElapsedTime().asMilliseconds() > 14000 && currentEnemy < 7)
 	{
-		enemies[currentEnemy] = EnemyShip(enemyTemplates[1]);
+		enemies[currentEnemy] = EnemyShip(enemyTemplates[2]);
+		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
 	else if (spawnTimer.getElapsedTime().asMilliseconds() > 16000 && currentEnemy < 8)
 	{
-		enemies[currentEnemy] = EnemyShip(enemyTemplates[1]);
+		enemies[currentEnemy] = EnemyShip(enemyTemplates[2]);
+		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
 	else if (spawnTimer.getElapsedTime().asMilliseconds() > 20000 && currentEnemy < 9)
 	{
-		enemies[currentEnemy] = EnemyShip(enemyTemplates[1]);
+		enemies[currentEnemy] = EnemyShip(enemyTemplates[2]);
+		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
 	else if (spawnTimer.getElapsedTime().asMilliseconds() > 22000 && currentEnemy < 10)
 	{
-		enemies[currentEnemy] = EnemyShip(enemyTemplates[1]);
+		enemies[currentEnemy] = EnemyShip(enemyTemplates[2]);
+		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
 
-	if (currentEnemy > 0)
-	{
-		enemies[currentEnemy - 1].resetMoveClock();
-	}
-	else
-	{
-		enemies[9].resetMoveClock();
-	}
 
-	if (spawnTimer.getElapsedTime().asMilliseconds() > 20000)
+	if (spawnTimer.getElapsedTime().asMilliseconds() > 30000)
 	{
 		spawnTimer.restart();
 		currentEnemy = 0;

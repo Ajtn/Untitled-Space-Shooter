@@ -134,11 +134,11 @@ int main()
 	EnemyShip enemyTypes[10] =
 	{
 		//0)
-		{pathing[2], enemyArsenal[0], 2, 400, 0, false, 40},
+		{pathing[2], enemyArsenal[0], 2, 1000, 0, false, 40},
 		//1)
 		{pathing[2], enemyArsenal[2], 2, 1000, 0, false, 40},
 		//2)
-		{pathing[0], enemyArsenal[0], 2, 1500, 0, false, 40},
+		{pathing[0], enemyArsenal[0], 2, 500, 0, false, 40},
 		//3)
 		{pathing[2], enemyArsenal[0], 2, 1920, 0, false, 40 },
 		//4)
