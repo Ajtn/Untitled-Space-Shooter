@@ -22,9 +22,10 @@ private:
 
     bool takeDamage(int damage);
 
-    bool collision(float otherObjectX, float otherObjectY, int otherObjRadius);
 
 protected:
+    bool collision(float otherObjectX, float otherObjectY, int otherObjRadius);
+
     void heal(int healVal);
 
     void changeHpCap();

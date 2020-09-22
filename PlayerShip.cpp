@@ -153,6 +153,23 @@ PlayerShip::PlayerShip()
 
 }
 
+void PlayerShip::getUpgrade(PowerUp upgrade)
+{
+	switch (upgrade.getType())
+	{
+	case 1:
+		setGunType(upgrade.getValue());
+		break;
+	case 2:
+		changeHpCap(upgrade.getValue());
+		break;
+	case 3:
+		invincibility = upgrade.getValue();
+		break;
+	default:
+		break;
+	}
+}
 
 bool PlayerShip::checkInvincible()
 {
