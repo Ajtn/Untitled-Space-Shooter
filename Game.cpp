@@ -208,7 +208,7 @@ Game::Game(EnemyShip thisWorldsEnemies[10])
 
 
 
-	player = PlayerShip(playerArsenal[0]);
+	player = PlayerShip();
 }
 
 void Game::run()

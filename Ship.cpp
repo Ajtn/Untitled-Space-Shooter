@@ -67,17 +67,18 @@ Ship::Ship()
 
 }
 
-/*
-//one of these contructors is probably redundent *** requires assessment
-Ship::Ship(gunType initialGunType, int initialHp, float initialXPos,
-	float initialYPos, velocity initialVel, bool initialFriendly, int initialRadius)
-	:GameObject(initialXPos, initialYPos, initialVel, initialFriendly, initialRadius)
+Ship::Ship(int initialHp, float initialXPos, float initialYPos, bool initialFriendly, int initialRadius)
+	:GameObject(initialXPos, initialYPos, initialFriendly, initialRadius)
 {
-	equipGunType = initialGunType;
+	equipGunType.damage = 0;
+	equipGunType.fireDelay = 0;
+	equipGunType.projectileVel.xVel = 0;
+	equipGunType.projectileVel.yVel = 0;
+	equipGunType.projectileRadius = 0;
+
 	hpCap = initialHp;
 	hp = hpCap;
 }
-*/
 
 Ship::Ship(gunType initialGunType, int initialHp, float initialXPos,
 	float initialYPos, bool initialFriendly, int initialRadius)

@@ -40,6 +40,9 @@ public:
 
     */
 
+    Ship(int initialHp, float initialXPos, float initialYPos,
+        bool initialFriendly, int initialRadius);
+
     Ship(gunType equipGunType, int initialHp, float initialXPos,
         float initialYPos, bool initialFriendly, int initialRadius);
 

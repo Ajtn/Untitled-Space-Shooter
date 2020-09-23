@@ -145,8 +145,8 @@ void PlayerShip::choseGun(int chosenGun)
 	setGunType(arsenal[chosenGun]);
 }
 
-PlayerShip::PlayerShip(gunType initialGunType)
-	:Ship(initialGunType, 5, 1920 / 2, 1050, true, 50)
+PlayerShip::PlayerShip()
+	:Ship(5, 1920 / 2, 1050, true, 50)
 {
 	//Array of all player guns (damage, fireDelay, (xVelocity, yVelocity), projectileRadius)
 	//0)Basic starting gun
@@ -160,16 +160,13 @@ PlayerShip::PlayerShip(gunType initialGunType)
 	//4) super high dps
 	arsenal[4] = { 5, 100, {0, -0.65}, 8 };
 
+	choseGun(0);
+
 	speed = 0.375f;
 	invincibility = 0;
 
 }
 
-PlayerShip::PlayerShip()
-{
-	speed = 0.375f;
-	invincibility = 0;
-}
 
 void PlayerShip::getUpgrade(PowerUp upgrade)
 {

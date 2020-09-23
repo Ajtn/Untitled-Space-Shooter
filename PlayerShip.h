@@ -27,7 +27,6 @@ private:
 
 public:
 
-    PlayerShip(gunType initialGunType);
 
     PlayerShip();
 
