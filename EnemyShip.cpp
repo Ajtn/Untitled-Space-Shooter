@@ -14,6 +14,7 @@ EnemyShip::EnemyShip(velocity initialPathing[12], gunType initialGunType, int in
 	}
 }
 
+
 void EnemyShip::move()
 {
 	const int timeInterval = 250;

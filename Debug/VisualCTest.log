@@ -1,9 +1,19 @@
-﻿  Game.cpp
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(198,45): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(200,46): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(202,44): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(204,45): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Game.cpp(206,45): warning C4305: 'initializing': truncation from 'double' to 'float'
+﻿  EnemyShip.cpp
+  Game.cpp
   Main.cpp
+  PlayerShip.cpp
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(23,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(24,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(28,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(29,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(33,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(34,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(38,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(39,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(153,39): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(155,40): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(157,38): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(159,39): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(161,39): warning C4305: 'initializing': truncation from 'double' to 'float'
   Generating Code...
   VisualCTest.vcxproj -> D:\Projects\CProjects\VisualTest\VisualCTest\Debug\VisualCTest.exe
