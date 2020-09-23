@@ -12,14 +12,18 @@ private:
      //Speed determines velocity when moving
     float speed;
 
+    gunType arsenal[8];
 
-    //have set time of invincibility at the start of the clock
-    //invibility powerup will reset clock
-    sf::Clock invincibility;
+    int invincibility;
+
+    sf::Clock invincibilityTimer;
 
     void move(int direction);
 
     void directionalInput();
+
+    void choseGun(int chosenGun);
+
 
 public:
 

@@ -48,10 +48,10 @@ void Ship::heal(int healVal)
 }
 
 //may want to set upper bound here
-void Ship::changeHpCap()
+void Ship::changeHpCap(int value)
 {
-	hpCap = hpCap + 2;
-	heal(2);
+	hpCap = hpCap + value;
+	heal(value);
 }
 
 

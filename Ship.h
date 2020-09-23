@@ -28,7 +28,7 @@ protected:
 
     void heal(int healVal);
 
-    void changeHpCap();
+    void changeHpCap(int value);
 
 public:
 

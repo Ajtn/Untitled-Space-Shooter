@@ -140,17 +140,35 @@ void PlayerShip::directionalInput()
 	move(cInput);
 }
 
+void PlayerShip::choseGun(int chosenGun)
+{
+	setGunType(arsenal[chosenGun]);
+}
+
 PlayerShip::PlayerShip(gunType initialGunType)
 	:Ship(initialGunType, 5, 1920 / 2, 1050, true, 50)
 {
+	//Array of all player guns (damage, fireDelay, (xVelocity, yVelocity), projectileRadius)
+	//0)Basic starting gun
+	arsenal[0] = { 1, 185, {0, -0.65}, 8 };
+	//1) low frequency, large, high damage
+	arsenal[1] = { 3, 300, {0, -0.65}, 25 };
+	//2) mini gun
+	arsenal[2] = { 1, 85, {0, -0.65}, 5 };
+	//3) higher damage standard gun
+	arsenal[3] = { 2, 185, {0, -0.65}, 8 };
+	//4) super high dps
+	arsenal[4] = { 5, 100, {0, -0.65}, 8 };
 
 	speed = 0.375f;
+	invincibility = 0;
 
 }
 
 PlayerShip::PlayerShip()
 {
-
+	speed = 0.375f;
+	invincibility = 0;
 }
 
 void PlayerShip::getUpgrade(PowerUp upgrade)
@@ -158,13 +176,17 @@ void PlayerShip::getUpgrade(PowerUp upgrade)
 	switch (upgrade.getType())
 	{
 	case 1:
-		setGunType(upgrade.getValue());
+		choseGun(upgrade.getValue());
 		break;
 	case 2:
 		changeHpCap(upgrade.getValue());
 		break;
 	case 3:
+		heal(upgrade.getValue());
+		break;
+	case 4:
 		invincibility = upgrade.getValue();
+		invincibilityTimer.restart();
 		break;
 	default:
 		break;
@@ -173,7 +195,7 @@ void PlayerShip::getUpgrade(PowerUp upgrade)
 
 bool PlayerShip::checkInvincible()
 {
-	if (invincibility.getElapsedTime().asMilliseconds() > 2000)
+	if (invincibilityTimer.getElapsedTime().asMilliseconds() < invincibility)
 	{
 		return true;
 	}
