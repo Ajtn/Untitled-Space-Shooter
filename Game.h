@@ -40,9 +40,6 @@ private:
 	//ship controller by player
 	PlayerShip player;
 
-	//array of all available player guns, harded coded values
-	gunType playerArsenal[8];
-
 	//Array of all combinations of enemy values for movement, weapons, hp, and spawns. Hard coded values
 	EnemyShip enemyTemplates[10];
 

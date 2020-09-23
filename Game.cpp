@@ -9,61 +9,61 @@ void Game::spawnEnemies()
 
 	if (currentEnemy < 1)
 	{
-		enemies[currentEnemy] = enemyTemplates[2];
+		enemies[currentEnemy] = enemyTemplates[4];
 		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
 	else if ((spawnTimer.getElapsedTime().asMilliseconds() > 2000) && currentEnemy < 2)
 	{
-		enemies[currentEnemy] = enemyTemplates[2];
+		enemies[currentEnemy] = enemyTemplates[4];
 		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
 	else if (spawnTimer.getElapsedTime().asMilliseconds() > 4000 && currentEnemy < 3)
 	{
-		enemies[currentEnemy] = EnemyShip(enemyTemplates[2]);
+		enemies[currentEnemy] = EnemyShip(enemyTemplates[4]);
 		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
 	else if (spawnTimer.getElapsedTime().asMilliseconds() > 6000 && currentEnemy < 4)
 	{
-		enemies[currentEnemy] = EnemyShip(enemyTemplates[2]);
+		enemies[currentEnemy] = EnemyShip(enemyTemplates[4]);
 		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
 	else if (spawnTimer.getElapsedTime().asMilliseconds() > 8000 && currentEnemy < 5)
 	{
-		enemies[currentEnemy] = EnemyShip(enemyTemplates[2]);
+		enemies[currentEnemy] = EnemyShip(enemyTemplates[4]);
 		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
 	else if (spawnTimer.getElapsedTime().asMilliseconds() > 12000 && currentEnemy < 6)
 	{
-		enemies[currentEnemy] = EnemyShip(enemyTemplates[2]);
+		enemies[currentEnemy] = EnemyShip(enemyTemplates[4]);
 		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
 	else if (spawnTimer.getElapsedTime().asMilliseconds() > 14000 && currentEnemy < 7)
 	{
-		enemies[currentEnemy] = EnemyShip(enemyTemplates[2]);
+		enemies[currentEnemy] = EnemyShip(enemyTemplates[4]);
 		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
 	else if (spawnTimer.getElapsedTime().asMilliseconds() > 16000 && currentEnemy < 8)
 	{
-		enemies[currentEnemy] = EnemyShip(enemyTemplates[2]);
+		enemies[currentEnemy] = EnemyShip(enemyTemplates[4]);
 		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
 	else if (spawnTimer.getElapsedTime().asMilliseconds() > 20000 && currentEnemy < 9)
 	{
-		enemies[currentEnemy] = EnemyShip(enemyTemplates[2]);
+		enemies[currentEnemy] = EnemyShip(enemyTemplates[4]);
 		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
 	else if (spawnTimer.getElapsedTime().asMilliseconds() > 22000 && currentEnemy < 10)
 	{
-		enemies[currentEnemy] = EnemyShip(enemyTemplates[2]);
+		enemies[currentEnemy] = EnemyShip(enemyTemplates[4]);
 		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
@@ -73,6 +73,11 @@ void Game::spawnEnemies()
 	{
 		spawnTimer.restart();
 		currentEnemy = 0;
+		for (int i = 0; i < 5; i++)
+		{
+			std::cout << "y height of template" << std::endl;
+			std::cout << enemyTemplates[i].getYPos() << std::endl;
+		}
 	}
 
 }
