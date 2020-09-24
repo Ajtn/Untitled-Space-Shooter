@@ -10,7 +10,7 @@
 
 int main()
 {
-	const float s = 0.1;
+	const float s = 0.2;
 	//multi dimensional array of movement patterns for AI, velocity to be changed incrementally to make non linear movement
 	//stores 8 arrays of 12 movements each
 	velocity pathing[8][12] =
@@ -62,7 +62,7 @@ int main()
 		//3)
 		{pathing[2], enemyArsenal[0], 2, 1920, 0, false, 40 },
 		//4)
-		{pathing[3], enemyArsenal[0], 2, 500, 0, false, 40},
+		{pathing[3], enemyArsenal[0], 10, 500, 0, false, 40},
 		//5
 		{pathing[4], enemyArsenal[1], 2, 500, 0, false, 30},
 		{pathing[4], enemyArsenal[1], 2, 500, 0, false, 30},

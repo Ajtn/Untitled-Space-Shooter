@@ -1,5 +1,4 @@
 #include "Ship.h"
-#include <iostream>
 
 //modifies the ship's hp and returns true if the ship survives
 //and false if the damage is lethal
@@ -20,12 +19,24 @@ bool Ship::takeDamage(int damage)
 
 bool Ship::collision(float otherObjectX, float otherObjectY, int otherObjRadius)
 {
-	if (abs(getXPos() - otherObjectX) < (getRadius() + otherObjRadius))
+	if ((abs(getXPos() + getRadius() - otherObjectX)) < (getRadius() + otherObjRadius))
 	{
-		if (abs(getYPos() - otherObjectY) < (getRadius() + otherObjRadius))
-			return true;
+		if ((abs(getYPos() + getRadius() - otherObjectY)) < (getRadius() + otherObjRadius))
+		{
+			int x = (int)(abs(getXPos() + getRadius() - otherObjectX)) - (getRadius() + otherObjRadius);
+			int y = (int)(abs(getYPos() + getRadius() - otherObjectY)) - (getRadius() + otherObjRadius);
+			if (sqrt(pow((getRadius() + otherObjRadius), 2)) > sqrt((pow(x, 2) + pow(y, 2))))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
 		else
 		{
+
 			return false;
 		}
 	}
