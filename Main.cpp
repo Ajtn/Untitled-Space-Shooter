@@ -62,7 +62,7 @@ int main()
 		//3)
 		{pathing[2], enemyArsenal[0], 2, 1920, 0, false, 40 },
 		//4)
-		{pathing[3], enemyArsenal[0], 10, 500, 0, false, 40},
+		{pathing[3], enemyArsenal[0], 20, 500, 0, false, 40},
 		//5
 		{pathing[4], enemyArsenal[1], 2, 500, 0, false, 30},
 		{pathing[4], enemyArsenal[1], 2, 500, 0, false, 30},
@@ -71,8 +71,10 @@ int main()
 		{pathing[4], enemyArsenal[1], 2, 500, 0, false, 30}
 	};
 	
-	Game game = Game(enemyTypes);
-	game.run();
+	Game* gamePtr = new Game(enemyTypes);
+	gamePtr->run();
+
+	delete(gamePtr);
 
 
 	return 0;
