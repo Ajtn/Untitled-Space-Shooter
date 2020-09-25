@@ -2,6 +2,11 @@
 
 EnemyShip::EnemyShip()
 {
+	for (int i = 0; i < 12; i++)
+	{
+		pathing[i] = {0, 0};
+		makeInvisible();
+	}
 }
 
 EnemyShip::EnemyShip(velocity initialPathing[12], gunType initialGunType, int initialHp, float initialXPos,

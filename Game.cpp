@@ -67,9 +67,7 @@ void Game::spawnEnemies()
 		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
-
-
-	if (spawnTimer.getElapsedTime().asMilliseconds() > 30000)
+	else if (spawnTimer.getElapsedTime().asMilliseconds() > 30000)
 	{
 		spawnTimer.restart();
 		currentEnemy = 0;
@@ -171,9 +169,12 @@ void Game::checkCollisions()
 		{
 			for (int j = 0; j < 20; j++)
 			{
-				if (enemies[i].hostileCollision(playerShots[j]))
+				if (playerShots[j].getVisible())
 				{
-					playerShots[j].makeInvisible();
+					if (enemies[i].hostileCollision(playerShots[j]))
+					{
+						playerShots[j].makeInvisible();
+					}
 				}
 			}
 		}
