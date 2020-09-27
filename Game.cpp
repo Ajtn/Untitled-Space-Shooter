@@ -4,8 +4,8 @@
 
 void Game::spawnEnemies()
 {
-
-
+	//Checks last modified member of enemy array and spawn timer to ensure the corrrect
+	//enemies are spawned at the right time
 
 	if (currentEnemy < 1)
 	{
@@ -67,21 +67,19 @@ void Game::spawnEnemies()
 		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
 	}
+	//resets timers and counters to start a new wave of enemies
 	else if (spawnTimer.getElapsedTime().asMilliseconds() > 30000)
 	{
 		spawnTimer.restart();
 		currentEnemy = 0;
-		for (int i = 0; i < 5; i++)
-		{
-			std::cout << "y height of template" << std::endl;
-			std::cout << enemyTemplates[i].getYPos() << std::endl;
-		}
+
 	}
 
 }
 
 void Game::enemiesShoot()
 {
+	//iterates through all visible enemies and calls the shoot function
 	Projectile temp;
 	//loop iterates 10 times because that is currently max length of array
 	//should define as constant to declare in both spaces with one value
@@ -129,6 +127,8 @@ void Game::playerInput()
 
 void Game::updateObjects(sf::RenderWindow& screen)
 {
+	//calls all velocity and position update functions for all visible objects
+
 	for (int i = 0; i < 10; i++)
 	{
 		if (enemies[i].getVisible())
@@ -199,11 +199,10 @@ void Game::checkCollisions()
 
 Game::Game(EnemyShip thisWorldsEnemies[10])
 {
+	//sets all default counter values at 0
 	currentEnemy = 0;
 	currentEnemyShot = 0;
 	currentShot = 0;
-
-	//screen.create(sf::VideoMode(1920, 1080, 32), "Untitled_SpaceShooter", sf::Style::Fullscreen);
 
 	//set enemy templates from parameter
 

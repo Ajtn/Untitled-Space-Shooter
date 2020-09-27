@@ -3,6 +3,7 @@
 
 void GameObject::updatePosition()
 {
+	//sets current position based on previous position + current velocity
 	xPos = xPos + objectVelocity.xVel;
 
 	yPos = yPos + objectVelocity.yVel;
@@ -32,7 +33,7 @@ GameObject::GameObject()
 
 
 
-//Used foor projectile constructor
+//Used for projectile constructor
 GameObject::GameObject(float initialX, float initialY, velocity initialVelocity, bool initialFriendly, int initialRadius)
 {
 	xPos = initialX;
@@ -120,6 +121,8 @@ void GameObject::makeInvisible()
 
 sf::CircleShape GameObject::updateObject()
 {
+	//returns the shape value to be drawn onto screen
+
 	updatePosition();
 	body.setPosition(xPos, yPos);
 	return body;
@@ -128,6 +131,7 @@ sf::CircleShape GameObject::updateObject()
 
 void GameObject::resizeObject()
 {
+
 	body.setRadius(radius);
 	body.setFillColor(sf::Color::Cyan);
 	visible = true;

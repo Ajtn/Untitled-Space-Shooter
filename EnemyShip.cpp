@@ -22,6 +22,8 @@ EnemyShip::EnemyShip(velocity initialPathing[12], gunType initialGunType, int in
 
 void EnemyShip::move()
 {
+	//sets the ships velocity to the pathing value appropriate to the current time in the pathing loop
+
 	const int timeInterval = 250;
 
 	if (moveTimer.getElapsedTime().asMilliseconds() < timeInterval)
