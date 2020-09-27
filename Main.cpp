@@ -10,7 +10,8 @@
 
 int main()
 {
-	const float s = 0.2;
+	//s is the coefficient for ship speed to easily 
+	const float s = 5;
 	//multi dimensional array of movement patterns for AI, velocity to be changed incrementally to make non linear movement
 	//stores 8 arrays of 12 movements each
 	velocity pathing[8][12] =
@@ -22,7 +23,7 @@ int main()
 		//2) moves left to right, comes in from right side of the screen (doesn't move vertically)
 		{{-s * 2, 0}, {-s * 2, 0}, {-s * 2, 0}, {s * 2, 0}, {s * 2, 0}, {s * 2, 0}, {-s * 2, 0}, {-s * 2, 0}, {-s * 2, 0}, {s * 2, 0}, {s * 2, 0}, {s * 2, 0}},
 		//3) shaped loop (recurrable)
-		{{s * 1, s * 0.1}, {s * 0.866, s * 0.6}, {s * 0.5, s * 0.866}, {s * 0, s * 1}, {-s * 0.5, s * 0.866}, {-s * 0.866, s * 0.5}, {-s * 1, 0}, {-s * 0.866, -s * 0.5}, {-s * 0.5, -s * 0.866}, {0, -s * 1}, {s * 0.5, -s * 0.866}, {s * 0.866, -s * 0.5}},
+		{{s * 1, s * 0.3}, {s * 0.866, s * 0.7}, {s * 0.5, s * 0.966}, {s * 0, s * 1}, {-s * 0.5, s * 0.866}, {-s * 0.866, s * 0.5}, {-s * 1, 0}, {-s * 0.866, -s * 0.5}, {-s * 0.5, -s * 0.866}, {0, -s * 1}, {s * 0.5, -s * 0.866}, {s * 0.866, -s * 0.5}},
 		//4) moves up and down the screen moving to the right after each direction change
 		{{0, s * 4}, {0, s * 4}, {s * 2, -s * 2}, {0, -s * 4}, {0, -s * 4}, {s * 2, s * 2}, {0, s * 4}, {0, s * 4}, {s * 2, -s * 2}, {0, -s * 4}, {0, -s * 4}, {s * 2, s * 2}},
 		//5)
@@ -33,19 +34,21 @@ int main()
 		{{0, s * 1 }, {0, s * 1 }, {0, s * 1 }, {0, s * 1 }, {0, s * 1}, {0, s * 1}, {0, s * 1}, {0, s * 1}, {0, s * 1}, {0, s * 1}, {0, s * 1}, {0, s * 1}},
 	};
 
+	//bs is the constant for bullet speed to easily modify all values
+	const float bs = 20;
 	//Array of all enemy guns (damage, fireDelay, (xVelocity, yVelocity), projectileRadius)
 	gunType enemyArsenal[6] =
 	{
 		//0) basic small, low damage, slow shot
-		{1, 500, {0, 0.38f}, 8},
+		{1, 500, {0, bs}, 8},
 		//1) slightly high frequency
-		{1, 350, {0, 0.38f }, 8 },
+		{1, 350, {0, bs }, 8 },
 		//2) double damage 
-		{2, 500, {0, 0.38f}, 8},
+		{2, 500, {0, bs}, 8},
 		//3) big bois
-		{1, 500, {0, 0.38f}, 16},
+		{1, 500, {0, bs}, 16},
 		//4) fast and frequent
-		{1, 300, {0, 0.38f}, 8},
+		{1, 300, {0, bs}, 8},
 		//5 nothing
 		{0, 10000, {0, 0}, 0}
 	};
@@ -62,7 +65,7 @@ int main()
 		//3)
 		{pathing[2], enemyArsenal[0], 2, 1920, 0, false, 40 },
 		//4)
-		{pathing[3], enemyArsenal[0], 6, 500, 0, false, 40},
+		{pathing[3], enemyArsenal[0], 3, 500, 0, false, 40},
 		//5
 		{pathing[4], enemyArsenal[1], 2, 500, 0, false, 30},
 		{pathing[4], enemyArsenal[1], 2, 500, 0, false, 30},

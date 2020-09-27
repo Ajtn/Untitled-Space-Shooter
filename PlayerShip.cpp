@@ -148,21 +148,22 @@ void PlayerShip::choseGun(int chosenGun)
 PlayerShip::PlayerShip()
 	:Ship(5, 1920 / 2, 1050, true, 50)
 {
+	const float bs = 12;
 	//Array of all player guns (damage, fireDelay, (xVelocity, yVelocity), projectileRadius)
 	//0)Basic starting gun
-	arsenal[0] = { 1, 185, {0, -0.65}, 8 };
+	arsenal[0] = { 1, 185, {bs * 0, -bs}, 8 };
 	//1) low frequency, large, high damage
-	arsenal[1] = { 3, 300, {0, -0.65}, 25 };
+	arsenal[1] = { 3, 300, {bs * 0,-bs}, 25 };
 	//2) mini gun
-	arsenal[2] = { 1, 85, {0, -0.65}, 5 };
+	arsenal[2] = { 1, 85, {bs * 0, -bs}, 5 };
 	//3) higher damage standard gun
-	arsenal[3] = { 2, 185, {0, -0.65}, 8 };
+	arsenal[3] = { 2, 185, {bs * 0, -bs}, 8 };
 	//4) super high dps
-	arsenal[4] = { 5, 100, {0, -0.65}, 8 };
+	arsenal[4] = { 5, 100, {bs * 0, -bs}, 8 };
 
 	choseGun(0);
 
-	speed = 0.375f;
+	speed = 10;
 	invincibility = 0;
 
 }

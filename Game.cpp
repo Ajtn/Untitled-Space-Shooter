@@ -220,10 +220,9 @@ Game::Game(EnemyShip thisWorldsEnemies[10])
 void Game::run()
 {
 	sf::RenderWindow screen(sf::VideoMode(1920, 1080), "Untitled_SpaceShooter");
-	//screen.create(sf::VideoMode(1920, 1080), "Untitled_SpaceShooter");
-	//sf::RenderWindow screen(sf::VideoMode(1920, 1080), "Untitled_SpaceShooter");
+
 	//Current frame rate ~ 1000 and timers based on this, times need to be modified to fit 60fps before this can be added
-	//screen.setFramerateLimit(60);
+	screen.setFramerateLimit(60);
 
 	spawnTimer.restart();
 	while (screen.isOpen())
