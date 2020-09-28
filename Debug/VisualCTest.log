@@ -1,4 +1,2 @@
-﻿  Main.cpp
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(30,145): warning C4305: 'initializing': truncation from 'double' to 'float'
-EnemyShip.obj : error LNK2019: unresolved external symbol "public: __thiscall Pathing::Pathing(void)" (??0Pathing@@QAE@XZ) referenced in function "public: __thiscall EnemyShip::EnemyShip(class Pathing,struct gunType,int,float,float,bool,int)" (??0EnemyShip@@QAE@VPathing@@UgunType@@HMM_NH@Z)
-D:\Projects\CProjects\VisualTest\VisualCTest\Debug\VisualCTest.exe : fatal error LNK1120: 1 unresolved externals
+﻿  Game.cpp
+  VisualCTest.vcxproj -> D:\Projects\CProjects\VisualTest\VisualCTest\Debug\VisualCTest.exe

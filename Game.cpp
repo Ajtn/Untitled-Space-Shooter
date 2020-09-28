@@ -24,6 +24,13 @@ void Game::spawnEnemies()
 		enemies[currentEnemy] = EnemyShip(enemyTemplates[3]);
 		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
+		for (int i = 0; i < 3; i++)
+		{
+			if (enemies[i].getVisible())
+			{
+				std::cout << "ship y = " << enemies[i].getYPos() << std::endl;
+			}
+		}
 	}
 	else if (spawnTimer.getElapsedTime().asMilliseconds() > 6000 && currentEnemy < 4)
 	{
