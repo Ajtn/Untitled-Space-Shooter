@@ -1,10 +1,4 @@
-﻿  PlayerShip.cpp
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(23,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(24,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(28,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(29,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(33,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(34,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(38,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\PlayerShip.cpp(39,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  VisualCTest.vcxproj -> D:\Projects\CProjects\VisualTest\VisualCTest\Debug\VisualCTest.exe
+﻿  Main.cpp
+D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(30,145): warning C4305: 'initializing': truncation from 'double' to 'float'
+EnemyShip.obj : error LNK2019: unresolved external symbol "public: __thiscall Pathing::Pathing(void)" (??0Pathing@@QAE@XZ) referenced in function "public: __thiscall EnemyShip::EnemyShip(class Pathing,struct gunType,int,float,float,bool,int)" (??0EnemyShip@@QAE@VPathing@@UgunType@@HMM_NH@Z)
+D:\Projects\CProjects\VisualTest\VisualCTest\Debug\VisualCTest.exe : fatal error LNK1120: 1 unresolved externals
