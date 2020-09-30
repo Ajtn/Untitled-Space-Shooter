@@ -161,6 +161,8 @@ PlayerShip::PlayerShip()
 	//4) super high dps
 	arsenal[4] = { 5, 100, {bs * 0, -bs}, 8 };
 
+	lives = 3;
+
 	choseGun(0);
 
 	speed = 10;
@@ -185,6 +187,9 @@ void PlayerShip::getUpgrade(PowerUp upgrade)
 	case 4:
 		invincibility = upgrade.getValue();
 		invincibilityTimer.restart();
+		break;
+	case 5:
+		lives++;
 		break;
 	default:
 		break;
@@ -216,4 +221,19 @@ Projectile PlayerShip::checkInput()
 		return Projectile();
 	}
 
+}
+
+//called when the player takes lethal damage, returns true if another life is available
+//otherwise it returns false signalling a game over
+bool PlayerShip::die()
+{
+	lives--;
+	if (lives < 1)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
 }

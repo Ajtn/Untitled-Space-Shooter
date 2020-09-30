@@ -24,6 +24,8 @@ private:
 
     void choseGun(int chosenGun);
 
+    int lives;
+
 
 public:
 
@@ -35,5 +37,7 @@ public:
     bool checkInvincible();
 
     Projectile checkInput();
+
+    bool die();
 };
 

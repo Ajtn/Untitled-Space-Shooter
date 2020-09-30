@@ -19,6 +19,24 @@ void GameObject::updatePosition()
 	}
 }
 
+//loads this object's spritesheet using the address passed as a string
+void GameObject::setSpriteSheet(std::string address)
+{
+	if (!spriteSheet.loadFromFile(address))
+	{
+		system("pause");
+	}
+}
+
+
+//takes 4 int values as input to choose intended sprite from this object's spriteSheet
+void GameObject::setSprite(int spriteSelect[4])
+{
+
+	body.setTexture(spriteSheet);
+	body.setTextureRect(sf::IntRect(spriteSelect[0], spriteSelect[1], spriteSelect[2], spriteSelect[3]));
+}
+
 
 GameObject::GameObject()
 {
@@ -34,7 +52,8 @@ GameObject::GameObject()
 
 
 //Used for projectile constructor
-GameObject::GameObject(float initialX, float initialY, velocity initialVelocity, bool initialFriendly, int initialRadius)
+GameObject::GameObject(float initialX, float initialY, velocity initialVelocity, bool initialFriendly, int initialRadius,
+	std::string spriteAddress, int initialSpriteSelect[4])
 {
 	xPos = initialX;
 	yPos = initialY;
@@ -53,13 +72,17 @@ GameObject::GameObject(float initialX, float initialY, velocity initialVelocity,
 
 	//body.setFillColor(sf::Color::Red);
 
+	setSpriteSheet(spriteAddress);
+
+	setSprite(initialSpriteSelect);
+
 	body.setPosition(xPos, yPos);
 
 }
 
 
 
-GameObject::GameObject(float initialX, float initialY, bool initialFriendly, int initialRadius)
+GameObject::GameObject(float initialX, float initialY, bool initialFriendly, int initialRadius, std::string spriteAddress, int initialSpriteSelect[4])
 {
 	xPos = initialX;
 	yPos = initialY;
@@ -78,6 +101,9 @@ GameObject::GameObject(float initialX, float initialY, bool initialFriendly, int
 	//body = tempShape;
 
 	//body.setFillColor(sf::Color::Cyan);
+	setSpriteSheet(spriteAddress);
+
+	setSprite(initialSpriteSelect);
 
 	body.setPosition(xPos, yPos);
 
@@ -137,17 +163,4 @@ void GameObject::resizeObject()
 	visible = true;
 }
 
-void GameObject::setSpriteSheet(std::string address)
-{
-	if (!spriteSheet.loadFromFile(address))
-	{
-		system("pause");
-	}
-}
 
-void GameObject::setSprite(int spriteSelect[4])
-{
-
-	body.setTexture(spriteSheet);
-	body.getTextureRect(sf::IntRect(spriteSelect[0], spriteSelect[1], spriteSelect[2], spriteSelect[3]));
-}

@@ -26,6 +26,11 @@ private:
 
 	void updatePosition();
 
+	void setSpriteSheet(std::string address);
+
+protected:
+	void setSprite(int spriteSelect[4]);
+
 public:
 
 
@@ -33,9 +38,10 @@ public:
 	GameObject();
 
 	//Used for projectile constructor
-	GameObject(float initialX, float initialY, velocity initialVelocity, bool initialFriendly, int initialRadius);
+	GameObject(float initialX, float initialY, velocity initialVelocity, bool initialFriendly, int initialRadius,
+		std::string spriteAddress, int initialSpriteSelect[4]);
 
-	GameObject(float initialX, float initialY, bool initialFriendly, int initialRadius);
+	GameObject(float initialX, float initialY, bool initialFriendly, int initialRadius, std::string spriteAddress, int initialSpriteSelect[4]);
 
 	float getYPos() const;
 
@@ -55,9 +61,6 @@ public:
 
 	void resizeObject();
 
-	void setSpriteSheet();
-
-	void setSprite(int spriteSelect[4]);
 
 
 
