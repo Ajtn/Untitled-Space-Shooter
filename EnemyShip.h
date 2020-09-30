@@ -1,6 +1,7 @@
 #pragma once
 #include "Ship.h"
 #include "Pathing.h"
+#include <iostream>
 
 class EnemyShip :
     public Ship

@@ -4,6 +4,7 @@
 #include "Projectile.h"
 #include "PowerUp.h"
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 class Game
 {

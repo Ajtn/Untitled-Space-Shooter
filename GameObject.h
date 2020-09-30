@@ -1,6 +1,7 @@
 #pragma once
 #include "Structs.h"
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 class GameObject
 {

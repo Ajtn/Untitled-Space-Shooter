@@ -1,12 +1,10 @@
 #include "Game.h"
-#include <iostream>
 
 
 void Game::spawnEnemies()
 {
 	//Checks last modified member of enemy array and spawn timer to ensure the corrrect
 	//enemies are spawned at the right time
-
 	if (currentEnemy < 1)
 	{
 		enemies[currentEnemy] = enemyTemplates[1];
@@ -24,13 +22,6 @@ void Game::spawnEnemies()
 		enemies[currentEnemy] = EnemyShip(enemyTemplates[3]);
 		enemies[currentEnemy].resetMoveClock();
 		currentEnemy++;
-		for (int i = 0; i < 3; i++)
-		{
-			if (enemies[i].getVisible())
-			{
-				std::cout << "ship y = " << enemies[i].getYPos() << std::endl;
-			}
-		}
 	}
 	else if (spawnTimer.getElapsedTime().asMilliseconds() > 6000 && currentEnemy < 4)
 	{
@@ -140,7 +131,6 @@ void Game::updateObjects(sf::RenderWindow& screen)
 	{
 		if (enemies[i].getVisible())
 		{
-			
 			enemies[i].move();
 			screen.draw(enemies[i].updateObject());
 		}

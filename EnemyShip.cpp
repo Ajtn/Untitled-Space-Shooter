@@ -10,13 +10,13 @@ EnemyShip::EnemyShip(Pathing initialPathing, gunType initialGunType, int initial
 	:Ship(initialGunType, initialHp, initialXPos, initialYPos, initialFriendly, initialRadius)
 {
 	pathing = initialPathing;
+	setVel({0, 0});
 }
 
 
 void EnemyShip::move()
 {
 	//Checks if 250 milliseconds have passedd and then sets velocity according to pathing object and restarts moveTimer
-
 	if (moveTimer.getElapsedTime().asMilliseconds() > 250)
 	{
 		moveTimer.restart();

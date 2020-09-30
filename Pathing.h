@@ -1,5 +1,6 @@
 #pragma once
 #include "Structs.h"
+#include <iostream>
 
 class Pathing
 {

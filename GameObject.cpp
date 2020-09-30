@@ -5,7 +5,6 @@ void GameObject::updatePosition()
 {
 	//sets current position based on previous position + current velocity
 	xPos = xPos + objectVelocity.xVel;
-
 	yPos = yPos + objectVelocity.yVel;
 
 	if (xPos > 1920 + 2 * getRadius()|| xPos < 0 - 2 * getRadius())
@@ -16,6 +15,7 @@ void GameObject::updatePosition()
 	if (yPos > 1080 + 2 * getRadius() || yPos < 0 - 2 * getRadius())
 	{
 		makeInvisible();
+		//std::cout << "out of bounds y" << std::endl;
 	}
 }
 

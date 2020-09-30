@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "Projectile.h"
+#include <iostream>
 
 class Ship :
     public GameObject

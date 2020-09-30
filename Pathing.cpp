@@ -42,8 +42,6 @@ Pathing::Pathing()
 
 velocity Pathing::getVelocity()
 {
-
-
 	if (useEntry)
 	{
 		counter++;

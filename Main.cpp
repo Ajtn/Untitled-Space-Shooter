@@ -73,7 +73,7 @@ int main()
 		//1)
 		{Pathing(pathing4), enemyArsenal[2], 2, 1000, 0, false, 40},
 		//2)
-		{Pathing(pathing5), enemyArsenal[0], 2, 500, 0, false, 40},
+		{Pathing(pathing5), enemyArsenal[0], 2, 500, 0, false, 50},
 		//3)
 		{Pathing(pathing2), enemyArsenal[0], 2, 1920, 0, false, 40 },
 		//4)
