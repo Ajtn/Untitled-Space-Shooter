@@ -46,7 +46,7 @@ private:
 
 
 	//image for the background of current level
-	//sf::Texture background;
+	sf::Sprite background;
 
 	void spawnEnemies();
 	void enemiesShoot();
@@ -60,7 +60,7 @@ public:
 
 	//constructor for game with multiple worlds, may want to add enemyArsenal, and pathing so they can be different between worlds
 	//texture will also need to be addded
-	Game(EnemyShip thisWorldsEnemies[10]);
+	Game(EnemyShip thisWorldsEnemies[10], sf::Sprite initBackground);
 
 	void run();
 };

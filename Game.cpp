@@ -1,10 +1,10 @@
 #include "Game.h"
 
 
+//Checks last modified member of enemy array and spawn timer to ensure the corrrect
+//enemies are spawned at the right time
 void Game::spawnEnemies()
 {
-	//Checks last modified member of enemy array and spawn timer to ensure the corrrect
-	//enemies are spawned at the right time
 	if (currentEnemy < 1)
 	{
 		enemies[currentEnemy] = enemyTemplates[1];
@@ -75,9 +75,9 @@ void Game::spawnEnemies()
 
 }
 
+//iterates through all visible enemies and calls the shoot function
 void Game::enemiesShoot()
 {
-	//iterates through all visible enemies and calls the shoot function
 	Projectile temp;
 	//loop iterates 10 times because that is currently max length of array
 	//should define as constant to declare in both spaces with one value
@@ -123,10 +123,10 @@ void Game::playerInput()
 	}
 }
 
+//calls all velocity and position update functions for all visible objects
 void Game::updateObjects(sf::RenderWindow& screen)
 {
-	//calls all velocity and position update functions for all visible objects
-
+	//updates position of all visible enemy objects then prints them to screen
 	for (int i = 0; i < 10; i++)
 	{
 		if (enemies[i].getVisible())
@@ -136,6 +136,7 @@ void Game::updateObjects(sf::RenderWindow& screen)
 		}
 	}
 
+	//updates position of all visible enemy projectile objects then prints them to screen
 	for (int i = 0; i < 50; i++)
 	{
 		if (enemyShots[i].getVisible())
@@ -144,6 +145,7 @@ void Game::updateObjects(sf::RenderWindow& screen)
 		}
 	}
 
+	//updates position of all player projectile objects then prints them to screen
 	for (int i = 0; i < 20; i++)
 	{
 		if (playerShots[i].getVisible())
@@ -153,7 +155,10 @@ void Game::updateObjects(sf::RenderWindow& screen)
 	}
 
 
-	screen.draw(player.updateObject());
+	if (player.getVisible())
+	{
+		screen.draw(player.updateObject());
+	}
 }
 
 void Game::checkCollisions()
@@ -194,12 +199,14 @@ void Game::checkCollisions()
 
 
 
-Game::Game(EnemyShip thisWorldsEnemies[10])
+Game::Game(EnemyShip thisWorldsEnemies[10], sf::Sprite initBackground)
 {
 	//sets all default counter values at 0
 	currentEnemy = 0;
 	currentEnemyShot = 0;
 	currentShot = 0;
+
+	background = initBackground;
 
 	//set enemy templates from parameter
 
@@ -233,6 +240,7 @@ void Game::run()
 			}
 		}
 		screen.clear();
+		screen.draw(background);
 		enemiesShoot();
 		spawnEnemies();
 		playerInput();

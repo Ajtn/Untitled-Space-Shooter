@@ -16,7 +16,11 @@ private:
 	int radius;
 
 	//initial build will draw everything as circles
-	sf::CircleShape body;
+	//sf::CircleShape body;
+
+	sf::Sprite body;
+
+	sf::Texture spriteSheet;
 
 
 
@@ -47,9 +51,13 @@ public:
 
 	void makeInvisible();
 
-	sf::CircleShape updateObject();
+	sf::Sprite updateObject();
 
 	void resizeObject();
+
+	void setSpriteSheet();
+
+	void setSprite(int spriteSelect[4]);
 
 
 

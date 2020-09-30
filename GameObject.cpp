@@ -47,11 +47,11 @@ GameObject::GameObject(float initialX, float initialY, velocity initialVelocity,
 
 	radius = initialRadius;
 
-	sf::CircleShape tempShape(radius);
+	//sf::CircleShape tempShape(radius);
 
-	body = tempShape;
+	//body = tempShape;
 
-	body.setFillColor(sf::Color::Red);
+	//body.setFillColor(sf::Color::Red);
 
 	body.setPosition(xPos, yPos);
 
@@ -73,11 +73,11 @@ GameObject::GameObject(float initialX, float initialY, bool initialFriendly, int
 
 	radius = initialRadius;
 
-	sf::CircleShape tempShape(radius);
+	//sf::CircleShape tempShape(radius);
 
-	body = tempShape;
+	//body = tempShape;
 
-	body.setFillColor(sf::Color::Cyan);
+	//body.setFillColor(sf::Color::Cyan);
 
 	body.setPosition(xPos, yPos);
 
@@ -119,7 +119,7 @@ void GameObject::makeInvisible()
 	visible = false;
 }
 
-sf::CircleShape GameObject::updateObject()
+sf::Sprite GameObject::updateObject()
 {
 	//returns the shape value to be drawn onto screen
 
@@ -132,7 +132,22 @@ sf::CircleShape GameObject::updateObject()
 void GameObject::resizeObject()
 {
 
-	body.setRadius(radius);
-	body.setFillColor(sf::Color::Cyan);
+	//body.setRadius(radius);
+	//body.setFillColor(sf::Color::Cyan);
 	visible = true;
+}
+
+void GameObject::setSpriteSheet(std::string address)
+{
+	if (!spriteSheet.loadFromFile(address))
+	{
+		system("pause");
+	}
+}
+
+void GameObject::setSprite(int spriteSelect[4])
+{
+
+	body.setTexture(spriteSheet);
+	body.getTextureRect(sf::IntRect(spriteSelect[0], spriteSelect[1], spriteSelect[2], spriteSelect[3]));
 }

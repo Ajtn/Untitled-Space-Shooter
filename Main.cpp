@@ -86,7 +86,19 @@ int main()
 		{Pathing(pathing1), enemyArsenal[1], 2, 500, 0, false, 30}
 	};
 	
-	Game* gamePtr = new Game(enemyTypes);
+	sf::Texture tempTexture;
+	if (!tempTexture.loadFromFile("Res/scrollBackgroundOne.jpg"))
+	{
+		std::cout << "could not load image" << std::endl;
+		system("pause");
+	}
+	tempTexture.setRepeated(true);
+	sf::Sprite world1Background;
+	world1Background.setTexture(tempTexture);
+	world1Background.setScale(2, 1);
+	world1Background.setTextureRect(sf::IntRect(0, 0, 1920, 1080));
+
+	Game* gamePtr = new Game(enemyTypes, world1Background);
 	gamePtr->run();
 
 	delete(gamePtr);

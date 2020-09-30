@@ -8,7 +8,12 @@ class EnemyShip :
 {
 private:
     Pathing pathing;
+
+    //Move timer used to check how long since trajectory was last modified
     sf::Clock moveTimer;
+
+    //defines how much damage object does when colliding with player
+    int collisionDamage;
 
 
 public:

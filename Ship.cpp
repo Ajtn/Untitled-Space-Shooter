@@ -78,6 +78,7 @@ Ship::Ship()
 
 }
 
+//constructor called by playerShip constructor
 Ship::Ship(int initialHp, float initialXPos, float initialYPos, bool initialFriendly, int initialRadius)
 	:GameObject(initialXPos, initialYPos, initialFriendly, initialRadius)
 {
@@ -91,6 +92,7 @@ Ship::Ship(int initialHp, float initialXPos, float initialYPos, bool initialFrie
 	hp = hpCap;
 }
 
+//constructor called by enemyShip constructor
 Ship::Ship(gunType initialGunType, int initialHp, float initialXPos,
 	float initialYPos, bool initialFriendly, int initialRadius)
 	:GameObject(initialXPos, initialYPos, initialFriendly, initialRadius)
