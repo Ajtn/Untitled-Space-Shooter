@@ -146,7 +146,7 @@ void PlayerShip::choseGun(int chosenGun)
 }
 
 PlayerShip::PlayerShip()
-	:Ship(5, 1920 / 2, 1050, true, 50)
+	:Ship(5, 1920 / 2, 1050, true, 50, "Res/spritesheets/ship.png", {31, 0, 18, 24})
 {
 	const float bs = 12;
 	//Array of all player guns (damage, fireDelay, (xVelocity, yVelocity), projectileRadius)

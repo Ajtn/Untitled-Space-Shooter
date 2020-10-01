@@ -42,10 +42,10 @@ public:
     */
 
     Ship(int initialHp, float initialXPos, float initialYPos,
-        bool initialFriendly, int initialRadius);
+        bool initialFriendly, int initialRadius, std::string spriteAddress, int selectedSprite[4]);
 
     Ship(gunType equipGunType, int initialHp, float initialXPos,
-        float initialYPos, bool initialFriendly, int initialRadius);
+        float initialYPos, bool initialFriendly, int initialRadius, std::string spriteAddress);
 
     int getHp() const;
 

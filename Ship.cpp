@@ -79,7 +79,8 @@ Ship::Ship()
 }
 
 //constructor called by playerShip constructor
-Ship::Ship(int initialHp, float initialXPos, float initialYPos, bool initialFriendly, int initialRadius)
+Ship::Ship(int initialHp, float initialXPos, float initialYPos, bool initialFriendly, int initialRadius,
+	std::string spriteAddress, int selectedSprite[4])
 	:GameObject(initialXPos, initialYPos, initialFriendly, initialRadius)
 {
 	equipGunType.damage = 0;
@@ -94,8 +95,8 @@ Ship::Ship(int initialHp, float initialXPos, float initialYPos, bool initialFrie
 
 //constructor called by enemyShip constructor
 Ship::Ship(gunType initialGunType, int initialHp, float initialXPos,
-	float initialYPos, bool initialFriendly, int initialRadius)
-	:GameObject(initialXPos, initialYPos, initialFriendly, initialRadius)
+	float initialYPos, bool initialFriendly, int initialRadius, std::string spriteAddress)
+	:GameObject(initialXPos, initialYPos, initialFriendly, initialRadius, spriteAddress)
 {
 	equipGunType = initialGunType;
 	hpCap = initialHp;

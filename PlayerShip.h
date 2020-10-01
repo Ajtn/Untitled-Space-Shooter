@@ -26,6 +26,11 @@ private:
 
     int lives;
 
+    sf::Texture hpTexture;
+
+    sf::Sprite hpBar;
+
+
 
 public:
 
@@ -37,6 +42,8 @@ public:
     bool checkInvincible();
 
     Projectile checkInput();
+
+    sf::Sprite getHp();
 
     bool die();
 };

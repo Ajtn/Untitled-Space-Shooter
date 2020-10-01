@@ -82,7 +82,8 @@ GameObject::GameObject(float initialX, float initialY, velocity initialVelocity,
 
 
 
-GameObject::GameObject(float initialX, float initialY, bool initialFriendly, int initialRadius, std::string spriteAddress, int initialSpriteSelect[4])
+GameObject::GameObject(float initialX, float initialY, bool initialFriendly, int initialRadius,
+	std::string spriteAddress, int initialSpriteSelect[4])
 {
 	xPos = initialX;
 	yPos = initialY;
