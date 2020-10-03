@@ -19,8 +19,8 @@ private:
 public:
     EnemyShip();
 
-    EnemyShip(Pathing initialPathing, gunType initialGunType, int initialHp, float initialXPos,
-        float initialYPos, bool initialFriendly, int initialRadius);
+    EnemyShip(Pathing initialPathing, gunType initialGunType, int initialHp, float initialXPos, float initialYPos,
+        bool initialFriendly, int initialRadius, std::string spriteAddress, sf::Rect<int> initialSelectedSprite);
 
     void move();
 

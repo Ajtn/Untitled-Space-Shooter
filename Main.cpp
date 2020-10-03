@@ -69,25 +69,25 @@ int main()
 	EnemyShip enemyTypes[10] =
 	{
 		//0)
-		{Pathing(pathing1), enemyArsenal[0], 2, 1000, 0, false, 40},
+		{Pathing(pathing1), enemyArsenal[0], 2, 1000, 0, false, 40, "Res/spritesheets/shipsall.gif", sf::Rect<int>(92, 31, 37, 30)},
 		//1)
-		{Pathing(pathing4), enemyArsenal[2], 2, 1000, 0, false, 40},
+		{Pathing(pathing4), enemyArsenal[2], 2, 1000, 0, false, 40, "Res/spritesheets/shipsall.gif", sf::Rect<int>(92, 31, 37, 30)},
 		//2)
-		{Pathing(pathing5), enemyArsenal[0], 2, 500, 0, false, 50},
+		{Pathing(pathing5), enemyArsenal[0], 2, 500, 0, false, 50, "Res/spritesheets/shipsall.gif", sf::Rect<int>(92, 31, 37, 30)},
 		//3)
-		{Pathing(pathing2), enemyArsenal[0], 2, 1920, 0, false, 40 },
+		{Pathing(pathing2), enemyArsenal[0], 2, 1920, 0, false, 40, "Res/spritesheets/shipsall.gif", sf::Rect<int>(92, 31, 37, 30)},
 		//4)
-		{Pathing(pathing1), enemyArsenal[0], 3, 500, 0, false, 40},
+		{Pathing(pathing1), enemyArsenal[0], 3, 500, 0, false, 40, "Res/spritesheets/shipsall.gif", sf::Rect<int>(92, 31, 37, 30)},
 		//5
-		{Pathing(pathing3), enemyArsenal[1], 2, 500, 0, false, 30},
-		{Pathing(pathing1), enemyArsenal[1], 2, 500, 0, false, 30},
-		{Pathing(pathing1), enemyArsenal[1], 2, 500, 0, false, 30},
-		{Pathing(pathing1), enemyArsenal[1], 2, 500, 0, false, 30},
-		{Pathing(pathing1), enemyArsenal[1], 2, 500, 0, false, 30}
+		{Pathing(pathing3), enemyArsenal[1], 2, 500, 0, false, 30, "Res/spritesheets/shipsall.gif", sf::Rect<int>(92, 31, 37, 30)},
+		{Pathing(pathing1), enemyArsenal[1], 2, 500, 0, false, 30, "Res/spritesheets/shipsall.gif", sf::Rect<int>(92, 31, 37, 30)},
+		{Pathing(pathing1), enemyArsenal[1], 2, 500, 0, false, 30, "Res/spritesheets/shipsall.gif", sf::Rect<int>(92, 31, 37, 30)},
+		{Pathing(pathing1), enemyArsenal[1], 2, 500, 0, false, 30, "Res/spritesheets/shipsall.gif", sf::Rect<int>(92, 31, 37, 30)},
+		{Pathing(pathing1), enemyArsenal[1], 2, 500, 0, false, 30, "Res/spritesheets/shipsall.gif", sf::Rect<int>(92, 31, 37, 30)}
 	};
 	
 	sf::Texture tempTexture;
-	if (!tempTexture.loadFromFile("Res/scrollBackgroundOne.jpg"))
+	if (!tempTexture.loadFromFile("Res/backgrounds/scrollBackgroundOne.jpg"))
 	{
 		std::cout << "could not load image" << std::endl;
 		system("pause");

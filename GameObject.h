@@ -29,7 +29,7 @@ private:
 	void setSpriteSheet(std::string address);
 
 protected:
-	void setSprite(int spriteSelect[4]);
+	void setSprite(sf::Rect<int> selectedSprite);
 
 public:
 
@@ -39,9 +39,9 @@ public:
 
 	//Used for projectile constructor
 	GameObject(float initialX, float initialY, velocity initialVelocity, bool initialFriendly, int initialRadius,
-		std::string spriteAddress, int initialSpriteSelect[4]);
+		std::string spriteAddress, sf::Rect<int> initialSelectedSprite);
 
-	GameObject(float initialX, float initialY, bool initialFriendly, int initialRadius, std::string spriteAddress, int initialSpriteSelect[4]);
+	GameObject(float initialX, float initialY, bool initialFriendly, int initialRadius, std::string spriteAddress, sf::Rect<int> initialSelectedSprite);
 
 	float getYPos() const;
 

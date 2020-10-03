@@ -215,8 +215,6 @@ Game::Game(EnemyShip thisWorldsEnemies[10], sf::Sprite initBackground)
 		enemyTemplates[i] = thisWorldsEnemies[i];
 	}
 
-
-
 	player = PlayerShip();
 }
 

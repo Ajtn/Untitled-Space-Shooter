@@ -30,11 +30,12 @@ void GameObject::setSpriteSheet(std::string address)
 
 
 //takes 4 int values as input to choose intended sprite from this object's spriteSheet
-void GameObject::setSprite(int spriteSelect[4])
+//L is the number of pixels away from the left edge of the spriteSheet, T is from the top, W and H are width and height
+void GameObject::setSprite(sf::Rect<int> selectedSprite)
 {
 
 	body.setTexture(spriteSheet);
-	body.setTextureRect(sf::IntRect(spriteSelect[0], spriteSelect[1], spriteSelect[2], spriteSelect[3]));
+	body.setTextureRect(selectedSprite);
 }
 
 
@@ -53,7 +54,7 @@ GameObject::GameObject()
 
 //Used for projectile constructor
 GameObject::GameObject(float initialX, float initialY, velocity initialVelocity, bool initialFriendly, int initialRadius,
-	std::string spriteAddress, int initialSpriteSelect[4])
+	std::string spriteAddress, sf::Rect<int> initialSelectedSprite)
 {
 	xPos = initialX;
 	yPos = initialY;
@@ -74,16 +75,16 @@ GameObject::GameObject(float initialX, float initialY, velocity initialVelocity,
 
 	setSpriteSheet(spriteAddress);
 
-	setSprite(initialSpriteSelect);
+	setSprite(initialSelectedSprite);
 
 	body.setPosition(xPos, yPos);
 
 }
 
 
-
+//This is called from the Ship constructor
 GameObject::GameObject(float initialX, float initialY, bool initialFriendly, int initialRadius,
-	std::string spriteAddress, int initialSpriteSelect[4])
+	std::string spriteAddress, sf::Rect<int> initialSelectedSprite)
 {
 	xPos = initialX;
 	yPos = initialY;
@@ -104,7 +105,7 @@ GameObject::GameObject(float initialX, float initialY, bool initialFriendly, int
 	//body.setFillColor(sf::Color::Cyan);
 	setSpriteSheet(spriteAddress);
 
-	setSprite(initialSpriteSelect);
+	setSprite(initialSelectedSprite);
 
 	body.setPosition(xPos, yPos);
 

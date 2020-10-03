@@ -5,9 +5,9 @@ EnemyShip::EnemyShip()
 	makeInvisible();
 }
 
-EnemyShip::EnemyShip(Pathing initialPathing, gunType initialGunType, int initialHp, float initialXPos,
-	float initialYPos, bool initialFriendly, int initialRadius)
-	:Ship(initialGunType, initialHp, initialXPos, initialYPos, initialFriendly, initialRadius)
+EnemyShip::EnemyShip(Pathing initialPathing, gunType initialGunType, int initialHp, float initialXPos, float initialYPos,
+	bool initialFriendly, int initialRadius, std::string spriteAddress, sf::Rect<int> initialSelectedSprite)
+	:Ship(initialGunType, initialHp, initialXPos, initialYPos, initialFriendly, initialRadius, spriteAddress, initialSelectedSprite)
 {
 	pathing = initialPathing;
 	setVel({0, 0});
