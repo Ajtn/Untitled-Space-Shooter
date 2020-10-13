@@ -1,3 +1,2 @@
-﻿  Main.cpp
-D:\Projects\CProjects\VisualTest\VisualCTest\VisualCTest\Main.cpp(30,145): warning C4305: 'initializing': truncation from 'double' to 'float'
+﻿  Game.cpp
   VisualCTest.vcxproj -> D:\Projects\CProjects\VisualTest\VisualCTest\Debug\VisualCTest.exe

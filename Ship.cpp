@@ -4,16 +4,20 @@
 //and false if the damage is lethal
 bool Ship::takeDamage(int damage)
 {
-	hp = hp - damage;
+	if (!checkInvincible)
+	{
+		hp = hp - damage;
 
-	if (hp < 1)
-	{
-		return false;
+		if (hp < 1)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
-	else
-	{
-		return true;
-	}
+	return true;
 
 }
 
@@ -63,6 +67,12 @@ void Ship::changeHpCap(int value)
 {
 	hpCap = hpCap + value;
 	heal(value);
+}
+
+void Ship::setInvincible(int duration)
+{
+	invincibility = duration;
+	invincibilityTimer.restart();
 }
 
 
@@ -170,3 +180,15 @@ bool Ship::hostileCollision(Projectile enemyShot)
 	return false;
 }
 
+
+bool Ship::checkInvincible()
+{
+	if (invincibilityTimer.getElapsedTime().asMilliseconds() < invincibility)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}

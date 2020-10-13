@@ -14,10 +14,6 @@ private:
 
     gunType arsenal[8];
 
-    int invincibility;
-
-    sf::Clock invincibilityTimer;
-
     void move(int direction);
 
     void directionalInput();

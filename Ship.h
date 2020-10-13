@@ -23,6 +23,10 @@ private:
 
     bool takeDamage(int damage);
 
+    int invincibility;
+
+    sf::Clock invincibilityTimer;
+
 
 protected:
     bool collision(float otherObjectX, float otherObjectY, int otherObjRadius);
@@ -30,6 +34,8 @@ protected:
     void heal(int healVal);
 
     void changeHpCap(int value);
+
+    void setInvincible(int duration);
 
 public:
 
@@ -60,6 +66,8 @@ public:
     int getTime() const;
 
     bool hostileCollision(Projectile enemyShot);
+
+    bool checkInvincible();
 
 
 };

@@ -15,7 +15,6 @@ void GameObject::updatePosition()
 	if (yPos > 1080 + 2 * getRadius() || yPos < 0 - 2 * getRadius())
 	{
 		makeInvisible();
-		//std::cout << "out of bounds y" << std::endl;
 	}
 }
 

@@ -185,8 +185,7 @@ void PlayerShip::getUpgrade(PowerUp upgrade)
 		heal(upgrade.getValue());
 		break;
 	case 4:
-		invincibility = upgrade.getValue();
-		invincibilityTimer.restart();
+		setInvincible(upgrade.getValue());
 		break;
 	case 5:
 		lives++;
@@ -196,17 +195,6 @@ void PlayerShip::getUpgrade(PowerUp upgrade)
 	}
 }
 
-bool PlayerShip::checkInvincible()
-{
-	if (invincibilityTimer.getElapsedTime().asMilliseconds() < invincibility)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
 
 Projectile PlayerShip::checkInput()
 {
